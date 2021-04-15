@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+
+<StackPane fx:id="carditem" alignment="CENTER_LEFT" prefHeight="52" styleClass="nav-item" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/15.0.1">
+
+    <Label fx:id="description">
+        <StackPane.margin>
+            <Insets left="5" />
+        </StackPane.margin>
+    </Label>
+
+    <Label fx:id="locale">
+        <StackPane.margin>
+            <Insets left="200" />
+        </StackPane.margin>
+    </Label>
+
+    <Label fx:id="value">
+        <StackPane.margin>
+            <Insets left="410" />
+        </StackPane.margin>
+    </Label>
+
+    <Label fx:id="date">
+        <StackPane.margin>
+            <Insets left="600" />
+        </StackPane.margin>
+    </Label>
+</StackPane>
