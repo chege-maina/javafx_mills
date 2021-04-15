@@ -42,13 +42,6 @@ public class categoryController implements Initializable, DashboardView {
     @FXML
     public void click(MouseEvent mouseEvent){
         listenerz.onClickListener();
-    }
-    private mylistener listenerz;
-    AddCategoryPresenter presenter;
-    
-     public void setItems(mylistener listenerz) {
-
-        this.listenerz = listenerz;
         if (!ValCat()) {
                 return;
             }
@@ -62,6 +55,14 @@ public class categoryController implements Initializable, DashboardView {
                 x++;*/
             //((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
             });
+    }
+    private mylistener listenerz;
+    AddCategoryPresenter presenter;
+    
+     public void setItems(mylistener listenerz) {
+
+        this.listenerz = listenerz;
+        
         
     }
 
