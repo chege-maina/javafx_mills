@@ -82,6 +82,8 @@ public class dash1 implements DashboardView, Initializable {
 
     DashboardPresenter presenter;
     private mylistener listenerz;
+    ArrayList<String> listelm;
+    public static String comboAdder = "";
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -92,16 +94,18 @@ public class dash1 implements DashboardView, Initializable {
 
         buttons_events();
         textField_events();
-        combobox_events();
+        dbaseEvents();
         Platform.runLater(() -> {
 
             listenerz = new mylistener() {
                 @Override
                 public void onClickListener() {
+
                     categoryCombo.getItems().clear();
-                    supplierCombo.getItems().clear();
-                    sellingCombo.getItems().clear();
-                    combobox_events();
+                    listelm.add(comboAdder);
+                    ObservableList<String> categoryList = FXCollections.observableArrayList(
+                            listelm);
+                    categoryCombo.setItems(categoryList);
 
                 }
 
@@ -329,8 +333,9 @@ public class dash1 implements DashboardView, Initializable {
     }
 
     public void combobox_events() {
-        presenter.getCategory();
-        presenter.getUnit();
+        supplierCombo.getItems().clear();
+        sellingCombo.getItems().clear();
+
     }
 
     private void addItem() {
@@ -411,6 +416,12 @@ public class dash1 implements DashboardView, Initializable {
         Menu.setVisible(false);
     }
 
+    private void dbaseEvents() {
+        presenter.getCategory();
+        presenter.getUnit();
+
+    }
+
     public void infodialog(String btnText, String msg) {
         JFXDialogLayout dialoglayout = new JFXDialogLayout();
         JFXButton button = new JFXButton(btnText);
@@ -431,14 +442,14 @@ public class dash1 implements DashboardView, Initializable {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                ArrayList<String> listelm = new ArrayList<>();
+                listelm = new ArrayList<>();
                 for (int i = 0; i < x; i++) {
                     listelm.add(category.get(i).getCategory());
 
                 }
-                ObservableList<String> listLeagues = FXCollections.observableArrayList(
+                ObservableList<String> categoryList = FXCollections.observableArrayList(
                         listelm);
-                categoryCombo.setItems(listLeagues);
+                categoryCombo.setItems(categoryList);
             }
         });
 

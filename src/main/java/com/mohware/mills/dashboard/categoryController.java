@@ -22,14 +22,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class categoryController implements Initializable, DashboardView {
 
-    
     @FXML
     private ImageView Exit;
-    
-    
+
     @FXML
     private Label catLabel;
 
@@ -38,32 +37,31 @@ public class categoryController implements Initializable, DashboardView {
 
     @FXML
     private Button save;
-    
+
     @FXML
-    public void click(MouseEvent mouseEvent){
-        listenerz.onClickListener();
+    public void click(MouseEvent mouseEvent) {
+
         if (!ValCat()) {
-                return;
-            }
-            String catname = name.getText();
-            presenter.addCategory(catname);
-            Platform.runLater(() -> {
-                /*dash1 dash = new dash1();
-                dash.combobox_events();
-                int x = 0;
-                x = x + 1;
-                x++;*/
+            return;
+        }
+        String catname = name.getText();
+        presenter.addCategory(catname);
+        dash1.comboAdder = catname;
+        Platform.runLater(() -> {
+            listenerz.onClickListener();
+            final Node source = (Node) mouseEvent.getSource();
+            final Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
             //((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
-            });
+        });
     }
     private mylistener listenerz;
     AddCategoryPresenter presenter;
-    
-     public void setItems(mylistener listenerz) {
+
+    public void setItems(mylistener listenerz) {
 
         this.listenerz = listenerz;
-        
-        
+
     }
 
     @Override
@@ -74,7 +72,7 @@ public class categoryController implements Initializable, DashboardView {
             ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
 
         });
-        
+
     }
 
     public void showimages() {
@@ -83,6 +81,7 @@ public class categoryController implements Initializable, DashboardView {
         Image logo_image = new Image(actionx2.toURI().toString());
         Exit.setImage(logo_image);
     }
+
     private boolean ValCat() {
         String val = name.getText().toString();
         if (val.isEmpty()) {
@@ -98,8 +97,6 @@ public class categoryController implements Initializable, DashboardView {
         }
     }
 
-    
-
     @Override
     public void onGetResult(List<CustHelp> customers) {
     }
@@ -114,7 +111,6 @@ public class categoryController implements Initializable, DashboardView {
 
     @Override
     public void onAddError(String message) {
-        
 
     }
 
