@@ -44,7 +44,7 @@
                         <Font name="Cambria Bold" size="12.0" />
                      </font>
                   </Label>
-                  <Button fx:id="save" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" stylesheets="@../styles/Style.css" text="Save">
+                  <Button fx:id="save" mnemonicParsing="false" onMouseClicked="#click" prefHeight="25.0" prefWidth="70.0" stylesheets="@../styles/Style.css" text="Save">
                      <font>
                         <Font name="Cambria" size="13.0" />
                      </font>
@@ -67,6 +67,5 @@
    <styleClass>
       <String fx:value="modal-design" />
       <String fx:value="transparent" />
-      <String fx:value="shadow" />
    </styleClass>
 </DialogPane>

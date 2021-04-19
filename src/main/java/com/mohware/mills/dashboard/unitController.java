@@ -22,16 +22,18 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 public class unitController implements Initializable, DashboardView {
+    private mylistener listenerz;
+    AddCategoryPresenter presenter;
 
     @FXML
     private StackPane rootspanes;
 
     @FXML
     private ImageView Exit;
-    
-    
+
     @FXML
     private Label catLabel;
 
@@ -40,7 +42,30 @@ public class unitController implements Initializable, DashboardView {
 
     @FXML
     private Button save;
-    AddCategoryPresenter presenter;
+
+    @FXML
+    public void click(MouseEvent mouseEvent) {
+
+        if (!ValCat()) {
+            return;
+        }
+        String catname = name.getText().toString();
+        presenter.addUnit(catname);
+        dash1.comboAdder = catname;
+        Platform.runLater(() -> {
+            listenerz.onClickListener2();
+            final Node source = (Node) mouseEvent.getSource();
+            final Stage stage = (Stage) source.getScene().getWindow();
+            stage.close();
+        });
+    }
+    
+
+    public void setItems(mylistener listenerz) {
+
+        this.listenerz = listenerz;
+
+    }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -48,18 +73,6 @@ public class unitController implements Initializable, DashboardView {
         presenter = new AddCategoryPresenter(this);
         Exit.setOnMouseClicked(mouseEvent -> {
             ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
-
-        });
-        save.setOnMouseClicked(mouseEvent -> {
-            if (!ValCat()) {
-                return;
-            }
-            String catname = name.getText();
-            presenter.addUnit(catname);
-            Platform.runLater(() -> {
-            ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
-            });
-            
 
         });
     }
@@ -70,11 +83,12 @@ public class unitController implements Initializable, DashboardView {
         Image logo_image = new Image(actionx2.toURI().toString());
         Exit.setImage(logo_image);
     }
+
     private boolean ValCat() {
         String val = name.getText().toString();
         if (val.isEmpty()) {
             //JOptionPane.showMessageDialog(null, "Email cannot be left empty!!", "WARNING", 0);
-            String message = "Category name cannot be left empty!!";
+            String message = "Unit name cannot be left empty!!";
             catLabel.setText(message);
             name.getStyleClass().add("textInputError");
             return false;
@@ -84,8 +98,6 @@ public class unitController implements Initializable, DashboardView {
             return true;
         }
     }
-
-    
 
     @Override
     public void onGetResult(List<CustHelp> customers) {
@@ -101,7 +113,6 @@ public class unitController implements Initializable, DashboardView {
 
     @Override
     public void onAddError(String message) {
-        
 
     }
 

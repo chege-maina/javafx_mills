@@ -52,7 +52,6 @@ public class categoryController implements Initializable, DashboardView {
             final Node source = (Node) mouseEvent.getSource();
             final Stage stage = (Stage) source.getScene().getWindow();
             stage.close();
-            //((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
         });
     }
     private mylistener listenerz;

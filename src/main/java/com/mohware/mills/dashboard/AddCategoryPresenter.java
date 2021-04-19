@@ -49,10 +49,10 @@ public class AddCategoryPresenter {
 
     }
     
-    public void addUnit(final String category) {
+    public void addUnit(final String unit) {
 
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-        Call<CustHelp> call = apiInterface.addUnit(category);
+        Call<CustHelp> call = apiInterface.addUnit(unit);
 
         call.enqueue(new Callback<CustHelp>() {
             @Override

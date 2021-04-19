@@ -83,6 +83,7 @@ public class dash1 implements DashboardView, Initializable {
     DashboardPresenter presenter;
     private mylistener listenerz;
     ArrayList<String> listelm;
+    ArrayList<String> unitlist;
     public static String comboAdder = "";
 
     @Override
@@ -91,6 +92,8 @@ public class dash1 implements DashboardView, Initializable {
         showimages();
         hideItems();
         initialView();
+        unitlist = new ArrayList<>();
+        listelm = new ArrayList<>();
 
         buttons_events();
         textField_events();
@@ -107,6 +110,17 @@ public class dash1 implements DashboardView, Initializable {
                             listelm);
                     categoryCombo.setItems(categoryList);
 
+                }
+
+                @Override
+                public void onClickListener2() {
+                    supplierCombo.getItems().clear();
+                    sellingCombo.getItems().clear();
+                    unitlist.add(comboAdder);
+                    ObservableList<String> unitList = FXCollections.observableArrayList(
+                            unitlist);
+                    supplierCombo.setItems(unitList);
+                    sellingCombo.setItems(unitList);
                 }
 
             };
@@ -172,6 +186,8 @@ public class dash1 implements DashboardView, Initializable {
                 addCatDialog.setDialogPane(addCategory);
                 addCatDialog.initStyle(StageStyle.UNDECORATED);
 
+                unitController catcontroller = fxmlloader.getController();
+                catcontroller.setItems(listenerz);
                 Optional<ButtonType> clickedCatButton = addCatDialog.showAndWait();
 
             } catch (IOException e) {
@@ -189,6 +205,8 @@ public class dash1 implements DashboardView, Initializable {
                 addCatDialog.setDialogPane(addCategory);
                 addCatDialog.initStyle(StageStyle.UNDECORATED);
 
+                unitController catcontroller = fxmlloader.getController();
+                catcontroller.setItems(listenerz);
                 Optional<ButtonType> clickedCatButton = addCatDialog.showAndWait();
 
             } catch (IOException e) {
@@ -436,26 +454,6 @@ public class dash1 implements DashboardView, Initializable {
     }
 
     @Override
-    public void onGetResult(List<CustHelp> category) {
-        int x = category.size();
-        categoryCombo.getItems().clear();
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                listelm = new ArrayList<>();
-                for (int i = 0; i < x; i++) {
-                    listelm.add(category.get(i).getCategory());
-
-                }
-                ObservableList<String> categoryList = FXCollections.observableArrayList(
-                        listelm);
-                categoryCombo.setItems(categoryList);
-            }
-        });
-
-    }
-
-    @Override
     public void onErrorLoading(String message) {
         Platform.runLater(() -> {
             infodialog("Okay", message);
@@ -487,15 +485,35 @@ public class dash1 implements DashboardView, Initializable {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                ArrayList<String> listelm = new ArrayList<>();
+                
                 for (int i = 0; i < x; i++) {
-                    listelm.add(unit.get(i).getCategory());
+                    unitlist.add(unit.get(i).getCategory());
 
                 }
                 ObservableList<String> listLeagues = FXCollections.observableArrayList(
-                        listelm);
+                        unitlist);
                 supplierCombo.setItems(listLeagues);
                 sellingCombo.setItems(listLeagues);
+            }
+        });
+
+    }
+
+    @Override
+    public void onGetResult(List<CustHelp> category) {
+        int x = category.size();
+        categoryCombo.getItems().clear();
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                
+                for (int i = 0; i < x; i++) {
+                    listelm.add(category.get(i).getCategory());
+
+                }
+                ObservableList<String> categoryList = FXCollections.observableArrayList(
+                        listelm);
+                categoryCombo.setItems(categoryList);
             }
         });
 
