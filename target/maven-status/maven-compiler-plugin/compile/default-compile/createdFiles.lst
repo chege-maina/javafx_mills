@@ -31,6 +31,7 @@ com\mohware\mills\dashboard\AddCategoryPresenter.class
 com\mohware\mills\dashboard\AddCategoryPresenter$2.class
 com\mohware\mills\dashboard\dash1$7.class
 com\mohware\mills\dashboard\DashboardPresenter$2.class
+com\mohware\mills\dashboard\picController.class
 com\mohware\mills\login\LoginPresenter$1.class
 com\mohware\mills\login\LoginPresenter.class
 com\mohware\mills\pos\PosPresenter.class

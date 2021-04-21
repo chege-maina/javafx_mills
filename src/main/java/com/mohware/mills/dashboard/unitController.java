@@ -25,6 +25,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class unitController implements Initializable, DashboardView {
+
     private mylistener listenerz;
     AddCategoryPresenter presenter;
 
@@ -42,6 +43,8 @@ public class unitController implements Initializable, DashboardView {
 
     @FXML
     private Button save;
+    
+   private String checked = "";
 
     @FXML
     public void click(MouseEvent mouseEvent) {
@@ -51,15 +54,16 @@ public class unitController implements Initializable, DashboardView {
         }
         String catname = name.getText().toString();
         presenter.addUnit(catname);
-        dash1.comboAdder = catname;
+        
         Platform.runLater(() -> {
+            if (checked.equals("okay")) {
+            dash1.comboAdder = catname;
             listenerz.onClickListener2();
             final Node source = (Node) mouseEvent.getSource();
             final Stage stage = (Stage) source.getScene().getWindow();
-            stage.close();
+            stage.close();}
         });
     }
-    
 
     public void setItems(mylistener listenerz) {
 
@@ -109,10 +113,13 @@ public class unitController implements Initializable, DashboardView {
 
     @Override
     public void onAddSuccess(String message) {
+        checked="okay";
     }
 
     @Override
     public void onAddError(String message) {
+        catLabel.setText(message);
+        name.getStyleClass().add("textInputError");
 
     }
 

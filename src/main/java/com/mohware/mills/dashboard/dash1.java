@@ -58,7 +58,7 @@ public class dash1 implements DashboardView, Initializable {
     private Label image_label;
 
     @FXML
-    private Button btnAddCategory, btnCancel, btnAddUnit2, btnAddUnit1, btnImgSelect;
+    private Button btnAddCategory, btnCancel, btnAddUnit2, btnAddUnit1, btnImgSelect, btnImageView;
 
     @FXML
     private AnchorPane slider, addproducts_acpane, receiveproducts_acpane;
@@ -146,6 +146,25 @@ public class dash1 implements DashboardView, Initializable {
     }
 
     public void buttons_events() {
+        btnImageView.setOnMouseClicked(mouseEvent -> {
+            try {
+                String picPath = image_label.getText().toString();
+
+                Stage dialogStage = new Stage();
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/viewImage.fxml"));
+                AnchorPane root = (AnchorPane) loader.load();
+                dialogStage.initStyle(StageStyle.UNDECORATED);
+                picController controller = (picController) loader.getController();
+                controller.setPic(picPath);
+                Scene scene = new Scene(root);
+                dialogStage.setScene(scene);
+                dialogStage.showAndWait();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        });
         btnImgSelect.setOnMouseClicked(mouseEvent -> {
             FileChooser filechooser = new FileChooser();
             filechooser.setTitle("Select Product Image");
@@ -485,7 +504,7 @@ public class dash1 implements DashboardView, Initializable {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                
+
                 for (int i = 0; i < x; i++) {
                     unitlist.add(unit.get(i).getCategory());
 
@@ -506,7 +525,7 @@ public class dash1 implements DashboardView, Initializable {
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
-                
+
                 for (int i = 0; i < x; i++) {
                     listelm.add(category.get(i).getCategory());
 

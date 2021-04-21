@@ -46,16 +46,20 @@ public class categoryController implements Initializable, DashboardView {
         }
         String catname = name.getText();
         presenter.addCategory(catname);
-        dash1.comboAdder = catname;
+
         Platform.runLater(() -> {
-            listenerz.onClickListener();
-            final Node source = (Node) mouseEvent.getSource();
-            final Stage stage = (Stage) source.getScene().getWindow();
-            stage.close();
+            if (checked.equals("okay")) {
+                dash1.comboAdder = catname;
+                listenerz.onClickListener();
+                final Node source = (Node) mouseEvent.getSource();
+                final Stage stage = (Stage) source.getScene().getWindow();
+                stage.close();
+            }
         });
     }
     private mylistener listenerz;
     AddCategoryPresenter presenter;
+    private String checked = "";
 
     public void setItems(mylistener listenerz) {
 
@@ -106,10 +110,13 @@ public class categoryController implements Initializable, DashboardView {
 
     @Override
     public void onAddSuccess(String message) {
+        checked="okay";
     }
 
     @Override
     public void onAddError(String message) {
+        catLabel.setText(message);
+        name.getStyleClass().add("textInputError");
 
     }
 
