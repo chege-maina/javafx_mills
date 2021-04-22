@@ -7,9 +7,11 @@ import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
 import com.mohware.mills.model.CustHelp;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -85,6 +87,7 @@ public class dash1 implements DashboardView, Initializable {
     ArrayList<String> listelm;
     ArrayList<String> unitlist;
     public static String comboAdder = "";
+    private String encoded_image;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -166,15 +169,27 @@ public class dash1 implements DashboardView, Initializable {
 
         });
         btnImgSelect.setOnMouseClicked(mouseEvent -> {
-            FileChooser filechooser = new FileChooser();
-            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image Files", "*.jpg","*.png");
-            filechooser.getExtensionFilters().add(extFilter);
-            filechooser.setTitle("Select Product Image");
-            Stage stage = (Stage) rootpanes.getScene().getWindow();
+            try {
+                FileChooser filechooser = new FileChooser();
+                FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image Files", "*.jpg", "*.png");
+                filechooser.getExtensionFilters().add(extFilter);
+                filechooser.setTitle("Select Product Image");
+                Stage stage = (Stage) rootpanes.getScene().getWindow();
 
-            File file = filechooser.showOpenDialog(stage);
+                File file = filechooser.showOpenDialog(stage);
 
-            image_label.setText(file.getPath());
+                image_label.setText(file.getPath());
+
+                File filex = new File(image_label.getText().toString());
+                byte[] bytes = new byte[(int) filex.length()];
+                FileInputStream fis = new FileInputStream(filex);
+                fis.read(bytes);
+                fis.close();
+                encoded_image = Base64.getEncoder().encodeToString(bytes);
+                //System.out.print(encoded_image);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
         });
         btnAddCategory.setOnMouseClicked(mouseEvent -> {

@@ -43,8 +43,8 @@ public class unitController implements Initializable, DashboardView {
 
     @FXML
     private Button save;
-    
-   private String checked = "";
+
+    private String checked = "";
 
     @FXML
     public void click(MouseEvent mouseEvent) {
@@ -54,14 +54,15 @@ public class unitController implements Initializable, DashboardView {
         }
         String catname = name.getText().toString();
         presenter.addUnit(catname);
-        
+
         Platform.runLater(() -> {
             if (checked.equals("okay")) {
-            dash1.comboAdder = catname;
-            listenerz.onClickListener2();
-            final Node source = (Node) mouseEvent.getSource();
-            final Stage stage = (Stage) source.getScene().getWindow();
-            stage.close();}
+                dash1.comboAdder = catname;
+                listenerz.onClickListener2();
+                final Node source = (Node) mouseEvent.getSource();
+                final Stage stage = (Stage) source.getScene().getWindow();
+                stage.close();
+            }
         });
     }
 
@@ -113,13 +114,17 @@ public class unitController implements Initializable, DashboardView {
 
     @Override
     public void onAddSuccess(String message) {
-        checked="okay";
+        Platform.runLater(() -> {
+            checked = "okay";
+        });
     }
 
     @Override
     public void onAddError(String message) {
-        catLabel.setText(message);
-        name.getStyleClass().add("textInputError");
+        Platform.runLater(() -> {
+            catLabel.setText(message);
+            name.getStyleClass().add("textInputError");
+        });
 
     }
 

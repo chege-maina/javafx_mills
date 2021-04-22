@@ -110,13 +110,17 @@ public class categoryController implements Initializable, DashboardView {
 
     @Override
     public void onAddSuccess(String message) {
-        checked="okay";
+        Platform.runLater(() -> {
+            checked = "okay";
+        });
     }
 
     @Override
     public void onAddError(String message) {
-        catLabel.setText(message);
-        name.getStyleClass().add("textInputError");
+        Platform.runLater(() -> {
+            catLabel.setText(message);
+            name.getStyleClass().add("textInputError");
+        });
 
     }
 
