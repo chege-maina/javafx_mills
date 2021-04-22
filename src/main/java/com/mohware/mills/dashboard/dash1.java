@@ -167,6 +167,8 @@ public class dash1 implements DashboardView, Initializable {
         });
         btnImgSelect.setOnMouseClicked(mouseEvent -> {
             FileChooser filechooser = new FileChooser();
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Image Files", "*.jpg","*.png");
+            filechooser.getExtensionFilters().add(extFilter);
             filechooser.setTitle("Select Product Image");
             Stage stage = (Stage) rootpanes.getScene().getWindow();
 
