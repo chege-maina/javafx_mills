@@ -23,7 +23,7 @@ public interface ApiInterface {
     Call<CustHelp> addUnit(@Field("category") String category);
     
     @FormUrlEncoded
-    @POST("addnewitem.php")
+    @POST("add_product.php")
     Call<CustHelp> addItem(@Field("itemdetails") String itemdetails);
 
     @FormUrlEncoded

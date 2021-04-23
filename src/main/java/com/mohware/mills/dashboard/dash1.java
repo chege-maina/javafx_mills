@@ -89,6 +89,7 @@ public class dash1 implements DashboardView, Initializable {
     ArrayList<String> listelm;
     ArrayList<String> unitlist;
     public static String comboAdder = "";
+    private String checked = "";
     private String encoded_image;
 
     @Override
@@ -150,8 +151,8 @@ public class dash1 implements DashboardView, Initializable {
                 | !labelVald("Please Select Product Image!!", image_error_label, image_label)) {
             return;
         }
-// nitawaandalia meza mbele ya adui wenyu>>>>>
-        System.out.println("Fuck off!!");
+        addItem();
+        
     }
 
     private boolean txtFldVald(String message, Label theLabel, JFXTextField theTxt) {
@@ -181,9 +182,8 @@ public class dash1 implements DashboardView, Initializable {
     }
 
     private boolean comboVald(String message, Label theLabel, JFXComboBox<String> theTxt) {
-        String val = theTxt.getSelectionModel().getSelectedItem();
-        System.out.println(val);
-        if (val.equals("null")) {
+        boolean isMyComboBoxEmpty = theTxt.getSelectionModel().isEmpty();
+        if (isMyComboBoxEmpty) {
             theLabel.setText(message);
             theTxt.getStyleClass().add("textInputError");
             return false;
@@ -200,6 +200,36 @@ public class dash1 implements DashboardView, Initializable {
         addproducts_acpane.setVisible(false);
         receiveproducts_acpane.setVisible(false);
 
+    }
+
+    private void clearMe() {
+        prod_name.setText("");
+        opening_bal.setText("");
+        conversion_txt.setText("");
+        buying_txt.setText("");
+        selling_txt.setText("");
+        tax_txt.setText("");
+        max_txt.setText("");
+        min_txt.setText("");
+        reorder_txt.setText("");
+        reorder_txt_label.setText("");
+        image_error_label.setText("");
+        categoryCombolabel.setText("");
+        sellingCombolabel.setText("");
+        supplierCombolabel.setText("");
+        image_label.setText("");
+        prod_name_label.setText("");
+        opening_bal_label.setText("");
+        conversion_txt_label.setText("");
+        min_txt_label.setText("");
+        buying_txt_label.setText("");
+        max_txt_label.setText("");
+        tax_txt_label.setText("");
+        selling_txt_label.setText("");
+        categoryCombo.getItems().clear();
+        supplierCombo.getItems().clear();
+        sellingCombo.getItems().clear();
+        encoded_image = "";
     }
 
     public void initialView() {
@@ -312,10 +342,7 @@ public class dash1 implements DashboardView, Initializable {
             }
         });
         btnCancel.setOnMouseClicked(mouseEvent -> {
-            categoryCombo.getItems().clear();
-            supplierCombo.getItems().clear();
-            sellingCombo.getItems().clear();
-            encoded_image="";
+            clearMe();
             combobox_events();
 
         });
@@ -454,23 +481,34 @@ public class dash1 implements DashboardView, Initializable {
     }
 
     public void combobox_events() {
-        supplierCombo.getItems().clear();
-        sellingCombo.getItems().clear();
+        ObservableList<String> unitList = FXCollections.observableArrayList(
+                unitlist);
+        supplierCombo.setItems(unitList);
+        sellingCombo.setItems(unitList);
+        ObservableList<String> categoryList = FXCollections.observableArrayList(
+                listelm);
+        categoryCombo.setItems(categoryList);
 
     }
 
     private void addItem() {
         JSONArray jsonArray = new JSONArray();
         JSONObject jsonObject = new JSONObject();
-        /*jsonObject.put("orderno", orderno);
-        jsonObject.put("date", dates);
-        jsonObject.put("time", times);
-        jsonObject.put("total", total);
-        jsonObject.put("waiter", waiter);
-        jsonObject.put("status", status);
-        jsonObject.put("comment", comment);
-        jsonObject.put("chef", chef);*/
+        jsonObject.put("product", prod_name.getText());
+        jsonObject.put("category", categoryCombo.getValue());
+        jsonObject.put("opening_bal", opening_bal.getText());
+        jsonObject.put("supply_unit", supplierCombo.getValue());
+        jsonObject.put("conversion", conversion_txt.getText());
+        jsonObject.put("sell_unit", sellingCombo.getValue());
+        jsonObject.put("buying_price", buying_txt.getText());
+        jsonObject.put("selling_price", selling_txt.getText());
+        jsonObject.put("tax", tax_txt.getText());
+        jsonObject.put("max", max_txt.getText());
+        jsonObject.put("min", min_txt.getText());
+        jsonObject.put("reorder", reorder_txt.getText());
+        jsonObject.put("image", encoded_image);
         jsonArray.put(jsonObject);
+        presenter.addItems(String.valueOf(jsonArray));
     }
 
     public void showimages() {
@@ -566,10 +604,19 @@ public class dash1 implements DashboardView, Initializable {
 
     @Override
     public void onAddSuccess(String message) {
+        Platform.runLater(() -> {
+            infodialog("Okay", message);
+            clearMe();
+            combobox_events();
+        });
+
     }
 
     @Override
     public void onAddError(String message) {
+        Platform.runLater(() -> {
+            infodialog("Okay", message);
+        });
     }
 
     @Override
