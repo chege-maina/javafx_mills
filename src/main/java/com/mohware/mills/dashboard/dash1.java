@@ -57,10 +57,12 @@ public class dash1 implements DashboardView, Initializable {
     private StackPane rootpanes;
 
     @FXML
-    private Label image_label;
+    private Label image_label, prod_name_label, opening_bal_label, conversion_txt_label, min_txt_label, buying_txt_label, max_txt_label, tax_txt_label, selling_txt_label;
 
     @FXML
-    private Button btnAddCategory, btnCancel, btnAddUnit2, btnAddUnit1, btnImgSelect, btnImageView;
+    private Label reorder_txt_label, image_error_label, categoryCombolabel, sellingCombolabel, supplierCombolabel;
+    @FXML
+    private Button btnAddCategory, btnCancel, btnAddUnit2, btnAddUnit1, btnImgSelect, btnImageView, btnSave;
 
     @FXML
     private AnchorPane slider, addproducts_acpane, receiveproducts_acpane;
@@ -130,6 +132,66 @@ public class dash1 implements DashboardView, Initializable {
 
         });
 
+    }
+
+    private void validate() {
+        if (!txtFldVald("Product Name Cannot be left Empty!!", prod_name_label, prod_name)
+                | !txtFldVald("Opening Balance Cannot be left Empty!!", opening_bal_label, opening_bal)
+                | !txtFldVald("Conversion Unit Cannot be left Empty!!", conversion_txt_label, conversion_txt)
+                | !txtFldVald("Buying Price Cannot be left Empty!!", buying_txt_label, buying_txt)
+                | !txtFldVald("Selling Price Cannot be left Empty!!", selling_txt_label, selling_txt)
+                | !txtFldVald("Product Tax Cannot be left Empty!!", tax_txt_label, tax_txt)
+                | !txtFldVald("Maximum Lavel Cannot be left Empty!!", max_txt_label, max_txt)
+                | !txtFldVald("Minimum Level Cannot be left Empty!!", min_txt_label, min_txt)
+                | !txtFldVald("Stock Reorder Level Cannot be left Empty!!", reorder_txt_label, reorder_txt)
+                | !comboVald("Please Select the Product Category!!", categoryCombolabel, categoryCombo)
+                | !comboVald("Please Select the Product Supplier Unit!!", supplierCombolabel, supplierCombo)
+                | !comboVald("Please Select the Product Selling Unit!!", sellingCombolabel, sellingCombo)
+                | !labelVald("Please Select Product Image!!", image_error_label, image_label)) {
+            return;
+        }
+// nitawaandalia meza mbele ya adui wenyu>>>>>
+        System.out.println("Fuck off!!");
+    }
+
+    private boolean txtFldVald(String message, Label theLabel, JFXTextField theTxt) {
+        String val = theTxt.getText();
+        if (val.isEmpty()) {
+            theLabel.setText(message);
+            theTxt.getStyleClass().add("textInputError");
+            return false;
+        } else {
+            theLabel.setText("");
+            theTxt.getStyleClass().add("textInput");
+            return true;
+        }
+    }
+
+    private boolean labelVald(String message, Label theLabel, Label theTxt) {
+        String val = theTxt.getText();
+        if (val.isEmpty()) {
+            theLabel.setText(message);
+            theTxt.getStyleClass().add("textInputError");
+            return false;
+        } else {
+            theLabel.setText("");
+            theTxt.getStyleClass().add("textInput");
+            return true;
+        }
+    }
+
+    private boolean comboVald(String message, Label theLabel, JFXComboBox<String> theTxt) {
+        String val = theTxt.getSelectionModel().getSelectedItem();
+        System.out.println(val);
+        if (val.equals("null")) {
+            theLabel.setText(message);
+            theTxt.getStyleClass().add("textInputError");
+            return false;
+        } else {
+            theLabel.setText("");
+            theTxt.getStyleClass().add("textInput");
+            return true;
+        }
     }
 
     public void hideItems() {
@@ -253,7 +315,12 @@ public class dash1 implements DashboardView, Initializable {
             categoryCombo.getItems().clear();
             supplierCombo.getItems().clear();
             sellingCombo.getItems().clear();
+            encoded_image="";
             combobox_events();
+
+        });
+        btnSave.setOnMouseClicked(mouseEvent -> {
+            validate();
 
         });
         Exit.setOnMouseClicked(mouseEvent -> {

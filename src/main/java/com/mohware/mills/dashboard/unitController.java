@@ -92,7 +92,6 @@ public class unitController implements Initializable, DashboardView {
     private boolean ValCat() {
         String val = name.getText().toString();
         if (val.isEmpty()) {
-            //JOptionPane.showMessageDialog(null, "Email cannot be left empty!!", "WARNING", 0);
             String message = "Unit name cannot be left empty!!";
             catLabel.setText(message);
             name.getStyleClass().add("textInputError");

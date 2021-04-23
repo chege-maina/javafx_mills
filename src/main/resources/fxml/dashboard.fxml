@@ -251,7 +251,7 @@
                                                             <Insets />
                                                          </VBox.margin>
                                                       </JFXTextField>
-                                                      <Label prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label fx:id="prod_name_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font name="Cambria Bold" size="12.0" />
                                                          </font>
@@ -280,7 +280,7 @@
                                                             </Button>
                                                          </children>
                                                       </HBox>
-                                                      <Label prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label fx:id="categoryCombolabel" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font name="Cambria Bold" size="12.0" />
                                                          </font>
@@ -294,7 +294,7 @@
                                                             <Font name="Cambria" size="13.0" />
                                                          </font>
                                                       </JFXTextField>
-                                                      <Label prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label fx:id="opening_bal_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font name="Cambria Bold" size="12.0" />
                                                          </font>
@@ -327,7 +327,7 @@
                                                             </Button>
                                                          </children>
                                                       </HBox>
-                                                      <Label prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label fx:id="supplierCombolabel" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font name="Cambria Bold" size="12.0" />
                                                          </font>
@@ -344,7 +344,7 @@
                                                             <Font name="Cambria" size="13.0" />
                                                          </font>
                                                       </JFXTextField>
-                                                      <Label prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label fx:id="conversion_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font name="Cambria Bold" size="12.0" />
                                                          </font>
@@ -367,7 +367,7 @@
                                                             </Button>
                                                          </children>
                                                       </HBox>
-                                                      <Label prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label fx:id="sellingCombolabel" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font name="Cambria Bold" size="12.0" />
                                                          </font>
@@ -394,7 +394,7 @@
                                                             <Insets />
                                                          </VBox.margin>
                                                       </JFXTextField>
-                                                      <Label prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label fx:id="buying_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font name="Cambria Bold" size="12.0" />
                                                          </font>
@@ -411,7 +411,7 @@
                                                             <Font name="Cambria" size="13.0" />
                                                          </font>
                                                       </JFXTextField>
-                                                      <Label prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label fx:id="selling_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font name="Cambria Bold" size="12.0" />
                                                          </font>
@@ -425,7 +425,7 @@
                                                             <Font name="Cambria" size="13.0" />
                                                          </font>
                                                       </JFXTextField>
-                                                      <Label prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label fx:id="tax_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font name="Cambria Bold" size="12.0" />
                                                          </font>
@@ -452,7 +452,7 @@
                                                             <Insets />
                                                          </VBox.margin>
                                                       </JFXTextField>
-                                                      <Label prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label fx:id="max_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font name="Cambria Bold" size="12.0" />
                                                          </font>
@@ -469,7 +469,7 @@
                                                             <Font name="Cambria" size="13.0" />
                                                          </font>
                                                       </JFXTextField>
-                                                      <Label prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label fx:id="min_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font name="Cambria Bold" size="12.0" />
                                                          </font>
@@ -483,7 +483,7 @@
                                                             <Font name="Cambria" size="13.0" />
                                                          </font>
                                                       </JFXTextField>
-                                                      <Label prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label fx:id="reorder_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font name="Cambria Bold" size="12.0" />
                                                          </font>
@@ -547,7 +547,7 @@
                                                             </Button>
                                                          </children>
                                                       </HBox>
-                                                      <Label alignment="CENTER" prefHeight="22.0" prefWidth="420.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label fx:id="image_error_label" alignment="CENTER" prefHeight="22.0" prefWidth="420.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font name="Cambria Bold" size="12.0" />
                                                          </font>
@@ -567,7 +567,7 @@
                                     </VBox>
                                     <HBox alignment="CENTER_LEFT" layoutX="40.0" layoutY="360.0" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="393.0">
                                        <children>
-                                          <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" stylesheets="@../styles/Style.css" text="Save">
+                                          <Button fx:id="btnSave" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" stylesheets="@../styles/Style.css" text="Save">
                                              <font>
                                                 <Font name="Cambria" size="13.0" />
                                              </font>
