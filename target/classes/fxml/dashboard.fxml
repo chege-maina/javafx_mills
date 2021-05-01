@@ -243,7 +243,7 @@
                                                       <Insets right="80.0" />
                                                    </HBox.margin>
                                                    <children>
-                                                      <JFXTextField fx:id="prod_name" prefHeight="25.0" prefWidth="250.0" promptText="Add New Product" styleClass="textInput" stylesheets="@../styles/Style.css">
+                                                      <JFXTextField fx:id="prod_name" prefHeight="25.0" prefWidth="250.0" promptText="New Product Name" styleClass="textInput" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font name="Cambria" size="13.0" />
                                                          </font>

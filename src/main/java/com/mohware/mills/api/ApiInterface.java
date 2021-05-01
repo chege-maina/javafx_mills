@@ -18,6 +18,7 @@ public interface ApiInterface {
    @FormUrlEncoded
     @POST("addcategory.php")
     Call<CustHelp> addCategory(@Field("category") String category);
+    
     @FormUrlEncoded
     @POST("addunit.php")
     Call<CustHelp> addUnit(@Field("category") String category);
@@ -25,25 +26,7 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("add_product.php")
     Call<CustHelp> addItem(@Field("itemdetails") String itemdetails);
-
-    @FormUrlEncoded
-    @POST("addusers.php")
-    Call<CustHelp> addUsers(@Field("fname") String fname, @Field("lname") String lname, @Field("email") String email, @Field("password") String password, @Field("designation") String designation, @Field("status") String status, @Field("forgot") String forgot);
-
-    @FormUrlEncoded
-    @POST("updatecustomers.php")
-    Call<CustHelp> upcust(@Field("id") int id, @Field("name") String name, @Field("phone") String phone, @Field("estate") String estate, @Field("house") String house);
-
-    @FormUrlEncoded
-    @POST("updateitems.php")
-    Call<CustHelp> upitm(@Field("id") int id, @Field("name") String name, @Field("phone") String phone, @Field("estate") String estate);
-
-    @GET("searchcustomers.php")
-    Call<List<CustHelp>> getCust(@Query("key") String keyword);
-
-    @GET("searchstaff.php")
-    Call<List<CustHelp>> getpin(@Query("key") String keyword);
-    
+            
     @GET("loademail.php")
     Call<List<CustHelp>> loadEmails();
     
