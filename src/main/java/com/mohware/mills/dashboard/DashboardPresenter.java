@@ -9,13 +9,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class DashboardPresenter {
-    
+
     private DashboardView view;
-    
+
     public DashboardPresenter(DashboardView view) {
         this.view = view;
 
-    } 
+    }
+
     public void getCategory() {
         //view.showLoading();
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
@@ -30,7 +31,6 @@ public class DashboardPresenter {
                 }
             }
 
-            
             public void onFailure(Call<List<CustHelp>> call, Throwable t) {
                 //view.hideLoading();
                 String error = "Internet Connection Error...";
@@ -39,7 +39,7 @@ public class DashboardPresenter {
             }
         });
     }
-    
+
     public void getUnit() {
         //view.showLoading();
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
@@ -54,7 +54,6 @@ public class DashboardPresenter {
                 }
             }
 
-            
             public void onFailure(Call<List<CustHelp>> call, Throwable t) {
                 //view.hideLoading();
                 String error = "Internet Connection Error...";
@@ -63,9 +62,8 @@ public class DashboardPresenter {
             }
         });
     }
-        
-    public void addItems(final String itemdetails) {
 
+    public void addItems(final String itemdetails) {
 
         view.showProgress();
 
@@ -74,7 +72,7 @@ public class DashboardPresenter {
 
         call.enqueue(new Callback<CustHelp>() {
             @Override
-            public void onResponse( Call<CustHelp> call,  Response<CustHelp> response) {
+            public void onResponse(Call<CustHelp> call, Response<CustHelp> response) {
                 view.hideProgress();
 
                 if (response.isSuccessful() && response.body() != null) {
@@ -82,7 +80,6 @@ public class DashboardPresenter {
                     Boolean success = response.body().getSuccess();
                     if (success) {
                         view.onAddSuccess(response.body().getMessage());
-
 
                     } else {
                         view.onAddError(response.body().getMessage());
@@ -93,14 +90,14 @@ public class DashboardPresenter {
             }
 
             @Override
-            public void onFailure( Call<CustHelp> call, Throwable t) {
+            public void onFailure(Call<CustHelp> call, Throwable t) {
                 view.hideProgress();
-                String error= "Internet Connection Error...";
+                String error = "Internet Connection Error...";
                 view.onAddError(error);
 
             }
         });
 
     }
-    
+
 }
