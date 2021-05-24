@@ -4,7 +4,6 @@ module com.mohware.mills {
     requires com.jfoenix;
     requires io.github.classgraph;
     requires retrofit2;
-    requires kairos.framework;
 
     opens com.mohware.mills.main to javafx.fxml;
     //opens java.base/java.lang.invoke = retrofit2;
