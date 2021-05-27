@@ -1,11 +1,12 @@
-
 package com.mohware.mills.model;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
 public class CustHelp {
+
     @Expose
     @SerializedName("id")
     private int id;
@@ -23,6 +24,50 @@ public class CustHelp {
     @Expose
     @SerializedName("category")
     private String category;
+    @Expose
+    @SerializedName("product_code")
+    private String product_code;
+    @Expose
+    @SerializedName("product_name")
+    private String product_name;
+    @Expose
+    @SerializedName("buying_price")
+    private String buying_price;
+    @Expose
+    @SerializedName("selling_price")
+    private String selling_price;
+
+    public String getProduct_code() {
+        return product_code;
+    }
+
+    public void setProduct_code(String product_code) {
+        this.product_code = product_code;
+    }
+
+    public String getProduct_name() {
+        return product_name;
+    }
+
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
+    }
+
+    public String getBuying_price() {
+        return buying_price;
+    }
+
+    public void setBuying_price(String buying_price) {
+        this.buying_price = buying_price;
+    }
+
+    public String getSelling_price() {
+        return selling_price;
+    }
+
+    public void setSelling_price(String selling_price) {
+        this.selling_price = selling_price;
+    }
 
     public String getItemdetails() {
         return itemdetails;
@@ -31,8 +76,7 @@ public class CustHelp {
     public void setItemdetails(String itemdetails) {
         this.itemdetails = itemdetails;
     }
-    
-    
+
     public String getCategory() {
         return category;
     }
@@ -44,7 +88,6 @@ public class CustHelp {
     @Expose
     @SerializedName("arraylist")
     private ArrayList<ArrayList<String>> arrayLists;
-
 
     @Expose
     @SerializedName("orderno")
@@ -177,7 +220,6 @@ public class CustHelp {
     public String getWaiter() {
         return waiter;
     }
-
 
     public void setWaiter(String waiter) {
         this.waiter = waiter;
@@ -527,4 +569,3 @@ public class CustHelp {
         this.checksqty = checksqty;
     }
 }
-

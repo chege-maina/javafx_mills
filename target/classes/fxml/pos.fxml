@@ -19,8 +19,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane fx:id="rootpanes" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mohware.mills.pos.PosController">
+<StackPane fx:id="rootpanes" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mohware.mills.pos.PosController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1024.0">
          <children>
@@ -54,7 +53,7 @@
                                        <graphic>
                                           <ImageView fx:id="search" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../../images/search.png" />
+                                                <Image url="@../images/search.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>

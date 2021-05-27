@@ -40,6 +40,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -54,6 +55,9 @@ public class dash1 implements DashboardView, Initializable {
     private Label Menu, CloseMenu;
 
     @FXML
+    private VBox lstItem;
+
+    @FXML
     private StackPane rootpanes;
 
     @FXML
@@ -65,9 +69,9 @@ public class dash1 implements DashboardView, Initializable {
     private Button btnAddCategory, btnCancel, btnAddUnit2, btnAddUnit1, btnImgSelect, btnImageView, btnSave;
 
     @FXML
-    private AnchorPane slider, addproducts_acpane, receiveproducts_acpane;
+    private AnchorPane slider, addproducts_acpane, receiveproducts_acpane, productList;
     @FXML
-    private JFXButton products_menu, store_menu;
+    private JFXButton products_menu, store_menu, list_prod_menu, new_product;
 
     @FXML
     private JFXComboBox<String> categoryCombo, supplierCombo, sellingCombo;
@@ -86,6 +90,7 @@ public class dash1 implements DashboardView, Initializable {
 
     DashboardPresenter presenter;
     private mylistener listenerz;
+    ArrayList<ArrayList<String>> receiptlist1;
     ArrayList<String> listelm;
     ArrayList<String> unitlist;
     public static String comboAdder = "";
@@ -98,6 +103,7 @@ public class dash1 implements DashboardView, Initializable {
         showimages();
         hideItems();
         initialView();
+        receiptlist1 = new ArrayList<>();
         unitlist = new ArrayList<>();
         listelm = new ArrayList<>();
 
@@ -152,7 +158,7 @@ public class dash1 implements DashboardView, Initializable {
             return;
         }
         addItem();
-        
+
     }
 
     private boolean txtFldVald(String message, Label theLabel, JFXTextField theTxt) {
@@ -198,6 +204,7 @@ public class dash1 implements DashboardView, Initializable {
         sub_store.setVisible(false);
         sub_products.setVisible(false);
         addproducts_acpane.setVisible(false);
+        productList.setVisible(false);
         receiveproducts_acpane.setVisible(false);
 
     }
@@ -237,6 +244,7 @@ public class dash1 implements DashboardView, Initializable {
         sub_products.setVisible(true);
         addproducts_acpane.setVisible(true);
         receiveproducts_acpane.setVisible(false);
+        productList.setVisible(false);
 
     }
 
@@ -367,6 +375,19 @@ public class dash1 implements DashboardView, Initializable {
             hideItems();
             sub_products.setVisible(true);
             addproducts_acpane.setVisible(true);
+
+        });
+        new_product.setOnMouseClicked(mouseEvent -> {
+            hideItems();
+            sub_products.setVisible(true);
+            addproducts_acpane.setVisible(true);
+
+        });
+        list_prod_menu.setOnMouseClicked(mouseEvent -> {
+            hideItems();
+            sub_products.setVisible(true);
+            productList.setVisible(true);
+            presenter.listProducts();
 
         });
         store_menu.setOnMouseClicked(mouseEvent -> {
@@ -581,7 +602,24 @@ public class dash1 implements DashboardView, Initializable {
 
     }
 
-    public void infodialog(String btnText, String msg) {
+    private void listProducts() {
+        int totsize = receiptlist1.size();
+        for (int i = 0; i < totsize; i++) {
+            try {
+                FXMLLoader fxmlloader = new FXMLLoader();
+                fxmlloader.setLocation(getClass().getResource("/fxml/Listitem.fxml"));
+
+                HBox hBox = fxmlloader.load();
+                productsList itemscontroller = fxmlloader.getController();
+                itemscontroller.productListitems(receiptlist1.get(i));
+                lstItem.getChildren().add(hBox);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void infodialog(String btnText, String msg) {
         JFXDialogLayout dialoglayout = new JFXDialogLayout();
         JFXButton button = new JFXButton(btnText);
         JFXDialog dialog = new JFXDialog(rootpanes, dialoglayout, JFXDialog.DialogTransition.TOP);
@@ -672,5 +710,24 @@ public class dash1 implements DashboardView, Initializable {
     @Override
     public void onUnitAddSuccess(String message) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void loadProductsList(List<CustHelp> lstProd) {
+        Platform.runLater(() -> {
+            int totsize = lstProd.size();
+            receiptlist1.clear();
+            lstItem.getChildren().clear();
+            for (int i = 0; i < totsize; i++) {
+                ArrayList<String> listelm = new ArrayList<>();
+                listelm.add(lstProd.get(i).getProduct_code());
+                listelm.add(lstProd.get(i).getProduct_name());
+                listelm.add(lstProd.get(i).getCategory());
+                listelm.add(lstProd.get(i).getBuying_price());
+                listelm.add(lstProd.get(i).getSelling_price());
+                receiptlist1.add(listelm);
+            }
+            listProducts();
+        });
     }
 }

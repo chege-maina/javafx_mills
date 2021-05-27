@@ -8,6 +8,8 @@ public interface DashboardView {
     void onGetResult(List<CustHelp> category);
 
     void onGetUnitResult(List<CustHelp> unit);
+    
+    void loadProductsList(List<CustHelp> lstProd);
 
     void onErrorLoading(String message);
 

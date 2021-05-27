@@ -33,6 +33,9 @@ public interface ApiInterface {
     @GET("loadcategory.php")
     Call<List<CustHelp>> loadCategory();
     
+    @GET("listproducts.php")
+    Call<List<CustHelp>> listProd();
+    
     @GET("loadunit.php")
     Call<List<CustHelp>> loadUnit();
     

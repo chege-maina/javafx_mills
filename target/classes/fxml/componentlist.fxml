@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="productList" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="1067.0" styleClass="main-page" stylesheets="@../styles/Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="57.0" layoutY="31.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Products List" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <VBox layoutX="56.0" layoutY="60.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="70.0">
+         <children>
+            <HBox alignment="CENTER_RIGHT">
+               <VBox.margin>
+                  <Insets bottom="20.0" right="40.0" />
+               </VBox.margin>
+               <children>
+                  <HBox alignment="CENTER_RIGHT" prefHeight="36.0" stylesheets="@../styles/Style.css">
+                     <children>
+                        <TextField prefHeight="30.0" prefWidth="245.0" promptText="Type here to search" styleClass="transparent" stylesheets="@../styles/Style.css">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <font>
+                              <Font name="Cambria" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="25.0" styleClass="search-button" stylesheets="@../styles/Style.css" textFill="#c0d6df">
+                           <graphic>
+                              <ImageView fx:id="search" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/search.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <HBox.margin>
+                              <Insets bottom="2.0" right="5.0" top="2.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <padding>
+                        <Insets bottom="2.0" />
+                     </padding>
+                     <styleClass>
+                        <String fx:value="search-box" />
+                        <String fx:value="shadow" />
+                     </styleClass>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="32.0" prefWidth="450.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="200.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Product Code">
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font name="Cambria Bold" size="13.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="20.0" layoutY="20.0" prefHeight="17.0" prefWidth="200.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Product Name">
+                     <font>
+                        <Font name="Cambria Bold" size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label layoutX="105.0" layoutY="10.0" prefHeight="17.0" prefWidth="150.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Category">
+                     <font>
+                        <Font name="Cambria Bold" size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label layoutX="190.0" layoutY="10.0" prefHeight="17.0" prefWidth="150.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Buying Price">
+                     <font>
+                        <Font name="Cambria Bold" size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label layoutX="285.0" layoutY="20.0" prefHeight="17.0" prefWidth="150.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Selling Price">
+                     <font>
+                        <Font name="Cambria Bold" size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label prefHeight="17.0" prefWidth="70.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Action">
+                     <font>
+                        <Font name="Cambria Bold" size="13.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+            </HBox>
+            <ScrollPane prefHeight="388.0" prefWidth="444.0">
+               <content>
+                  <VBox fx:id="lstItem" prefWidth="991.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
