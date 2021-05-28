@@ -16,11 +16,6 @@ public class CustHelp {
     @Expose
     @SerializedName("itemdetails")
     private String itemdetails;
-    @SerializedName("checksqty")
-    private String checksqty;
-    @Expose
-    @SerializedName("waiter")
-    private String waiter;
     @Expose
     @SerializedName("category")
     private String category;
@@ -37,6 +32,101 @@ public class CustHelp {
     @SerializedName("selling_price")
     private String selling_price;
 
+    @Expose
+    @SerializedName("opening_bal")
+    private String opening_bal;
+
+    @Expose
+    @SerializedName("supplier_unit")
+    private String supplier_unit;
+
+    @Expose
+    @SerializedName("selling_unit")
+    private String selling_unit;
+    @Expose
+    @SerializedName("tax")
+    private String tax;
+    @Expose
+    @SerializedName("max")
+    private String max;
+    @Expose
+    @SerializedName("min")
+    private String min;
+    @Expose
+    @SerializedName("reorder")
+    private String reorder;
+    @Expose
+    @SerializedName("conversion")
+    private String conversion;
+
+    public String getOpening_bal() {
+        return opening_bal;
+    }
+
+    public void setOpening_bal(String opening_bal) {
+        this.opening_bal = opening_bal;
+    }
+
+    public String getSupplier_unit() {
+        return supplier_unit;
+    }
+
+    public void setSupplier_unit(String supplier_unit) {
+        this.supplier_unit = supplier_unit;
+    }
+
+    public String getSelling_unit() {
+        return selling_unit;
+    }
+
+    public void setSelling_unit(String selling_unit) {
+        this.selling_unit = selling_unit;
+    }
+
+    public String getTax() {
+        return tax;
+    }
+
+    public void setTax(String tax) {
+        this.tax = tax;
+    }
+
+    public String getMax() {
+        return max;
+    }
+
+    public void setMax(String max) {
+        this.max = max;
+    }
+
+    public String getMin() {
+        return min;
+    }
+
+    public void setMin(String min) {
+        this.min = min;
+    }
+
+    public String getReorder() {
+        return reorder;
+    }
+
+    public void setReorder(String reorder) {
+        this.reorder = reorder;
+    }
+
+    public String getConversion() {
+        return conversion;
+    }
+
+    public void setConversion(String conversion) {
+        this.conversion = conversion;
+    }
+
+    
+    
+    
+    
     public String getProduct_code() {
         return product_code;
     }
@@ -215,14 +305,6 @@ public class CustHelp {
 
     public void setPin(String pin) {
         this.pin = pin;
-    }
-
-    public String getWaiter() {
-        return waiter;
-    }
-
-    public void setWaiter(String waiter) {
-        this.waiter = waiter;
     }
 
     public String getFname() {
@@ -561,11 +643,4 @@ public class CustHelp {
         this.code = code;
     }
 
-    public String getChecksqty() {
-        return checksqty;
-    }
-
-    public void setChecksqty(String checksqty) {
-        this.checksqty = checksqty;
-    }
 }

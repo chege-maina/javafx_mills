@@ -65,11 +65,15 @@ public class dash1 implements DashboardView, Initializable {
 
     @FXML
     private Label reorder_txt_label, image_error_label, categoryCombolabel, sellingCombolabel, supplierCombolabel;
+    
+    @FXML
+    private Label edtProdName, edtProdCode, edtStatus;
+    
     @FXML
     private Button btnAddCategory, btnCancel, btnAddUnit2, btnAddUnit1, btnImgSelect, btnImageView, btnSave;
 
     @FXML
-    private AnchorPane slider, addproducts_acpane, receiveproducts_acpane, productList;
+    private AnchorPane slider, addproducts_acpane, receiveproducts_acpane, productList, editProduct;
     @FXML
     private JFXButton products_menu, store_menu, list_prod_menu, new_product;
 
@@ -137,9 +141,8 @@ public class dash1 implements DashboardView, Initializable {
 
                 @Override
                 public void onClickListener3(ArrayList prod) {
-                    
+
                     selectedProduct(prod);
-                    
 
                 }
 
@@ -151,8 +154,12 @@ public class dash1 implements DashboardView, Initializable {
 
     private void selectedProduct(ArrayList prod) {
 
+        hideItems();
+        sub_products.setVisible(true);
+        editProduct.setVisible(true);
         String code = prod.get(0).toString();
-        
+        presenter.editProd(code);
+
     }
 
     private void validate() {
@@ -219,6 +226,7 @@ public class dash1 implements DashboardView, Initializable {
         sub_products.setVisible(false);
         addproducts_acpane.setVisible(false);
         productList.setVisible(false);
+        editProduct.setVisible(false);
         receiveproducts_acpane.setVisible(false);
 
     }
@@ -254,11 +262,8 @@ public class dash1 implements DashboardView, Initializable {
     }
 
     public void initialView() {
-        sub_store.setVisible(false);
         sub_products.setVisible(true);
         addproducts_acpane.setVisible(true);
-        receiveproducts_acpane.setVisible(false);
-        productList.setVisible(false);
 
     }
 
@@ -742,6 +747,16 @@ public class dash1 implements DashboardView, Initializable {
                 receiptlist1.add(listelm);
             }
             listProducts();
+        });
+    }
+
+    @Override
+    public void editprod(List<CustHelp> Prod) {
+        Platform.runLater(() -> {
+            edtProdCode.setText(Prod.get(0).getProduct_code());
+            edtProdName.setText(Prod.get(0).getProduct_name());
+            edtStatus.setText(Prod.get(0).getStatus());
+            
         });
     }
 }

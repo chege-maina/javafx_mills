@@ -41,4 +41,7 @@ public interface ApiInterface {
     
     @GET("salesitems.php")
     Call<List<CustHelp>> loadItems();
+    
+    @GET("editproducts.php")
+    Call<List<CustHelp>> getProd(@Query("code")String prodCode);
 }

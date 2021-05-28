@@ -10,6 +10,8 @@ public interface DashboardView {
     void onGetUnitResult(List<CustHelp> unit);
     
     void loadProductsList(List<CustHelp> lstProd);
+    
+    void editprod(List<CustHelp> Prod);
 
     void onErrorLoading(String message);
 

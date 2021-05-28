@@ -19,6 +19,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -44,7 +45,7 @@
                            <children>
                               <HBox fx:id="sub_products" prefHeight="43.0" prefWidth="525.0">
                                  <children>
-                                    <JFXButton fx:id="new_product" prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Add New Product">
+                                    <JFXButton fx:id="new_product" prefHeight="38.0" styleClass="menuItem" text="Add New Product">
                                        <graphic>
                                           <ImageView fx:id="add_product" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -53,7 +54,7 @@
                                           </ImageView>
                                        </graphic>
                                     </JFXButton>
-                                    <JFXButton fx:id="list_prod_menu" prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Manage Products">
+                                    <JFXButton fx:id="list_prod_menu" prefHeight="38.0" styleClass="menuItem" text="Manage Products">
                                        <graphic>
                                           <ImageView fx:id="list_products" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -608,7 +609,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </Label>
-                                    <VBox layoutX="56.0" layoutY="60.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="70.0">
+                                    <VBox layoutX="56.0" layoutY="60.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="30.0">
                                        <children>
                                           <HBox alignment="CENTER_RIGHT">
                                              <VBox.margin>
@@ -703,11 +704,248 @@
                                                 </Label>
                                              </children>
                                           </HBox>
-                                          <ScrollPane prefHeight="388.0" prefWidth="444.0">
+                                          <ScrollPane prefHeight="388.0" prefWidth="444.0" stylesheets="@../styles/Style.css">
                                              <content>
                                                 <VBox fx:id="lstItem" prefWidth="991.0" />
                                              </content>
+                                             <styleClass>
+                                                <String fx:value="card" />
+                                                <String fx:value="shadow" />
+                                             </styleClass>
                                           </ScrollPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="editProduct" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="1067.0" styleClass="main-page" stylesheets="@../styles/Style.css">
+                                 <children>
+                                    <Label layoutX="92.0" layoutY="89.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Edit Product" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="70.0">
+                                       <children>
+                                          <Pane HBox.hgrow="ALWAYS" />
+                                          <Label styleClass="label-text1" stylesheets="@../styles/Style.css" text="Product Code:">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="edtProdCode" styleClass="label-text1" stylesheets="@../styles/Style.css">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Pane HBox.hgrow="ALWAYS" />
+                                          <Label styleClass="label-text1" stylesheets="@../styles/Style.css" text="Product Name:">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="edtProdName" styleClass="label-text1" stylesheets="@../styles/Style.css">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Pane HBox.hgrow="ALWAYS" />
+                                          <Label styleClass="label-text1" stylesheets="@../styles/Style.css" text="Status:">
+                                             <font>
+                                                <Font name="System Bold" size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="edtStatus" styleClass="label-text1" stylesheets="@../styles/Style.css">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <Pane HBox.hgrow="ALWAYS" />
+                                       </children>
+                                       <styleClass>
+                                          <String fx:value="card" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <padding>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </padding>
+                                    </HBox>
+                                    <VBox layoutX="59.0" layoutY="77.0" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="110.0">
+                                       <styleClass>
+                                          <String fx:value="card" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <padding>
+                                          <Insets bottom="10.0" left="15.0" right="15.0" top="20.0" />
+                                       </padding>
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT">
+                                             <children>
+                                                <VBox>
+                                                   <HBox.margin>
+                                                      <Insets right="80.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <JFXComboBox fx:id="edtCatCombo" prefHeight="25.0" prefWidth="250.0" promptText="--Select Category--" />
+                                                      <Label fx:id="edtCatLabel" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox>
+                                                   <HBox.margin>
+                                                      <Insets right="50.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <JFXComboBox fx:id="edtSupCombo" prefHeight="25.0" prefWidth="250.0" promptText="--Supplier Unit--" />
+                                                      <Label fx:id="edtSupLabel" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox>
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <JFXComboBox fx:id="edtSelCombo" prefHeight="25.0" prefWidth="250.0" promptText="--Selling Unit--" />
+                                                      <Label fx:id="edtSelLabel" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT">
+                                             <children>
+                                                <VBox>
+                                                   <HBox.margin>
+                                                      <Insets right="80.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <JFXComboBox fx:id="edtCatCombo1" prefHeight="25.0" prefWidth="250.0" promptText="--Select Category--" />
+                                                      <Label fx:id="edtCatLabel1" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox>
+                                                   <HBox.margin>
+                                                      <Insets right="50.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <JFXComboBox fx:id="edtSupCombo1" prefHeight="25.0" prefWidth="250.0" promptText="--Supplier Unit--" />
+                                                      <Label fx:id="edtSupLabel1" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox>
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <JFXComboBox fx:id="edtSelCombo1" prefHeight="25.0" prefWidth="250.0" promptText="--Selling Unit--" />
+                                                      <Label fx:id="edtSelLabel1" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT">
+                                             <children>
+                                                <VBox>
+                                                   <HBox.margin>
+                                                      <Insets right="80.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <JFXComboBox fx:id="edtCatCombo2" prefHeight="25.0" prefWidth="250.0" promptText="--Select Category--" />
+                                                      <Label fx:id="edtCatLabel2" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox>
+                                                   <HBox.margin>
+                                                      <Insets right="50.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <JFXComboBox fx:id="edtSupCombo2" prefHeight="25.0" prefWidth="250.0" promptText="--Supplier Unit--" />
+                                                      <Label fx:id="edtSupLabel2" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox>
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <JFXComboBox fx:id="edtSelCombo2" prefHeight="25.0" prefWidth="250.0" promptText="--Selling Unit--" />
+                                                      <Label fx:id="edtSelLabel2" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT">
+                                             <children>
+                                                <VBox>
+                                                   <HBox.margin>
+                                                      <Insets right="80.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <JFXComboBox fx:id="edtCatCombo3" prefHeight="25.0" prefWidth="250.0" promptText="--Select Category--" />
+                                                      <Label fx:id="edtCatLabel3" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox>
+                                                   <HBox.margin>
+                                                      <Insets right="50.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <JFXComboBox fx:id="edtSupCombo3" prefHeight="25.0" prefWidth="250.0" promptText="--Supplier Unit--" />
+                                                      <Label fx:id="edtSupLabel3" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
                                        </children>
                                     </VBox>
                                  </children>

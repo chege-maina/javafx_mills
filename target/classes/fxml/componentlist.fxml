@@ -20,7 +20,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <VBox layoutX="56.0" layoutY="60.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="70.0">
+      <VBox layoutX="56.0" layoutY="60.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="30.0">
          <children>
             <HBox alignment="CENTER_RIGHT">
                <VBox.margin>
@@ -115,10 +115,14 @@
                   </Label>
                </children>
             </HBox>
-            <ScrollPane prefHeight="388.0" prefWidth="444.0">
+            <ScrollPane prefHeight="388.0" prefWidth="444.0" stylesheets="@../styles/Style.css">
                <content>
                   <VBox fx:id="lstItem" prefWidth="991.0" />
                </content>
+               <styleClass>
+                  <String fx:value="card" />
+                  <String fx:value="shadow" />
+               </styleClass>
             </ScrollPane>
          </children>
       </VBox>
