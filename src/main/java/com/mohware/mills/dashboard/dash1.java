@@ -135,10 +135,24 @@ public class dash1 implements DashboardView, Initializable {
                     sellingCombo.setItems(unitList);
                 }
 
+                @Override
+                public void onClickListener3(ArrayList prod) {
+                    
+                    selectedProduct(prod);
+                    
+
+                }
+
             };
 
         });
 
+    }
+
+    private void selectedProduct(ArrayList prod) {
+
+        String code = prod.get(0).toString();
+        
     }
 
     private void validate() {
@@ -611,7 +625,7 @@ public class dash1 implements DashboardView, Initializable {
 
                 HBox hBox = fxmlloader.load();
                 productsList itemscontroller = fxmlloader.getController();
-                itemscontroller.productListitems(receiptlist1.get(i));
+                itemscontroller.productListitems(receiptlist1.get(i), listenerz);
                 lstItem.getChildren().add(hBox);
             } catch (IOException e) {
                 e.printStackTrace();

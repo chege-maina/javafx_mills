@@ -48,7 +48,7 @@
             <Insets left="10.0" top="10.0" />
          </HBox.margin>
       </Label>
-      <Button fx:id="action" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" styleClass="search-button" stylesheets="@../styles/Style.css" text="Edit" textFill="#c0d6df">
+      <Button fx:id="action" mnemonicParsing="false" onMousePressed="#click" prefHeight="25.0" prefWidth="80.0" styleClass="search-button" stylesheets="@../styles/Style.css" text="Edit" textFill="#c0d6df">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
