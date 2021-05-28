@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
@@ -130,7 +131,7 @@
                         <Insets right="80.0" />
                      </HBox.margin>
                      <children>
-                        <JFXComboBox fx:id="edtCatCombo1" prefHeight="25.0" prefWidth="250.0" promptText="--Select Category--" />
+                        <JFXTextField layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Enter Product Name" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
                         <Label fx:id="edtCatLabel1" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                            <font>
                               <Font size="12.0" />
