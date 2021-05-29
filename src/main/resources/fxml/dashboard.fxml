@@ -36,7 +36,7 @@
                            <children>
                               <ImageView fx:id="Exit" fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="1.0">
                                  <image>
-                                    <Image url="@../../../../images/x-circle-fill.png" />
+                                    <Image url="@../images/x-circle-fill.png" />
                                  </image>
                               </ImageView>
                            </children>
@@ -49,7 +49,7 @@
                                        <graphic>
                                           <ImageView fx:id="add_product" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../../images/house-fill.png" />
+                                                <Image url="@../images/house-fill.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
@@ -58,7 +58,7 @@
                                        <graphic>
                                           <ImageView fx:id="list_products" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../../images/list-check.png" />
+                                                <Image url="@../images/list-check.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
@@ -71,7 +71,7 @@
                                        <graphic>
                                           <ImageView fx:id="receiveitems_img" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../../images/house-fill.png" />
+                                                <Image url="@../images/house-fill.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
@@ -80,7 +80,7 @@
                                        <graphic>
                                           <ImageView fx:id="managestore_img" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../../images/list-check.png" />
+                                                <Image url="@../images/list-check.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
@@ -89,7 +89,7 @@
                                        <graphic>
                                           <ImageView fx:id="stocksheet_img" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../../../../images/list-check.png" />
+                                                <Image url="@../images/list-check.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
@@ -105,7 +105,7 @@
                            <graphic>
                               <ImageView fx:id="menu_icon" fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../../images/menu.png" />
+                                    <Image url="@../images/menu.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -117,7 +117,7 @@
                            <graphic>
                               <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" fx:id="x_menu">
                                  <image>
-                                    <Image url="@../../../../images/x.png" />
+                                    <Image url="@../images/x.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -137,7 +137,7 @@
                                  <graphic>
                                     <ImageView fx:id="products" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../../images/cash.png" />
+                                          <Image url="@../images/cash.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -152,7 +152,7 @@
                                  <graphic>
                                     <ImageView fx:id="warehouse" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../../images/shop.png" />
+                                          <Image url="@../images/shop.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -167,7 +167,7 @@
                                  <graphic>
                                     <ImageView fx:id="procument" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../../images/house-fill.png" />
+                                          <Image url="@../images/house-fill.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -182,7 +182,7 @@
                                  <graphic>
                                     <ImageView fx:id="suppliers" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../../../images/speedometer.png" />
+                                          <Image url="@../images/speedometer.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -323,7 +323,7 @@
                                                                <graphic>
                                                                   <ImageView fx:id="supplier_img" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
                                                                      <image>
-                                                                        <Image url="@../../../../images/plus.png" />
+                                                                        <Image url="@../images/plus.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                </graphic>
@@ -363,7 +363,7 @@
                                                                <graphic>
                                                                   <ImageView fx:id="sell_img" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
                                                                      <image>
-                                                                        <Image url="@../../../../images/plus.png" />
+                                                                        <Image url="@../images/plus.png" />
                                                                      </image>
                                                                   </ImageView>
                                                                </graphic>
@@ -837,8 +837,8 @@
                                                       <Insets right="80.0" />
                                                    </HBox.margin>
                                                    <children>
-                                                      <JFXTextField layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Enter Product Name" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
-                                                      <Label fx:id="edtCatLabel1" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <JFXTextField layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Opening Balance" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
+                                                      <Label fx:id="edtOpenbalLabel" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font size="12.0" />
                                                          </font>
@@ -850,7 +850,7 @@
                                                       <Insets right="50.0" />
                                                    </HBox.margin>
                                                    <children>
-                                                      <JFXComboBox fx:id="edtSupCombo1" prefHeight="25.0" prefWidth="250.0" promptText="--Supplier Unit--" />
+                                                      <JFXTextField layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Buying Price" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
                                                       <Label fx:id="edtSupLabel1" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font size="12.0" />
@@ -863,7 +863,7 @@
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
                                                    <children>
-                                                      <JFXComboBox fx:id="edtSelCombo1" prefHeight="25.0" prefWidth="250.0" promptText="--Selling Unit--" />
+                                                      <JFXTextField layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Selling Price" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
                                                       <Label fx:id="edtSelLabel1" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font size="12.0" />
@@ -880,7 +880,7 @@
                                                       <Insets right="80.0" />
                                                    </HBox.margin>
                                                    <children>
-                                                      <JFXComboBox fx:id="edtCatCombo2" prefHeight="25.0" prefWidth="250.0" promptText="--Select Category--" />
+                                                      <JFXTextField layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Tax%" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
                                                       <Label fx:id="edtCatLabel2" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font size="12.0" />
@@ -893,7 +893,7 @@
                                                       <Insets right="50.0" />
                                                    </HBox.margin>
                                                    <children>
-                                                      <JFXComboBox fx:id="edtSupCombo2" prefHeight="25.0" prefWidth="250.0" promptText="--Supplier Unit--" />
+                                                      <JFXTextField layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Maximum Level" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
                                                       <Label fx:id="edtSupLabel2" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font size="12.0" />
@@ -906,7 +906,7 @@
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
                                                    <children>
-                                                      <JFXComboBox fx:id="edtSelCombo2" prefHeight="25.0" prefWidth="250.0" promptText="--Selling Unit--" />
+                                                      <JFXTextField layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Minimum Level" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
                                                       <Label fx:id="edtSelLabel2" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font size="12.0" />
@@ -923,7 +923,7 @@
                                                       <Insets right="80.0" />
                                                    </HBox.margin>
                                                    <children>
-                                                      <JFXComboBox fx:id="edtCatCombo3" prefHeight="25.0" prefWidth="250.0" promptText="--Select Category--" />
+                                                      <JFXTextField layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Reorder Level" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
                                                       <Label fx:id="edtCatLabel3" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font size="12.0" />
@@ -936,7 +936,7 @@
                                                       <Insets right="50.0" />
                                                    </HBox.margin>
                                                    <children>
-                                                      <JFXComboBox fx:id="edtSupCombo3" prefHeight="25.0" prefWidth="250.0" promptText="--Supplier Unit--" />
+                                                      <JFXTextField layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Conversion Unit" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
                                                       <Label fx:id="edtSupLabel3" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font size="12.0" />
