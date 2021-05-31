@@ -136,6 +136,43 @@ public class DashboardPresenter {
 
     }
     
+    public void itemStatus(final String itemdetails, final String code) {
+
+        view.showProgress();
+
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<CustHelp> call = apiInterface.Itemstatus(itemdetails, code);
+
+        call.enqueue(new Callback<CustHelp>() {
+            @Override
+            public void onResponse(Call<CustHelp> call, Response<CustHelp> response) {
+                view.hideProgress();
+
+                if (response.isSuccessful() && response.body() != null) {
+
+                    Boolean success = response.body().getSuccess();
+                    if (success) {
+                        view.onUpdateSuccess(response.body().getMessage());
+
+                    } else {
+                        view.onAddError(response.body().getMessage());
+
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CustHelp> call, Throwable t) {
+                view.hideProgress();
+                String error = "Internet Connection Error...";
+                view.onAddError(error);
+
+            }
+        });
+
+    }
+    
     public void listProducts() {
         //view.showLoading();
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);

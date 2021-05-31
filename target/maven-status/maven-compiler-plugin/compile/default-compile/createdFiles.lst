@@ -29,6 +29,7 @@ com/mohware/mills/dashboard/DashboardPresenter$1.class
 com/mohware/mills/dashboard/DashboardPresenter.class
 com/mohware/mills/pos/ItemsController.class
 com/mohware/mills/dashboard/categoryController.class
+com/mohware/mills/dashboard/DashboardPresenter$7.class
 com/mohware/mills/pos/PosController$1.class
 com/mohware/mills/dashboard/DashboardPresenter$5.class
 com/mohware/mills/pos/ReceiptItemsController.class

@@ -30,6 +30,10 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("update_product.php")
     Call<CustHelp> editItems(@Field("itemdetails") String itemdetails);
+    
+    @FormUrlEncoded
+    @POST("product_status.php")
+    Call<CustHelp> Itemstatus(@Field("itemdetails") String itemdetails, @Field("code") String code);
             
     @GET("loademail.php")
     Call<List<CustHelp>> loadEmails();

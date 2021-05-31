@@ -73,7 +73,7 @@ public class dash1 implements DashboardView, Initializable {
     private Label edtOpenbalLbl, edtConversionLbl, edtBsLbl, edtSpLbl, edtTaxLbl, edtMaxLbl, edtMinLbl, edtReorderLbl, edtCatLabel, edtSupLabel, edtSelLabel;
 
     @FXML
-    private Button btnAddCategory, btnCancel, btnAddUnit2, btnAddUnit1, btnImgSelect, btnImageView, btnSave, edtSave;
+    private Button btnAddCategory, btnCancel, btnAddUnit2, btnAddUnit1, btnImgSelect, btnImageView, btnSave, edtSave, edtActivate, edtDeactivate;
 
     @FXML
     private AnchorPane slider, addproducts_acpane, receiveproducts_acpane, productList, editProduct;
@@ -401,6 +401,14 @@ public class dash1 implements DashboardView, Initializable {
         btnCancel.setOnMouseClicked(mouseEvent -> {
             clearMe();
             combobox_events();
+
+        });
+        edtActivate.setOnMouseClicked(mouseEvent -> {
+            presenter.itemStatus("Active", edtProdCode.getText());
+
+        });
+        edtDeactivate.setOnMouseClicked(mouseEvent -> {
+            presenter.itemStatus("Inactive", edtProdCode.getText());
 
         });
         btnSave.setOnMouseClicked(mouseEvent -> {
