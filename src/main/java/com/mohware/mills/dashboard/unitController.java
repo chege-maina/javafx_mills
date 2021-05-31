@@ -156,5 +156,9 @@ public class unitController implements Initializable, DashboardView {
     public void editprod(List<CustHelp> Prod) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    @Override
+    public void onUpdateSuccess(String message) {
+       
+    }
 
 }

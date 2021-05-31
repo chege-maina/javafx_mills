@@ -68,7 +68,7 @@ public class dash1 implements DashboardView, Initializable {
 
     @FXML
     private Label edtProdName, edtProdCode, edtStatus;
-    
+
     @FXML
     private Label edtOpenbalLbl, edtConversionLbl, edtBsLbl, edtSpLbl, edtTaxLbl, edtMaxLbl, edtMinLbl, edtReorderLbl, edtCatLabel, edtSupLabel, edtSelLabel;
 
@@ -127,10 +127,12 @@ public class dash1 implements DashboardView, Initializable {
                 public void onClickListener() {
 
                     categoryCombo.getItems().clear();
+                    edtCatCombo.getItems().clear();
                     listelm.add(comboAdder);
                     ObservableList<String> categoryList = FXCollections.observableArrayList(
                             listelm);
                     categoryCombo.setItems(categoryList);
+                    edtCatCombo.setItems(categoryList);
 
                 }
 
@@ -138,11 +140,15 @@ public class dash1 implements DashboardView, Initializable {
                 public void onClickListener2() {
                     supplierCombo.getItems().clear();
                     sellingCombo.getItems().clear();
+                    edtSelCombo.getItems().clear();
+                    edtSupCombo.getItems().clear();
                     unitlist.add(comboAdder);
                     ObservableList<String> unitList = FXCollections.observableArrayList(
                             unitlist);
                     supplierCombo.setItems(unitList);
                     sellingCombo.setItems(unitList);
+                    edtSelCombo.setItems(unitList);
+                    edtSupCombo.setItems(unitList);
                 }
 
                 @Override
@@ -187,7 +193,7 @@ public class dash1 implements DashboardView, Initializable {
         addItem();
 
     }
-    
+
     private void validateEdit() {
         if (!txtFldVald("Opening Balance Cannot be left Empty!!", edtOpenbalLbl, edtOpenbal)
                 | !txtFldVald("Conversion Unit Cannot be left Empty!!", edtConversionLbl, edtConversion)
@@ -553,9 +559,12 @@ public class dash1 implements DashboardView, Initializable {
                 unitlist);
         supplierCombo.setItems(unitList);
         sellingCombo.setItems(unitList);
+        edtSupCombo.setItems(unitList);
+        edtSelCombo.setItems(unitList);
         ObservableList<String> categoryList = FXCollections.observableArrayList(
                 listelm);
         categoryCombo.setItems(categoryList);
+        edtCatCombo.setItems(categoryList);
 
     }
 
@@ -580,7 +589,23 @@ public class dash1 implements DashboardView, Initializable {
     }
 
     private void editItem() {
-        
+        JSONArray jsonArray = new JSONArray();
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("code", edtProdCode.getText());
+        jsonObject.put("category", edtCatCombo.getValue());
+        jsonObject.put("opening_bal", edtOpenbal.getText());
+        jsonObject.put("supply_unit", edtSupCombo.getValue());
+        jsonObject.put("conversion", edtConversion.getText());
+        jsonObject.put("sell_unit", edtSelCombo.getValue());
+        jsonObject.put("buying_price", edtBs.getText());
+        jsonObject.put("selling_price", edtSp.getText());
+        jsonObject.put("tax", edtTax.getText());
+        jsonObject.put("max", edtMax.getText());
+        jsonObject.put("min", edtMin.getText());
+        jsonObject.put("reorder", edtReorder.getText());
+        jsonArray.put(jsonObject);
+        presenter.editItem(String.valueOf(jsonArray));
+
     }
 
     public void showimages() {
@@ -721,6 +746,8 @@ public class dash1 implements DashboardView, Initializable {
         int x = unit.size();
         supplierCombo.getItems().clear();
         sellingCombo.getItems().clear();
+        edtSupCombo.getItems().clear();
+        edtSelCombo.getItems().clear();
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -733,6 +760,8 @@ public class dash1 implements DashboardView, Initializable {
                         unitlist);
                 supplierCombo.setItems(listLeagues);
                 sellingCombo.setItems(listLeagues);
+                edtSelCombo.setItems(listLeagues);
+                edtSupCombo.setItems(listLeagues);
             }
         });
 
@@ -742,6 +771,7 @@ public class dash1 implements DashboardView, Initializable {
     public void onGetResult(List<CustHelp> category) {
         int x = category.size();
         categoryCombo.getItems().clear();
+        edtCatCombo.getItems().clear();
         Platform.runLater(new Runnable() {
             @Override
             public void run() {
@@ -753,6 +783,7 @@ public class dash1 implements DashboardView, Initializable {
                 ObservableList<String> categoryList = FXCollections.observableArrayList(
                         listelm);
                 categoryCombo.setItems(categoryList);
+                edtCatCombo.setItems(categoryList);
             }
         });
 
@@ -796,7 +827,22 @@ public class dash1 implements DashboardView, Initializable {
             edtMin.setText(Prod.get(0).getMin());
             edtReorder.setText(Prod.get(0).getReorder());
             edtConversion.setText(Prod.get(0).getConversion());
+            edtCatCombo.getItems().clear();
+            edtSupCombo.getItems().clear();
+            edtSelCombo.getItems().clear();
+            combobox_events();
 
+        });
+    }
+
+    @Override
+    public void onUpdateSuccess(String message) {
+        Platform.runLater(() -> {
+            infodialog("Okay", message);
+            hideItems();
+            sub_products.setVisible(true);
+            productList.setVisible(true);
+            presenter.listProducts();
         });
     }
 }

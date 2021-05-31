@@ -16,6 +16,8 @@ public interface DashboardView {
     void onErrorLoading(String message);
 
     void onAddSuccess(String message);
+    
+    void onUpdateSuccess(String message);
 
     void onAddError(String message);
 
