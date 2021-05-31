@@ -65,12 +65,15 @@ public class dash1 implements DashboardView, Initializable {
 
     @FXML
     private Label reorder_txt_label, image_error_label, categoryCombolabel, sellingCombolabel, supplierCombolabel;
-    
+
     @FXML
     private Label edtProdName, edtProdCode, edtStatus;
     
     @FXML
-    private Button btnAddCategory, btnCancel, btnAddUnit2, btnAddUnit1, btnImgSelect, btnImageView, btnSave;
+    private Label edtOpenbalLbl, edtConversionLbl, edtBsLbl, edtSpLbl, edtTaxLbl, edtMaxLbl, edtMinLbl, edtReorderLbl, edtCatLabel, edtSupLabel, edtSelLabel;
+
+    @FXML
+    private Button btnAddCategory, btnCancel, btnAddUnit2, btnAddUnit1, btnImgSelect, btnImageView, btnSave, edtSave;
 
     @FXML
     private AnchorPane slider, addproducts_acpane, receiveproducts_acpane, productList, editProduct;
@@ -78,7 +81,7 @@ public class dash1 implements DashboardView, Initializable {
     private JFXButton products_menu, store_menu, list_prod_menu, new_product;
 
     @FXML
-    private JFXComboBox<String> categoryCombo, supplierCombo, sellingCombo;
+    private JFXComboBox<String> categoryCombo, supplierCombo, sellingCombo, edtCatCombo, edtSupCombo, edtSelCombo;
 
     @FXML
     private HBox sub_products, sub_store;
@@ -91,6 +94,9 @@ public class dash1 implements DashboardView, Initializable {
 
     @FXML
     private JFXTextField prod_name, opening_bal, conversion_txt, buying_txt, selling_txt, tax_txt, max_txt, min_txt, reorder_txt;
+
+    @FXML
+    private JFXTextField edtOpenbal, edtBs, edtSp, edtTax, edtMax, edtMin, edtReorder, edtConversion;
 
     DashboardPresenter presenter;
     private mylistener listenerz;
@@ -179,6 +185,24 @@ public class dash1 implements DashboardView, Initializable {
             return;
         }
         addItem();
+
+    }
+    
+    private void validateEdit() {
+        if (!txtFldVald("Opening Balance Cannot be left Empty!!", edtOpenbalLbl, edtOpenbal)
+                | !txtFldVald("Conversion Unit Cannot be left Empty!!", edtConversionLbl, edtConversion)
+                | !txtFldVald("Buying Price Cannot be left Empty!!", edtBsLbl, edtBs)
+                | !txtFldVald("Selling Price Cannot be left Empty!!", edtSpLbl, edtSp)
+                | !txtFldVald("Product Tax Cannot be left Empty!!", edtTaxLbl, edtTax)
+                | !txtFldVald("Maximum Lavel Cannot be left Empty!!", edtMaxLbl, edtMax)
+                | !txtFldVald("Minimum Level Cannot be left Empty!!", edtMinLbl, edtMin)
+                | !txtFldVald("Stock Reorder Level Cannot be left Empty!!", edtReorderLbl, edtReorder)
+                | !comboVald("Please Select the Product Category!!", edtCatLabel, edtCatCombo)
+                | !comboVald("Please Select the Product Supplier Unit!!", edtSupLabel, edtSupCombo)
+                | !comboVald("Please Select the Product Selling Unit!!", edtSelLabel, edtSelCombo)) {
+            return;
+        }
+        editItem();
 
     }
 
@@ -377,6 +401,10 @@ public class dash1 implements DashboardView, Initializable {
             validate();
 
         });
+        edtSave.setOnMouseClicked(mouseEvent -> {
+            validateEdit();
+
+        });
         Exit.setOnMouseClicked(mouseEvent -> {
             Parent root;
             try {
@@ -549,6 +577,10 @@ public class dash1 implements DashboardView, Initializable {
         jsonObject.put("image", encoded_image);
         jsonArray.put(jsonObject);
         presenter.addItems(String.valueOf(jsonArray));
+    }
+
+    private void editItem() {
+        
     }
 
     public void showimages() {
@@ -756,7 +788,15 @@ public class dash1 implements DashboardView, Initializable {
             edtProdCode.setText(Prod.get(0).getProduct_code());
             edtProdName.setText(Prod.get(0).getProduct_name());
             edtStatus.setText(Prod.get(0).getStatus());
-            
+            edtOpenbal.setText(Prod.get(0).getOpening_bal());
+            edtBs.setText(Prod.get(0).getBuying_price());
+            edtSp.setText(Prod.get(0).getSelling_price());
+            edtTax.setText(Prod.get(0).getTax());
+            edtMax.setText(Prod.get(0).getMax());
+            edtMin.setText(Prod.get(0).getMin());
+            edtReorder.setText(Prod.get(0).getReorder());
+            edtConversion.setText(Prod.get(0).getConversion());
+
         });
     }
 }

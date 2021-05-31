@@ -837,8 +837,13 @@
                                                       <Insets right="80.0" />
                                                    </HBox.margin>
                                                    <children>
-                                                      <JFXTextField layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Opening Balance" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
-                                                      <Label fx:id="edtOpenbalLabel" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label styleClass="label-text1" stylesheets="@../styles/Style.css" text="Opening Balance">
+                                                         <font>
+                                                            <Font size="10.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXTextField fx:id="edtOpenbal" layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Opening Balance" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
+                                                      <Label fx:id="edtOpenbalLbl" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font size="12.0" />
                                                          </font>
@@ -850,8 +855,13 @@
                                                       <Insets right="50.0" />
                                                    </HBox.margin>
                                                    <children>
-                                                      <JFXTextField layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Buying Price" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
-                                                      <Label fx:id="edtSupLabel1" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label styleClass="label-text1" stylesheets="@../styles/Style.css" text="Buying Price">
+                                                         <font>
+                                                            <Font size="10.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXTextField fx:id="edtBs" layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Buying Price" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
+                                                      <Label fx:id="edtBsLbl" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font size="12.0" />
                                                          </font>
@@ -863,8 +873,13 @@
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
                                                    <children>
-                                                      <JFXTextField layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Selling Price" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
-                                                      <Label fx:id="edtSelLabel1" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label styleClass="label-text1" stylesheets="@../styles/Style.css" text="Selling Price">
+                                                         <font>
+                                                            <Font size="10.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXTextField fx:id="edtSp" layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Selling Price" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
+                                                      <Label fx:id="edtSpLbl" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font size="12.0" />
                                                          </font>
@@ -880,8 +895,13 @@
                                                       <Insets right="80.0" />
                                                    </HBox.margin>
                                                    <children>
-                                                      <JFXTextField layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Tax%" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
-                                                      <Label fx:id="edtCatLabel2" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label styleClass="label-text1" stylesheets="@../styles/Style.css" text="Tax%">
+                                                         <font>
+                                                            <Font size="10.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXTextField fx:id="edtTax" layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Tax%" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
+                                                      <Label fx:id="edtTaxLbl" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font size="12.0" />
                                                          </font>
@@ -893,8 +913,13 @@
                                                       <Insets right="50.0" />
                                                    </HBox.margin>
                                                    <children>
-                                                      <JFXTextField layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Maximum Level" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
-                                                      <Label fx:id="edtSupLabel2" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label styleClass="label-text1" stylesheets="@../styles/Style.css" text="Maximum Level">
+                                                         <font>
+                                                            <Font size="10.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXTextField fx:id="edtMax" layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Maximum Level" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
+                                                      <Label fx:id="edtMaxLbl" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font size="12.0" />
                                                          </font>
@@ -906,8 +931,13 @@
                                                       <Insets right="10.0" />
                                                    </HBox.margin>
                                                    <children>
-                                                      <JFXTextField layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Minimum Level" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
-                                                      <Label fx:id="edtSelLabel2" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label styleClass="label-text1" stylesheets="@../styles/Style.css" text="Minimum Level">
+                                                         <font>
+                                                            <Font size="10.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXTextField fx:id="edtMin" layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Minimum Level" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
+                                                      <Label fx:id="edtMinLbl" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font size="12.0" />
                                                          </font>
@@ -923,8 +953,13 @@
                                                       <Insets right="80.0" />
                                                    </HBox.margin>
                                                    <children>
-                                                      <JFXTextField layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Reorder Level" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
-                                                      <Label fx:id="edtCatLabel3" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label styleClass="label-text1" stylesheets="@../styles/Style.css" text="Reorder Level">
+                                                         <font>
+                                                            <Font size="10.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXTextField fx:id="edtReorder" layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Reorder Level" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
+                                                      <Label fx:id="edtReorderLbl" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font size="12.0" />
                                                          </font>
@@ -936,8 +971,13 @@
                                                       <Insets right="50.0" />
                                                    </HBox.margin>
                                                    <children>
-                                                      <JFXTextField layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Conversion Unit" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
-                                                      <Label fx:id="edtSupLabel3" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                      <Label styleClass="label-text1" stylesheets="@../styles/Style.css" text="Conversion Unit">
+                                                         <font>
+                                                            <Font size="10.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <JFXTextField fx:id="edtConversion" layoutX="57.0" layoutY="100.0" prefHeight="25.0" prefWidth="250.0" promptText="Conversion Unit" styleClass="textInput" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="100.0" />
+                                                      <Label fx:id="edtConversionLbl" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
                                                          <font>
                                                             <Font size="12.0" />
                                                          </font>
@@ -948,6 +988,53 @@
                                           </HBox>
                                        </children>
                                     </VBox>
+                                    <HBox alignment="CENTER_LEFT" stylesheets="@../styles/Style.css" AnchorPane.bottomAnchor="95.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="42.0">
+                                       <styleClass>
+                                          <String fx:value="card" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <padding>
+                                          <Insets bottom="10.0" top="10.0" />
+                                       </padding>
+                                       <children>
+                                          <Button fx:id="edtSave" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" stylesheets="@../styles/Style.css" text="Save">
+                                             <font>
+                                                <Font name="Cambria" size="13.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="buttons" />
+                                                <String fx:value="shadow" />
+                                             </styleClass>
+                                             <HBox.margin>
+                                                <Insets left="30.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button fx:id="edtActivate" mnemonicParsing="false" prefHeight="25.0" stylesheets="@../styles/Style.css" text="Activate">
+                                             <font>
+                                                <Font name="Cambria" size="13.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="buttons" />
+                                                <String fx:value="shadow" />
+                                             </styleClass>
+                                             <HBox.margin>
+                                                <Insets left="30.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                          <Button fx:id="edtDeactivate" mnemonicParsing="false" prefHeight="25.0" stylesheets="@../styles/Style.css" text="Deactivate">
+                                             <font>
+                                                <Font name="Cambria" size="13.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="buttons" />
+                                                <String fx:value="shadow" />
+                                             </styleClass>
+                                             <HBox.margin>
+                                                <Insets left="30.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                       </children>
+                                    </HBox>
                                  </children>
                               </AnchorPane>
                            </children>
