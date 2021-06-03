@@ -121,11 +121,7 @@ public class CustHelp {
 
     public void setConversion(String conversion) {
         this.conversion = conversion;
-    }
-
-    
-    
-    
+    } 
     
     public String getProduct_code() {
         return product_code;

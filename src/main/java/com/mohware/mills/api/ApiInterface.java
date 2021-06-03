@@ -47,7 +47,7 @@ public interface ApiInterface {
     @GET("loadunit.php")
     Call<List<CustHelp>> loadUnit();
     
-    @GET("salesitems.php")
+    @GET("load_pos_items.php")
     Call<List<CustHelp>> loadItems();
     
     @GET("editproducts.php")
