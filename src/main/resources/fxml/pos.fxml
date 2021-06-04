@@ -246,12 +246,12 @@
                                     <Font name="System Bold" size="14.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="772.0" layoutY="45.0" text="22/12/2020" textFill="#c0d6df" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="15.0">
+                              <Label fx:id="dateLabel" layoutX="772.0" layoutY="45.0" text="22/12/2020" textFill="#c0d6df" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="15.0">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label layoutX="553.0" layoutY="25.0" text="12:59:59" textFill="#c0d6df" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="35.0">
+                              <Label fx:id="timeLabel" layoutX="553.0" layoutY="25.0" text="12:59:59" textFill="#c0d6df" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="35.0">
                                  <font>
                                     <Font size="14.0" />
                                  </font>

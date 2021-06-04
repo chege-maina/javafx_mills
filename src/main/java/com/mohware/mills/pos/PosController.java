@@ -11,10 +11,15 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
+import java.util.Timer;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -51,7 +56,7 @@ public class PosController implements PosView, Initializable {
     private GridPane grid;
 
     @FXML
-    private Label TotalPrice;
+    private Label TotalPrice, dateLabel, timeLabel;
 
     @FXML
     private StackPane rootpanes;
@@ -65,6 +70,8 @@ public class PosController implements PosView, Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         showimages();
+        addDate();
+        addTime();
         p_Indicator.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
         presenter = new PosPresenter(this);
         presenter.getItems();
@@ -177,6 +184,17 @@ public class PosController implements PosView, Initializable {
         File actionx2 = new File("images/search.png");
         Image logo_image = new Image(actionx2.toURI().toString());
         search.setImage(logo_image);
+    }
+
+    public void addDate() {
+        String txtdate = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE).format(new Date());
+        dateLabel.setText(txtdate);
+    }
+
+    public void addTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        String saa = sdf.format(new Date());
+        timeLabel.setText(saa);
     }
 
     private void clearme() {
