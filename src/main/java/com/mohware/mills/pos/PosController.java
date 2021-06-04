@@ -128,16 +128,41 @@ public class PosController implements PosView, Initializable {
                 if (namechk.equals(item)) {
                     String getQTY = receiptlist1.get(i).get(1);
                     int QTY = qty_entered + Integer.parseInt(getQTY);
-                    total = QTY * Integer.parseInt(price);
+                    int stockchk = Integer.parseInt(stock);
                     on = 1;
-                    receiptlist1.get(i).set(1, "" + QTY);
-                    receiptlist1.get(i).set(3, "" + total);
+                    if (QTY > stockchk) {
+                        infodialog("Okay", "Quantity Cannot Exceed Stock");
+                    } else {
+                        total = QTY * Integer.parseInt(price);
+
+                        receiptlist1.get(i).set(1, "" + QTY);
+                        receiptlist1.get(i).set(3, "" + total);
+                    }
 
                 }
 
             }
             if (on == 0) {
                 int QTY = qty_entered;
+                int stockchk = Integer.parseInt(stock);
+                if (QTY > stockchk) {
+                    infodialog("Okay", "Quantity Cannot Exceed Stock");
+                } else {
+                    total = QTY * Integer.parseInt(price);
+                    ArrayList<String> listelm = new ArrayList<>();
+                    listelm.add(item);
+                    listelm.add("" + qty_entered);
+                    listelm.add(price);
+                    listelm.add("" + total);
+                    receiptlist1.add(listelm);
+                }
+            }
+        } else {
+            int QTY = qty_entered;
+            int stockchk = Integer.parseInt(stock);
+            if (QTY > stockchk) {
+                infodialog("Okay", "Quantity Cannot Exceed Stock");
+            } else {
                 total = QTY * Integer.parseInt(price);
                 ArrayList<String> listelm = new ArrayList<>();
                 listelm.add(item);
@@ -146,15 +171,6 @@ public class PosController implements PosView, Initializable {
                 listelm.add("" + total);
                 receiptlist1.add(listelm);
             }
-        } else {
-            int QTY = qty_entered;
-            total = QTY * Integer.parseInt(price);
-            ArrayList<String> listelm = new ArrayList<>();
-            listelm.add(item);
-            listelm.add("" + qty_entered);
-            listelm.add(price);
-            listelm.add("" + total);
-            receiptlist1.add(listelm);
         }
         totsize = receiptlist1.size();
         for (int i = 0; i < totsize; i++) {
