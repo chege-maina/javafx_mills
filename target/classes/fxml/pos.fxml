@@ -209,8 +209,54 @@
                <top>
                   <VBox prefHeight="60.0" prefWidth="100.0" styleClass="top-bar" stylesheets="@../styles/Style.css" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Welcome:" textFill="#c0d6df" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="15.0">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0">
+                                 <image>
+                                    <Image url="@../images/x-circle-fill.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
+                                 <image>
+                                    <Image url="@../images/php.png" />
+                                 </image>
+                              </ImageView>
+                              <Label text="Kelmo POS" textFill="#c0d6df" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="20.0">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="756.0" layoutY="25.0" text="Chege Maina" textFill="#c0d6df" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="35.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="756.0" layoutY="25.0" text="Date:" textFill="#c0d6df" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="15.0">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="491.0" layoutY="25.0" text="Time:" textFill="#c0d6df" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="35.0">
+                                 <font>
+                                    <Font name="System Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="772.0" layoutY="45.0" text="22/12/2020" textFill="#c0d6df" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="15.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="553.0" layoutY="25.0" text="12:59:59" textFill="#c0d6df" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="35.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children></AnchorPane>
                      </children>
                   </VBox>
                </top>
