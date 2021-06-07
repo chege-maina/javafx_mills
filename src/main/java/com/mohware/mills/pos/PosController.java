@@ -3,6 +3,7 @@ package com.mohware.mills.pos;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
+import com.mohware.mills.login.login;
 import com.mohware.mills.main.main;
 import com.mohware.mills.model.CustHelp;
 import java.io.BufferedInputStream;
@@ -56,7 +57,7 @@ public class PosController implements PosView, Initializable {
     private GridPane grid;
 
     @FXML
-    private Label TotalPrice, dateLabel, timeLabel;
+    private Label TotalPrice, dateLabel, timeLabel, userLabel;
 
     @FXML
     private StackPane rootpanes;
@@ -70,6 +71,7 @@ public class PosController implements PosView, Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         showimages();
+        userLabel.setText(login.USER);
         addDate();
         addTime();
         p_Indicator.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);

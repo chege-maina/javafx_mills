@@ -28,6 +28,9 @@ import javafx.stage.StageStyle;
 
 public class login implements Initializable, LoginView {
 
+    public static String USER = "";
+    public static String PIN = "";
+
     @FXML
     private StackPane rootpanes;
     @FXML
@@ -118,6 +121,7 @@ public class login implements Initializable, LoginView {
             Parent root;
             try {
                 if (designation.equals("ADMIN")) {
+                    USER = fname + " " + lname;
                     root = FXMLLoader.load(getClass().getResource("/fxml/dashboard.fxml"));
                     Stage stage = new Stage();
                     //stage.setMaximized(true);
@@ -125,14 +129,15 @@ public class login implements Initializable, LoginView {
                     stage.setMaximized(true);
                     //stage.initStyle(StageStyle.UNDECORATED);
                     stage.show();
-                }
-                else if (designation.equals("CASHIER")) {
+                } else if (designation.equals("CASHIER")) {
+                    USER = fname + " " + lname;
                     root = FXMLLoader.load(getClass().getResource("/fxml/pos.fxml"));
                     Stage stage = new Stage();
                     //stage.setMaximized(true);
                     stage.setScene(new Scene(root, 700, 700));
                     stage.setMaximized(true);
                     //stage.initStyle(StageStyle.UNDECORATED);
+                    //infodialog("Okay", message);
                     stage.show();
                 }
                 //Stage stage = new Stage();
