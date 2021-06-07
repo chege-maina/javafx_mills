@@ -11,6 +11,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,6 +24,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class login implements Initializable, LoginView {
 
@@ -39,6 +41,7 @@ public class login implements Initializable, LoginView {
     @FXML
     private TextField email;
     LoginPresenter presenter;
+    String checkers = "";
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -114,12 +117,31 @@ public class login implements Initializable, LoginView {
         Platform.runLater(() -> {
             Parent root;
             try {
-                root = FXMLLoader.load(getClass().getResource("/fxml/dashboard.fxml"));
-                Stage stage = new Stage();
+                if (designation.equals("ADMIN")) {
+                    root = FXMLLoader.load(getClass().getResource("/fxml/dashboard.fxml"));
+                    Stage stage = new Stage();
+                    //stage.setMaximized(true);
+                    stage.setScene(new Scene(root, 700, 700));
+                    stage.setMaximized(true);
+                    //stage.initStyle(StageStyle.UNDECORATED);
+                    stage.show();
+                }
+                else if (designation.equals("CASHIER")) {
+                    root = FXMLLoader.load(getClass().getResource("/fxml/pos.fxml"));
+                    Stage stage = new Stage();
+                    //stage.setMaximized(true);
+                    stage.setScene(new Scene(root, 700, 700));
+                    stage.setMaximized(true);
+                    //stage.initStyle(StageStyle.UNDECORATED);
+                    stage.show();
+                }
+                //Stage stage = new Stage();
                 //stage.initStyle(StageStyle.UNDECORATED);
-                stage.setScene(new Scene(root, 861, 512));
-                stage.show();
-                //((Node)(mouseEvent.getSource())).getScene().getWindow().hide();
+                //stage.setScene(new Scene(root, 861, 512));
+                //stage.setMaximized(true);
+                //stage.setScene(new Scene(root, 861, 512));
+                //stage.show();
+                btn_login.getScene().getWindow().hide();
             } catch (IOException e) {
                 e.printStackTrace();
             }

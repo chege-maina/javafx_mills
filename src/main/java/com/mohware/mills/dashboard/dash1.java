@@ -425,7 +425,7 @@ public class dash1 implements DashboardView, Initializable {
                 root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
                 Stage stage = new Stage();
                 stage.initStyle(StageStyle.UNDECORATED);
-                stage.setScene(new Scene(root, 900, 600));
+                stage.setScene(new Scene(root, 960, 600));
                 stage.show();
                 ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
             } catch (IOException e) {
