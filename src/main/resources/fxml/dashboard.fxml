@@ -51,7 +51,7 @@
                                           <Image url="@../images/php.png" />
                                        </image>
                                     </ImageView>
-                                    <Label text="Kelmo POS" textFill="#c0d6df" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="20.0">
+                                    <Label text="Kelmo Admin" textFill="#c0d6df" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="20.0">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font>

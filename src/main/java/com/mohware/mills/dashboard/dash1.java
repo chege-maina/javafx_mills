@@ -5,14 +5,18 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
+import com.mohware.mills.login.login;
 import com.mohware.mills.model.CustHelp;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.animation.TranslateTransition;
@@ -52,7 +56,7 @@ import org.json.JSONObject;
 public class dash1 implements DashboardView, Initializable {
 
     @FXML
-    private Label Menu, CloseMenu;
+    private Label Menu, CloseMenu, userLabel;
 
     @FXML
     private VBox lstItem;
@@ -72,6 +76,9 @@ public class dash1 implements DashboardView, Initializable {
     @FXML
     private Label edtOpenbalLbl, edtConversionLbl, edtBsLbl, edtSpLbl, edtTaxLbl, edtMaxLbl, edtMinLbl, edtReorderLbl, edtCatLabel, edtSupLabel, edtSelLabel;
 
+    @FXML
+    private Label dateLabel, timeLabel;
+    
     @FXML
     private Button btnAddCategory, btnCancel, btnAddUnit2, btnAddUnit1, btnImgSelect, btnImageView, btnSave, edtSave, edtActivate, edtDeactivate;
 
@@ -111,6 +118,9 @@ public class dash1 implements DashboardView, Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         presenter = new DashboardPresenter(this);
         showimages();
+        userLabel.setText(login.USER);
+        addDate();
+        addTime();
         hideItems();
         initialView();
         receiptlist1 = new ArrayList<>();
@@ -172,6 +182,16 @@ public class dash1 implements DashboardView, Initializable {
         String code = prod.get(0).toString();
         presenter.editProd(code);
 
+    }
+    public void addDate() {
+        String txtdate = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE).format(new Date());
+        dateLabel.setText(txtdate);
+    }
+
+    public void addTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        String saa = sdf.format(new Date());
+        timeLabel.setText(saa);
     }
 
     private void validate() {
