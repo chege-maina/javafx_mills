@@ -93,6 +93,11 @@ public class PosController implements PosView, Initializable {
 
                 }
 
+                @Override
+                public void onClickListener3(ArrayList prod) {
+                    System.out.println("gotcha");
+                }
+
             };
 
         });
@@ -187,7 +192,7 @@ public class PosController implements PosView, Initializable {
 
                 HBox hBox = fxmlloader.load();
                 ReceiptItemsController itemscontroller = fxmlloader.getController();
-                itemscontroller.receiptItems(receiptlist1.get(i));
+                itemscontroller.receiptItems(receiptlist1.get(i), listenerz);
                 receipt.getChildren().add(hBox);
             } catch (IOException e) {
                 e.printStackTrace();
