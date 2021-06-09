@@ -30,98 +30,151 @@
           <children>
             <BorderPane fx:id="borderPane" layoutX="21.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <top>
-                  <AnchorPane prefHeight="65.0" prefWidth="200.0" style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
+                  <AnchorPane style="-fx-background-color: WHITE;" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutX="676.0" layoutY="1.0" minHeight="25.0" style="-fx-background-color: #4F6D7A;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox layoutY="-17.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <ImageView fx:id="Exit" fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="1.0">
-                                 <image>
-                                    <Image url="@../images/x-circle-fill.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </AnchorPane>
-                        <StackPane layoutX="175.0" layoutY="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
-                           <children>
-                              <HBox fx:id="sub_products" prefHeight="43.0" prefWidth="525.0">
+                              <AnchorPane styleClass="top-bar" stylesheets="@../styles/Style.css">
                                  <children>
-                                    <JFXButton fx:id="new_product" prefHeight="38.0" styleClass="menuItem" text="Add New Product">
-                                       <graphic>
-                                          <ImageView fx:id="add_product" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/house-fill.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </JFXButton>
-                                    <JFXButton fx:id="list_prod_menu" prefHeight="38.0" styleClass="menuItem" text="Manage Products">
-                                       <graphic>
-                                          <ImageView fx:id="list_products" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/list-check.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </JFXButton>
+                                    <Label text="Welcome:" textFill="#c0d6df" AnchorPane.rightAnchor="130.0" AnchorPane.topAnchor="15.0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0">
+                                       <image>
+                                          <Image url="@../images/x-circle-fill.png" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="5.0">
+                                       <image>
+                                          <Image url="@../images/php.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label text="Kelmo POS" textFill="#c0d6df" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="20.0">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="userLabel" layoutX="756.0" layoutY="25.0" text="Chege Maina" textFill="#c0d6df" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="35.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="756.0" layoutY="25.0" text="Date:" textFill="#c0d6df" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="15.0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="491.0" layoutY="25.0" text="Time:" textFill="#c0d6df" AnchorPane.rightAnchor="500.0" AnchorPane.topAnchor="35.0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="dateLabel" layoutX="772.0" layoutY="45.0" text="22/12/2020" textFill="#c0d6df" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="15.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="timeLabel" layoutX="553.0" layoutY="25.0" text="12:59:59" textFill="#c0d6df" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="35.0">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <ImageView fx:id="Exit" fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="5.0">
+                                       <image>
+                                          <Image url="@../images/x-circle-fill.png" />
+                                       </image>
+                                    </ImageView>
                                  </children>
-                              </HBox>
-                              <HBox fx:id="sub_store" layoutX="10.0" layoutY="10.0" prefHeight="43.0" prefWidth="525.0">
+                              </AnchorPane>
+                              <AnchorPane>
                                  <children>
-                                    <JFXButton prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Receive Product">
+                                    <StackPane layoutX="161.0" layoutY="13.0" AnchorPane.leftAnchor="176.0">
+                                       <children>
+                                          <HBox fx:id="sub_products" prefHeight="43.0" prefWidth="525.0">
+                                             <children>
+                                                <JFXButton fx:id="new_product" prefHeight="38.0" styleClass="menuItem" text="Add New Product">
+                                                   <graphic>
+                                                      <ImageView fx:id="add_product" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/house-fill.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </JFXButton>
+                                                <JFXButton fx:id="list_prod_menu" prefHeight="38.0" styleClass="menuItem" text="Manage Products">
+                                                   <graphic>
+                                                      <ImageView fx:id="list_products" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/list-check.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </JFXButton>
+                                             </children>
+                                          </HBox>
+                                          <HBox fx:id="sub_store" layoutX="10.0" layoutY="10.0" prefHeight="43.0" prefWidth="525.0">
+                                             <children>
+                                                <JFXButton prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Receive Product">
+                                                   <graphic>
+                                                      <ImageView fx:id="receiveitems_img" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/house-fill.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </JFXButton>
+                                                <JFXButton prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Manage Store">
+                                                   <graphic>
+                                                      <ImageView fx:id="managestore_img" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/list-check.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </JFXButton>
+                                                <JFXButton layoutX="146.0" layoutY="10.0" prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="StockSheet">
+                                                   <graphic>
+                                                      <ImageView fx:id="stocksheet_img" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/list-check.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                   </graphic>
+                                                </JFXButton>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </StackPane>
+                                    <Label fx:id="Menu" layoutY="25.0" text="Menu" AnchorPane.leftAnchor="10.0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
                                        <graphic>
-                                          <ImageView fx:id="receiveitems_img" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fx:id="menu_icon" fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../images/house-fill.png" />
+                                                <Image url="@../images/menu.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
-                                    </JFXButton>
-                                    <JFXButton prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Manage Store">
+                                    </Label>
+                                    <Label fx:id="CloseMenu" layoutY="25.0" text="Menu" AnchorPane.leftAnchor="10.0">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
                                        <graphic>
-                                          <ImageView fx:id="managestore_img" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" fx:id="x_menu">
                                              <image>
-                                                <Image url="@../images/list-check.png" />
+                                                <Image url="@../images/x.png" />
                                              </image>
                                           </ImageView>
                                        </graphic>
-                                    </JFXButton>
-                                    <JFXButton layoutX="146.0" layoutY="10.0" prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="StockSheet">
-                                       <graphic>
-                                          <ImageView fx:id="stocksheet_img" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
-                                             <image>
-                                                <Image url="@../images/list-check.png" />
-                                             </image>
-                                          </ImageView>
-                                       </graphic>
-                                    </JFXButton>
+                                    </Label>
                                  </children>
-                              </HBox>
+                              </AnchorPane>
                            </children>
-                        </StackPane>
-                        <Label fx:id="Menu" layoutX="14.0" layoutY="37.0" text="Menu">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fx:id="menu_icon" fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/menu.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Label>
-                        <Label fx:id="CloseMenu" layoutX="14.0" layoutY="37.0" text="Menu">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                           <graphic>
-                              <ImageView fitHeight="22.0" fitWidth="22.0" pickOnBounds="true" preserveRatio="true" fx:id="x_menu">
-                                 <image>
-                                    <Image url="@../images/x.png" />
-                                 </image>
-                              </ImageView>
-                           </graphic>
-                        </Label>
+                        </VBox>
                      </children>
                   </AnchorPane>
                </top>
