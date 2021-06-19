@@ -5,5 +5,5 @@ import java.util.ArrayList;
 
 public interface mylistener {
     public void onClickListener(CustHelp recitem);
-    public void onClickListener3(ArrayList prod);
+    public void onClickListener3(String prod, String qty);
 }

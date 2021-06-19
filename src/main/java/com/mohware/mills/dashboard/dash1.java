@@ -183,6 +183,7 @@ public class dash1 implements DashboardView, Initializable {
         presenter.editProd(code);
 
     }
+    
     public void addDate() {
         String txtdate = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE).format(new Date());
         dateLabel.setText(txtdate);

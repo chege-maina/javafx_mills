@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.mohware.mills.login.login;
 import com.mohware.mills.main.main;
+import com.mohware.mills.pos.ReceiptItemsController;
 import com.mohware.mills.model.CustHelp;
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -94,13 +95,67 @@ public class PosController implements PosView, Initializable {
                 }
 
                 @Override
-                public void onClickListener3(ArrayList prod) {
-                    System.out.println("gotcha");
+                public void onClickListener3(String prod, String qtymm) {
+                    qtyTyped(prod, qtymm);
+
                 }
 
             };
 
         });
+
+    }
+
+    public void qtyTyped(String name, String qty) {
+
+        //String name = prod.get(0).toString();
+        int totsize = receiptlist1.size();
+        Double ttlamt = 0.0;
+        int total;
+
+        for (int i = 0; i < totsize; i++) {
+            String namechk = receiptlist1.get(i).get(0);
+            if (namechk.equals(name)) {
+                String getStock = receiptlist1.get(i).get(4);
+                String price = receiptlist1.get(i).get(2);
+                int QTY = Integer.parseInt(qty);
+                int stockchk = Integer.parseInt(getStock);
+                if (QTY > stockchk) {
+                    infodialog("Okay", "Quantity Cannot Exceed Stock");
+                } else {
+                    total = QTY * Integer.parseInt(price);
+
+                    receiptlist1.get(i).set(1, "" + QTY);
+                    receiptlist1.get(i).set(3, "" + total);
+
+                    receipt.getChildren().clear();
+
+                    totsize = receiptlist1.size();
+                    for (int j = 0; j < totsize; j++) {
+                        ttlamt = ttlamt + Double.parseDouble(receiptlist1.get(j).get(3).replace(",", ""));
+
+                        TotalPrice.setText(main.CURRENCY + ttlamt + "/=");
+                    }
+                    for (int j = 0; j < totsize; j++) {
+                        FXMLLoader fxmlloader = new FXMLLoader();
+                        fxmlloader.setLocation(getClass().getResource("/fxml/receiptItems.fxml"));
+
+                        try {
+
+                            HBox hBox = fxmlloader.load();
+                            ReceiptItemsController itemscontroller = fxmlloader.getController();
+                            itemscontroller.receiptItems(receiptlist1.get(j), listenerz);
+                            receipt.getChildren().add(hBox);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }
+
+            }
+
+        }
 
     }
 
@@ -161,6 +216,7 @@ public class PosController implements PosView, Initializable {
                     listelm.add("" + qty_entered);
                     listelm.add(price);
                     listelm.add("" + total);
+                    listelm.add(stock);
                     receiptlist1.add(listelm);
                 }
             }
@@ -176,6 +232,7 @@ public class PosController implements PosView, Initializable {
                 listelm.add("" + qty_entered);
                 listelm.add(price);
                 listelm.add("" + total);
+                listelm.add(stock);
                 receiptlist1.add(listelm);
             }
         }

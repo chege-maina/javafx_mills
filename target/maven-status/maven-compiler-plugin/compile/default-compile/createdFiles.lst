@@ -17,6 +17,7 @@ com/mohware/mills/dashboard/dash1$8.class
 com/mohware/mills/dashboard/AddCategoryPresenter$1.class
 com/mohware/mills/dashboard/dash1.class
 com/mohware/mills/api/ApiClient.class
+com/mohware/mills/pos/ReceiptItemsController$1.class
 com/mohware/mills/dashboard/DashboardPresenter$6.class
 com/mohware/mills/pos/PosPresenter.class
 com/mohware/mills/dashboard/dash1$11.class
