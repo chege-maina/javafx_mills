@@ -58,7 +58,7 @@ public class PosController implements PosView, Initializable {
     private GridPane grid;
 
     @FXML
-    private Label TotalPrice, dateLabel, timeLabel, userLabel;
+    private Label TotalPrice, dateLabel, timeLabel, userLabel, TaxAmount, SubTotal;
 
     @FXML
     private StackPane rootpanes;
@@ -178,11 +178,18 @@ public class PosController implements PosView, Initializable {
         int on = 0;
         int qty_entered = 1;
         Double ttlamt = 0.0;
+        Double tax_amt = 0.0;
+        Double tax_amount = 0.0;
+        Double sub_total = 0.0;
         receipt.getChildren().clear();
         int totsize = receiptlist1.size();
         String price = recitem.getPrice();
         String stock = recitem.getCheckqty();
         String item = recitem.getItem();
+        String code = recitem.getCode();
+        String taxpc = recitem.getTax();
+        String unit = recitem.getSelling_unit();
+        String conversion = recitem.getConversion();
 
         if (totsize > 0) {
             for (int i = 0; i < totsize; i++) {
@@ -196,9 +203,10 @@ public class PosController implements PosView, Initializable {
                         infodialog("Okay", "Quantity Cannot Exceed Stock");
                     } else {
                         total = QTY * Integer.parseInt(price);
-
+                        tax_amt = (Double.parseDouble("" + total) * Double.parseDouble(taxpc)) / (100 + Double.parseDouble(taxpc));
                         receiptlist1.get(i).set(1, "" + QTY);
                         receiptlist1.get(i).set(3, "" + total);
+                        receiptlist1.get(i).set(8, "" + tax_amt);
                     }
 
                 }
@@ -211,12 +219,17 @@ public class PosController implements PosView, Initializable {
                     infodialog("Okay", "Quantity Cannot Exceed Stock");
                 } else {
                     total = QTY * Integer.parseInt(price);
+                    tax_amt = (Double.parseDouble("" + total) * Double.parseDouble(taxpc)) / (100 + Double.parseDouble(taxpc));
                     ArrayList<String> listelm = new ArrayList<>();
                     listelm.add(item);
                     listelm.add("" + qty_entered);
                     listelm.add(price);
                     listelm.add("" + total);
-                    listelm.add(stock);
+                    listelm.add(code);
+                    listelm.add(taxpc);
+                    listelm.add(unit);
+                    listelm.add(conversion);
+                    listelm.add("" + tax_amt);
                     receiptlist1.add(listelm);
                 }
             }
@@ -227,19 +240,28 @@ public class PosController implements PosView, Initializable {
                 infodialog("Okay", "Quantity Cannot Exceed Stock");
             } else {
                 total = QTY * Integer.parseInt(price);
+                tax_amt = (Double.parseDouble("" + total) * Double.parseDouble(taxpc)) / (100 + Double.parseDouble(taxpc));
                 ArrayList<String> listelm = new ArrayList<>();
                 listelm.add(item);
                 listelm.add("" + qty_entered);
                 listelm.add(price);
                 listelm.add("" + total);
-                listelm.add(stock);
+                listelm.add(code);
+                listelm.add(taxpc);
+                listelm.add(unit);
+                listelm.add(conversion);
+                listelm.add("" + tax_amt);
                 receiptlist1.add(listelm);
             }
         }
         totsize = receiptlist1.size();
         for (int i = 0; i < totsize; i++) {
             ttlamt = ttlamt + Double.parseDouble(receiptlist1.get(i).get(3).replace(",", ""));
+            tax_amount = tax_amount + Double.parseDouble(receiptlist1.get(i).get(8).replace(",", ""));
+            sub_total = ttlamt - tax_amount;
             TotalPrice.setText(main.CURRENCY + ttlamt + "/=");
+            SubTotal.setText(main.CURRENCY + sub_total + "/=");
+            TaxAmount.setText(main.CURRENCY + tax_amount + "/=");
         }
         for (int i = 0; i < totsize; i++) {
             FXMLLoader fxmlloader = new FXMLLoader();
@@ -281,6 +303,8 @@ public class PosController implements PosView, Initializable {
         receiptlist1.clear();
         receipt.getChildren().clear();
         TotalPrice.setText(main.CURRENCY + "0.00/=");
+        TaxAmount.setText(main.CURRENCY + "0.00/=");
+        SubTotal.setText(main.CURRENCY + "0.00/=");
     }
 
     public void saveUrl(final String filename, String urlString)

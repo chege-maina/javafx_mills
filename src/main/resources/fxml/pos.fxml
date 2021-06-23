@@ -166,7 +166,47 @@
                         </ScrollPane>
                         <HBox alignment="TOP_RIGHT">
                            <children>
-                              <Label prefHeight="18.0" prefWidth="49.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Total">
+                              <Label prefHeight="18.0" prefWidth="70.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Sub-Total">
+                                 <font>
+                                    <Font name="Cambria Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="SubTotal" alignment="CENTER_RIGHT" layoutX="334.0" layoutY="10.0" prefHeight="18.0" prefWidth="153.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Kshs. 0.00/=" textAlignment="RIGHT">
+                                 <font>
+                                    <Font name="Cambria Bold" size="14.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets right="10.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="460.0">
+                           <children>
+                              <Label prefHeight="18.0" prefWidth="69.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Tax">
+                                 <font>
+                                    <Font name="Cambria Bold" size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="TaxAmount" alignment="CENTER_RIGHT" layoutX="334.0" layoutY="10.0" prefHeight="18.0" prefWidth="153.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Kshs. 0.00/=" textAlignment="RIGHT">
+                                 <font>
+                                    <Font name="Cambria Bold" size="14.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets right="10.0" />
+                                 </padding>
+                              </Label>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="5.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="478.0">
+                           <children>
+                              <Label prefHeight="18.0" prefWidth="69.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Total">
                                  <font>
                                     <Font name="Cambria Bold" size="14.0" />
                                  </font>
@@ -181,7 +221,7 @@
                               </Label>
                            </children>
                            <VBox.margin>
-                              <Insets top="10.0" />
+                              <Insets top="5.0" />
                            </VBox.margin>
                         </HBox>
                         <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="460.0">
