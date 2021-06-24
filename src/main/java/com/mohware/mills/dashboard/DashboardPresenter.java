@@ -212,8 +212,9 @@ public class DashboardPresenter {
 
             public void onFailure(Call<List<CustHelp>> call, Throwable t) {
                 //view.hideLoading();
-                String error = "Internet Connection Error...";
-                view.onErrorLoading(error);
+                String error = "Internet Connection Errorrrrr...";
+                String what = t.toString();
+                view.onErrorLoading(what);
 
             }
         });

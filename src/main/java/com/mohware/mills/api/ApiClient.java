@@ -6,7 +6,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
     //private static final String BASE_URL = "http://localhost:80/kelmo/";//www.bact.ac.ke/aberdarehttp://www.severinombae.net/hilljoint/
-    private static final String BASE_URL = "http://www.severinombae.net/kelmo/";
+    //private static final String BASE_URL = "http://www.severinombae.net/kelmo/";
+    private static final String BASE_URL = "http://192.168.0.251:80/kelmo/";
     private static Retrofit retrofit;
 
     public static Retrofit getApiClient(){
