@@ -34,6 +34,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -49,7 +50,10 @@ public class PosController implements PosView, Initializable {
     private VBox receipt;
 
     @FXML
-    private Button cancel;
+    private Button cancel, save;
+    
+    @FXML
+    private AnchorPane acPos, acCheckout;
 
     @FXML
     private ImageView action1, action2, cat1, logo, search;
@@ -75,6 +79,8 @@ public class PosController implements PosView, Initializable {
         userLabel.setText(login.USER);
         addDate();
         addTime();
+        hideItems();
+        initialView();
         p_Indicator.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
         presenter = new PosPresenter(this);
         presenter.getItems();
@@ -82,6 +88,14 @@ public class PosController implements PosView, Initializable {
 
         cancel.setOnMouseClicked(mouseEvent -> {
             clearme();
+
+        });
+        save.setOnMouseClicked(mouseEvent -> {
+            //hideItems();
+            if(TotalPrice.getText().equals(main.CURRENCY + "0.00/=")){
+                infodialog("Okay", "No Items on the Receipt");
+            }else{
+            acCheckout.setVisible(true);}
 
         });
 
@@ -103,6 +117,15 @@ public class PosController implements PosView, Initializable {
             };
 
         });
+
+    }
+    public void hideItems() {
+        acPos.setVisible(false);
+        acCheckout.setVisible(false);
+
+    }
+    public void initialView() {
+        acPos.setVisible(true);
 
     }
 
@@ -354,7 +377,8 @@ public class PosController implements PosView, Initializable {
                     File f = new File("images/" + dpath);
                     if (!f.exists()) {
                         String logox = "images/" + dpath;
-                        String getuurl = "http://192.168.0.251:80/kelmo/" + dpath;
+                        //String getuurl = "http://192.168.1.48:80/kelmo/" + dpath;
+                        String getuurl = "http://www.severinombae.net/kelmo/" + dpath;
                         saveUrl(logox, getuurl);
                     }
 
