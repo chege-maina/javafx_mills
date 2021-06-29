@@ -9,6 +9,7 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -39,6 +40,7 @@ public class ItemsController implements Initializable {
 
     public void setItems(String items, String path, String price1, String qty1, CustHelp itemzz, mylistener listenerz) {
 
+        Tooltip tooltip1 = new Tooltip(items);
         this.listenerz = listenerz;
         this.itemzz = itemzz;
         File logox = new File("images/" + path);
@@ -47,6 +49,7 @@ public class ItemsController implements Initializable {
 
         String prizess = itemzz.getPrice();
         itemname.setText(items);
+        itemname.setTooltip(tooltip1);
         qty.setText(qty1 + " In Stock");
         price.setText(main.CURRENCY + prizess + "/=");
     }

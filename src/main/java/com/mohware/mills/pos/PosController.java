@@ -13,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -360,12 +361,16 @@ public class PosController implements PosView, Initializable {
         }
         totsize = receiptlist1.size();
         for (int i = 0; i < totsize; i++) {
+            DecimalFormat formatter = new DecimalFormat("#,###.00");
             ttlamt = ttlamt + Double.parseDouble(receiptlist1.get(i).get(3).replace(",", ""));
             tax_amount = tax_amount + Double.parseDouble(receiptlist1.get(i).get(8).replace(",", ""));
             sub_total = ttlamt - tax_amount;
-            TotalPrice.setText(main.CURRENCY + ttlamt + "/=");
-            SubTotal.setText(main.CURRENCY + sub_total + "/=");
-            TaxAmount.setText(main.CURRENCY + tax_amount + "/=");
+            String totalfrmt = formatter.format(ttlamt);
+            String taxfrmt = formatter.format(tax_amount);
+            String subttlfrmt = formatter.format(sub_total);
+            TotalPrice.setText(main.CURRENCY + totalfrmt + "/=");
+            SubTotal.setText(main.CURRENCY + subttlfrmt + "/=");
+            TaxAmount.setText(main.CURRENCY + taxfrmt + "/=");
             TotalAmount = "" + ttlamt;
         }
         for (int i = 0; i < totsize; i++) {
