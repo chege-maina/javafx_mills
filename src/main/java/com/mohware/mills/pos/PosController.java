@@ -368,7 +368,9 @@ public class PosController implements PosView, Initializable {
             String totalfrmt = formatter.format(ttlamt);
             String taxfrmt = formatter.format(tax_amount);
             String subttlfrmt = formatter.format(sub_total);
+            
             TotalPrice.setText(main.CURRENCY + totalfrmt + "/=");
+            //String jaba = TotalPrice.getText().replace(main.CURRENCY, "");
             SubTotal.setText(main.CURRENCY + subttlfrmt + "/=");
             TaxAmount.setText(main.CURRENCY + taxfrmt + "/=");
             TotalAmount = "" + ttlamt;
