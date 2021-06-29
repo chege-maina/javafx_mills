@@ -22,6 +22,11 @@
     -fx-background-color: WHITE;
     -fx-border-width: 0px 0px 1px 0px;
 }
+.roundBorder{
+    -fx-border-color: #146886;
+    -fx-background-color: WHITE;
+    -fx-border-width: 1px 1px 1px 1px;
+}
 .label-border{
     -fx-border-color: #146886;
     -fx-border-width: 1px 0px 1px 0px;

@@ -21,6 +21,8 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Timer;
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,6 +32,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -50,8 +53,8 @@ public class PosController implements PosView, Initializable {
     private VBox receipt;
 
     @FXML
-    private Button cancel, save;
-    
+    private Button cancel, save, chkoutCancelBtn;
+
     @FXML
     private AnchorPane acPos, acCheckout;
 
@@ -62,7 +65,10 @@ public class PosController implements PosView, Initializable {
     private GridPane grid;
 
     @FXML
-    private Label TotalPrice, dateLabel, timeLabel, userLabel, TaxAmount, SubTotal;
+    private Label TotalPrice, dateLabel, timeLabel, userLabel, TaxAmount, SubTotal, LblTotal, changeLbl;
+
+    @FXML
+    private TextField mpesaTxt, transcodeTxt, cashTxt;
 
     @FXML
     private StackPane rootpanes;
@@ -72,6 +78,7 @@ public class PosController implements PosView, Initializable {
     ArrayList<ArrayList<String>> receiptlist1;
     @FXML
     private ProgressIndicator p_Indicator;
+    String TotalAmount;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -79,6 +86,7 @@ public class PosController implements PosView, Initializable {
         userLabel.setText(login.USER);
         addDate();
         addTime();
+        textFieldInit();
         hideItems();
         initialView();
         p_Indicator.setProgress(ProgressIndicator.INDETERMINATE_PROGRESS);
@@ -90,12 +98,24 @@ public class PosController implements PosView, Initializable {
             clearme();
 
         });
+        chkoutCancelBtn.setOnMouseClicked(mouseEvent -> {
+            hideItems();
+            acPos.setVisible(true);
+            mpesaTxt.setText("");
+            cashTxt.setText("");
+            changeLbl.setText("");
+            transcodeTxt.setText("");
+            LblTotal.setText("");
+
+        });
         save.setOnMouseClicked(mouseEvent -> {
             //hideItems();
-            if(TotalPrice.getText().equals(main.CURRENCY + "0.00/=")){
+            if (TotalPrice.getText().equals(main.CURRENCY + "0.00/=")) {
                 infodialog("Okay", "No Items on the Receipt");
-            }else{
-            acCheckout.setVisible(true);}
+            } else {
+                acCheckout.setVisible(true);
+                LblTotal.setText(TotalAmount);
+            }
 
         });
 
@@ -119,11 +139,72 @@ public class PosController implements PosView, Initializable {
         });
 
     }
+
+    public void textFieldInit() {
+        mpesaTxt.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+                if (!newValue.matches("\\d{0,7}([\\.]\\d{0,4})?")) {
+                    mpesaTxt.setText(oldValue);
+                } else if (newValue.equals("")) {
+                    newValue = "0.0";
+                    Double entered = Double.parseDouble(newValue);
+                    Double total = Double.parseDouble(TotalAmount);
+                    if (entered > total) {
+                        mpesaTxt.setText(oldValue);
+                        infodialog("Okay", "MPESA Payments Must Equal Total or Less");
+
+                    }
+                } else if (!cashTxt.getText().isEmpty()) {
+                    Double entered = Double.parseDouble(newValue);
+                    Double cash = Double.parseDouble(cashTxt.getText());
+                    Double total = Double.parseDouble(TotalAmount);
+                    Double check = cash + entered;
+                    if (cash > total || cash == total) {
+                        mpesaTxt.setText(oldValue);
+                    } else if (entered > check) {
+                        mpesaTxt.setText(oldValue);
+                        infodialog("Okay", "MPESA Payments Must Equal Total or Less");
+
+                    }
+                } else if (Double.parseDouble(newValue) > Double.parseDouble(TotalAmount)) {
+                    mpesaTxt.setText(oldValue);
+                    infodialog("Okay", "MPESA Payments Must Equal Total or Less");
+                }
+            }
+        }
+        );
+        cashTxt.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+                if (!newValue.matches("\\d{0,7}([\\.]\\d{0,4})?")) {
+                    cashTxt.setText(oldValue);
+                } else if (newValue.equals("")) {
+                    newValue = "0.0";
+                    Double entered = Double.parseDouble(newValue);
+                    Double total = Double.parseDouble(TotalAmount);
+                    Double change = entered - total;
+                    changeLbl.setText("" + change);
+                }
+
+                Double entered = Double.parseDouble(newValue);
+                Double total = Double.parseDouble(TotalAmount);
+                Double change = entered - total;
+                changeLbl.setText("" + change);
+            }
+        }
+        );
+
+    }
+
     public void hideItems() {
         acPos.setVisible(false);
         acCheckout.setVisible(false);
 
     }
+
     public void initialView() {
         acPos.setVisible(true);
 
@@ -285,6 +366,7 @@ public class PosController implements PosView, Initializable {
             TotalPrice.setText(main.CURRENCY + ttlamt + "/=");
             SubTotal.setText(main.CURRENCY + sub_total + "/=");
             TaxAmount.setText(main.CURRENCY + tax_amount + "/=");
+            TotalAmount = "" + ttlamt;
         }
         for (int i = 0; i < totsize; i++) {
             FXMLLoader fxmlloader = new FXMLLoader();
@@ -377,8 +459,8 @@ public class PosController implements PosView, Initializable {
                     File f = new File("images/" + dpath);
                     if (!f.exists()) {
                         String logox = "images/" + dpath;
-                        //String getuurl = "http://192.168.1.48:80/kelmo/" + dpath;
-                        String getuurl = "http://www.severinombae.net/kelmo/" + dpath;
+                        String getuurl = "http://192.168.0.251:80/kelmo/" + dpath;
+                        //String getuurl = "http://www.severinombae.net/kelmo/" + dpath;
                         saveUrl(logox, getuurl);
                     }
 
@@ -399,6 +481,7 @@ public class PosController implements PosView, Initializable {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
+                System.out.println(e);
             }
             p_Indicator.setVisible(false);
         });

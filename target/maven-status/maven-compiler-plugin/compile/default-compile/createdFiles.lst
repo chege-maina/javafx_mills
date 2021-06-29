@@ -2,8 +2,10 @@ com/mohware/mills/dashboard/dash1$3.class
 com/mohware/mills/login/LoginPresenter.class
 com/mohware/mills/dashboard/AddCategoryPresenter$2.class
 com/mohware/mills/dashboard/productsList.class
+com/mohware/mills/pos/PosController$3.class
 com/mohware/mills/dashboard/dash1$9.class
 module-info.class
+com/mohware/mills/pos/PosController$2.class
 com/mohware/mills/pos/PosPresenter$1.class
 com/mohware/mills/dashboard/dash1$4.class
 com/mohware/mills/dashboard/AddCategoryPresenter.class
