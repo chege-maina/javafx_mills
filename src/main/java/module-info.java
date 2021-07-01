@@ -17,6 +17,7 @@ module com.mohware.mills {
     requires java.base;
     //requires picasso;
     requires org.json;
+    requires jasperreports;
     
     
 }

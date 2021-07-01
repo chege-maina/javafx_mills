@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.16.0.final using JasperReports Library version 6.16.0-48579d909b7943b64690c65c71e07e0b80981928  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="receipt2" pageWidth="240" pageHeight="842" columnWidth="212" leftMargin="14" rightMargin="14" topMargin="14" bottomMargin="14" isIgnorePagination="true" uuid="6436e511-37b2-4471-98c7-4df75b5c5d6a">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="mm"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="time" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="recno" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="144" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="51" y="0" width="110" height="60" uuid="aa16b55d-95ec-4852-b976-818c265a17a0"/>
+				<imageExpression><![CDATA["cherry.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="60" width="210" height="20" uuid="72aee9c4-3a60-4077-9eca-6fa82f88ec9b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Carlito" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[KELMO ENTERPRISES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="80" width="210" height="10" uuid="7c068bf4-2514-4c8e-8f2a-7ea5c91f086f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Carlito" size="8"/>
+				</textElement>
+				<text><![CDATA[P.O. BOX ________________________ MURANG'A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="102" width="210" height="15" uuid="52935167-6ee5-4ec2-bb06-03caf4e5d612">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Carlito" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CASH SALE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="90" width="210" height="12" uuid="b5f1fa42-fa3b-4831-b2cd-dd95b578bf46"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Carlito" size="9"/>
+				</textElement>
+				<text><![CDATA[TEL: +254***********]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="120" width="50" height="12" uuid="a8cf11d4-31e7-4d3e-b47c-64257c8bc18c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Carlito" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RECEIPT NO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="132" width="30" height="12" uuid="4455e31f-54c6-4d7e-ba0b-78ae80bc108f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Carlito" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATE:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="125" y="132" width="25" height="12" uuid="34a01d88-bdfc-4a47-991e-9490dea842ba">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Carlito" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TIME:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="150" y="132" width="60" height="12" uuid="8954b7ea-d05c-4a4c-8818-d06344df29dd">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Carlito" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{time}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="30" y="132" width="81" height="12" uuid="9467e768-724f-452c-b442-19e6ab3d6aa5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Carlito" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="50" y="120" width="159" height="12" uuid="02699eda-a8cb-4aa0-a284-f8a61de5af10">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Carlito" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{recno}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="10" width="50" height="12" uuid="4b86de18-f48f-4f6e-b76f-a1af8d93de8d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Carlito" size="9"/>
+				</textElement>
+				<text><![CDATA[Item]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="10" width="50" height="12" uuid="6dcd491b-72f6-448f-9e81-6ed7e9687417">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Carlito" size="9"/>
+				</textElement>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="10" width="39" height="12" uuid="a976b4a3-9a9b-4344-831f-d0f44f30e91c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Carlito" size="9"/>
+				</textElement>
+				<text><![CDATA[Price]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="10" width="70" height="12" uuid="b3b4f79e-5b86-4d9a-9039-e88a648080f9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font fontName="Carlito" size="9"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

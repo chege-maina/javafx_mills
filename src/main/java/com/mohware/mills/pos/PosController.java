@@ -17,10 +17,14 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Timer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -44,6 +48,13 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
+import net.sf.jasperreports.engine.JasperReport;
 
 public class PosController implements PosView, Initializable {
 
@@ -54,7 +65,7 @@ public class PosController implements PosView, Initializable {
     private VBox receipt;
 
     @FXML
-    private Button cancel, save, chkoutCancelBtn;
+    private Button cancel, save, chkoutCancelBtn, chkoutPay;
 
     @FXML
     private AnchorPane acPos, acCheckout;
@@ -97,6 +108,26 @@ public class PosController implements PosView, Initializable {
 
         cancel.setOnMouseClicked(mouseEvent -> {
             clearme();
+
+        });
+        chkoutPay.setOnMouseClicked(mouseEvent -> {
+            String source = System.getProperty("user.dir") + "/receipt.jrxml";
+            if (new File(source).exists() == false) {
+                infodialog("Okay", "SPECIFY THE REPORT ROOT!!");
+                return;
+            }
+            try {
+                JasperReport jasperReport = JasperCompileManager.compileReport(source);
+                Map<String, Object> param = new HashMap<String, Object>();
+                param.put("recno", "KELMO-1");
+                param.put("date", dateLabel.getText());
+                param.put("time", timeLabel.getText());
+
+                JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, param, new JREmptyDataSource());
+                JasperPrintManager.printReport(jasperPrint, false);
+            } catch (JRException ex) {
+                Logger.getLogger(PosController.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         });
         chkoutCancelBtn.setOnMouseClicked(mouseEvent -> {
@@ -368,7 +399,7 @@ public class PosController implements PosView, Initializable {
             String totalfrmt = formatter.format(ttlamt);
             String taxfrmt = formatter.format(tax_amount);
             String subttlfrmt = formatter.format(sub_total);
-            
+
             TotalPrice.setText(main.CURRENCY + totalfrmt + "/=");
             //String jaba = TotalPrice.getText().replace(main.CURRENCY, "");
             SubTotal.setText(main.CURRENCY + subttlfrmt + "/=");
@@ -466,8 +497,8 @@ public class PosController implements PosView, Initializable {
                     File f = new File("images/" + dpath);
                     if (!f.exists()) {
                         String logox = "images/" + dpath;
-                        String getuurl = "http://192.168.0.251:80/kelmo/" + dpath;
-                        //String getuurl = "http://www.severinombae.net/kelmo/" + dpath;
+                        //String getuurl = "http://192.168.0.251:80/kelmo/" + dpath;
+                        String getuurl = "http://www.severinombae.net/kelmo/" + dpath;
                         saveUrl(logox, getuurl);
                     }
 

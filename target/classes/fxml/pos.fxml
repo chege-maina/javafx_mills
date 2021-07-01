@@ -444,7 +444,7 @@
                         <Insets bottom="10.0" />
                      </padding>
                      <children>
-                        <Button minHeight="30.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@../styles/Style.css" text="Confirm Payment">
+                        <Button fx:id="chkoutPay" minHeight="30.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@../styles/Style.css" text="Confirm Payment">
                            <HBox.margin>
                               <Insets right="100.0" />
                            </HBox.margin>
