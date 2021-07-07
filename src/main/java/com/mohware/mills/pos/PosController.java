@@ -7,6 +7,8 @@ import com.mohware.mills.login.login;
 import com.mohware.mills.main.main;
 import com.mohware.mills.pos.ReceiptItemsController;
 import com.mohware.mills.model.CustHelp;
+import com.mohware.mills.model.RecModel;
+import com.mohware.mills.model.RecModel.Items;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -48,6 +50,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -55,6 +58,9 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class PosController implements PosView, Initializable {
 
@@ -111,23 +117,25 @@ public class PosController implements PosView, Initializable {
 
         });
         chkoutPay.setOnMouseClicked(mouseEvent -> {
-            String source = System.getProperty("user.dir") + "/receipt.jrxml";
+            makesale();
+            /*String source = System.getProperty("user.dir") + "/receipt.jrxml";
             if (new File(source).exists() == false) {
                 infodialog("Okay", "SPECIFY THE REPORT ROOT!!");
                 return;
             }
             try {
+                JRDataSource dataSource = new JRBeanCollectionDataSource(receiptlist1);
                 JasperReport jasperReport = JasperCompileManager.compileReport(source);
                 Map<String, Object> param = new HashMap<String, Object>();
                 param.put("recno", "KELMO-1");
                 param.put("date", dateLabel.getText());
                 param.put("time", timeLabel.getText());
 
-                JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, param, new JREmptyDataSource());
+                JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, param, dataSource);
                 JasperPrintManager.printReport(jasperPrint, false);
             } catch (JRException ex) {
                 Logger.getLogger(PosController.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            }*/
 
         });
         chkoutCancelBtn.setOnMouseClicked(mouseEvent -> {
@@ -322,7 +330,7 @@ public class PosController implements PosView, Initializable {
         String price = recitem.getPrice();
         String stock = recitem.getCheckqty();
         String item = recitem.getItem();
-        String code = recitem.getCode();
+        String code = recitem.getProduct_code();
         String taxpc = recitem.getTax();
         String unit = recitem.getSelling_unit();
         String conversion = recitem.getConversion();
@@ -436,6 +444,54 @@ public class PosController implements PosView, Initializable {
         dateLabel.setText(txtdate);
     }
 
+    private void makesale() {
+        JSONArray jsonArray = new JSONArray();
+        JSONObject jsonObject = new JSONObject();
+        JSONArray jsonArray1 = new JSONArray();
+
+        String user = userLabel.getText();
+        String customer = "walk in";
+        String tax_amt = replacer(TaxAmount.getText());
+        String total = replacer(TotalPrice.getText());
+        String mpesa = replacer(mpesaTxt.getText());
+        String cash = replacer(cashTxt.getText());
+        String sub_total = replacer(SubTotal.getText());
+        String transcode = replacer(transcodeTxt.getText());
+
+        jsonObject.put("user", user);
+        jsonObject.put("customer", customer);
+        jsonObject.put("tax_amt", tax_amt);
+        jsonObject.put("total", total);
+        jsonObject.put("mpesa", mpesa);
+        jsonObject.put("cash", cash);
+        jsonObject.put("sub_total", sub_total);
+        jsonObject.put("trans_code", transcode);
+        jsonArray.put(jsonObject);
+
+        int totsize = receiptlist1.size();
+        for (int i = 0; i < totsize; i++) {
+            JSONObject jsonObject1 = new JSONObject();
+            jsonObject1.put("tax_amt", receiptlist1.get(i).get(8));
+            jsonObject1.put("total", receiptlist1.get(i).get(3));
+            jsonObject1.put("tax_pc", receiptlist1.get(i).get(5));
+            jsonObject1.put("qty", receiptlist1.get(i).get(1));
+            jsonObject1.put("prod_code", receiptlist1.get(i).get(4));
+            jsonObject1.put("prod_name", receiptlist1.get(i).get(0));
+            jsonObject1.put("unit", receiptlist1.get(i).get(6));
+            jsonObject1.put("price", receiptlist1.get(i).get(2));
+            jsonObject1.put("conversion", receiptlist1.get(i).get(7));
+            jsonArray1.put(jsonObject1);
+
+        }
+        presenter.makeSale(String.valueOf(jsonArray), String.valueOf(jsonArray1));
+    }
+
+    private String replacer(String that) {
+        String replaced = that.replace(main.CURRENCY, "");
+        replaced = replaced.replace("/=", "");
+        return replaced;
+    }
+
     public void addTime() {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         String saa = sdf.format(new Date());
@@ -542,6 +598,9 @@ public class PosController implements PosView, Initializable {
 
     @Override
     public void showProgress() {
+        Platform.runLater(() -> {
+            p_Indicator.setVisible(true);
+        });
     }
 
     @Override
@@ -553,6 +612,67 @@ public class PosController implements PosView, Initializable {
 
     @Override
     public void hideProgress() {
+    }
+
+    @Override
+    public void onAddError(String message) {
+        Platform.runLater(() -> {
+            infodialog("Okay", message);
+            p_Indicator.setVisible(false);
+        });
+    }
+
+    @Override
+    public void onAddSuccess(String message) {
+        Platform.runLater(() -> {
+            infodialog("Okay", message);
+            presenter.getRec();
+        });
+    }
+
+    @Override
+    public void onGetRec(List<RecModel> rec) {
+        int x = rec.size();
+
+        for (int i = 0; i < x; i++) {
+            String rec_no = rec.get(i).getRec_no();
+            String date = rec.get(i).getRec_date();
+            String time = rec.get(i).getRec_time();
+            String Atotal = rec.get(i).getRec_Atotal();
+            String cash = rec.get(i).getRec_cash();
+            String mpesa = rec.get(i).getRec_mpesa();
+            String change = rec.get(i).getRec_change();
+            String transcode = rec.get(i).getRec_transcode();
+            String sub_total = rec.get(i).getRec_subtotal();
+            String tax_amt = rec.get(i).getRec_taxamt();
+            String cashier = rec.get(i).getRec_user();
+            String status = rec.get(i).getRec_status();
+            String customer = rec.get(i).getRec_customer();
+            ArrayList<Items> recitems = rec.get(i).getRec_items();
+
+            System.out.println(rec_no);
+            System.out.println(date);
+            System.out.println(time);
+            System.out.println(Atotal);
+            System.out.println(recitems);
+
+            int z = recitems.size();
+            for (int j = 0; j < z; j++) {
+                String item = recitems.get(j).getRec_item();
+                String qty = recitems.get(j).getRec_qty();
+                String price = recitems.get(j).getRec_price();
+                String total = recitems.get(j).getRec_total();
+                String unit = recitems.get(j).getRec_unit();
+
+                System.out.println(item);
+                System.out.println(qty);
+                System.out.println(price);
+                System.out.println(total);
+                System.out.println(unit);
+            }
+
+        }
+
     }
 
 }

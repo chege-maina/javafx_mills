@@ -1,6 +1,7 @@
 package com.mohware.mills.api;
 
 import com.mohware.mills.model.CustHelp;
+import com.mohware.mills.model.RecModel;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -28,6 +29,10 @@ public interface ApiInterface {
     Call<CustHelp> addItem(@Field("itemdetails") String itemdetails);
     
     @FormUrlEncoded
+    @POST("makesale.php")
+    Call<CustHelp> MakeSale(@Field("itemdetails") String itemdetails, @Field("recitems") String recitems);
+    
+    @FormUrlEncoded
     @POST("update_product.php")
     Call<CustHelp> editItems(@Field("itemdetails") String itemdetails);
     
@@ -49,6 +54,9 @@ public interface ApiInterface {
     
     @GET("load_pos_items.php")
     Call<List<CustHelp>> loadItems();
+    
+    @GET("get_rec.php")
+    Call<List<RecModel>> loadRec();
     
     @GET("editproducts.php")
     Call<List<CustHelp>> getProd(@Query("code")String prodCode);

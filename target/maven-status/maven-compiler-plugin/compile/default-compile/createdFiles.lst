@@ -2,9 +2,11 @@ com/mohware/mills/dashboard/dash1$3.class
 com/mohware/mills/login/LoginPresenter.class
 com/mohware/mills/dashboard/AddCategoryPresenter$2.class
 com/mohware/mills/dashboard/productsList.class
+com/mohware/mills/pos/PosPresenter$2.class
 com/mohware/mills/pos/PosController$3.class
 com/mohware/mills/dashboard/dash1$9.class
 module-info.class
+com/mohware/mills/model/RecModel.class
 com/mohware/mills/pos/PosController$2.class
 com/mohware/mills/pos/PosPresenter$1.class
 com/mohware/mills/dashboard/dash1$4.class
@@ -16,6 +18,7 @@ com/mohware/mills/dashboard/dash1$7.class
 com/mohware/mills/api/ApiInterface.class
 com/mohware/mills/login/LoginPresenter$1.class
 com/mohware/mills/dashboard/dash1$8.class
+com/mohware/mills/pos/PosPresenter$3.class
 com/mohware/mills/dashboard/AddCategoryPresenter$1.class
 com/mohware/mills/dashboard/dash1.class
 com/mohware/mills/api/ApiClient.class
@@ -24,6 +27,7 @@ com/mohware/mills/dashboard/DashboardPresenter$6.class
 com/mohware/mills/pos/PosPresenter.class
 com/mohware/mills/dashboard/dash1$11.class
 com/mohware/mills/dashboard/dash1$6.class
+com/mohware/mills/model/RecModel$Items.class
 com/mohware/mills/main/main.class
 com/mohware/mills/pos/PosView.class
 com/mohware/mills/dashboard/picController.class
