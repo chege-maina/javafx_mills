@@ -1225,45 +1225,7 @@
                                              <children>
                                                 <ScrollPane fitToHeight="true" prefHeight="300.0" prefWidth="606.0" stylesheets="@../styles/Style.css">
                                                    <content>
-                                                      <VBox fx:id="dspLst" prefWidth="991.0">
-                                                         <children>
-                                                            <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="580.0" styleClass="itemBorder" stylesheets="@../styles/Style.css">
-                                                               <VBox.margin>
-                                                                  <Insets />
-                                                               </VBox.margin>
-                                                               <children>
-                                                                  <Label prefHeight="17.0" prefWidth="171.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Receipt No">
-                                                                     <font>
-                                                                        <Font name="Cambria Bold" size="13.0" />
-                                                                     </font>
-                                                                     <HBox.margin>
-                                                                        <Insets left="10.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                                  <Label prefHeight="17.0" prefWidth="172.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Customer">
-                                                                     <font>
-                                                                        <Font name="Cambria Bold" size="13.0" />
-                                                                     </font>
-                                                                     <HBox.margin>
-                                                                        <Insets left="10.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                                  <Label prefHeight="17.0" prefWidth="119.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Date">
-                                                                     <font>
-                                                                        <Font name="Cambria Bold" size="13.0" />
-                                                                     </font>
-                                                                     <HBox.margin>
-                                                                        <Insets left="10.0" />
-                                                                     </HBox.margin>
-                                                                  </Label>
-                                                                  <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" styleClass="search-button" stylesheets="@../styles/Style.css" text="Select" textFill="#c0d6df">
-                                                                     <font>
-                                                                        <Font name="System Bold" size="13.0" />
-                                                                     </font>
-                                                                  </Button>
-                                                               </children>
-                                                            </HBox>
-                                                         </children>
+                                                      <VBox fx:id="dspLst">
                                                          <padding>
                                                             <Insets left="3.0" />
                                                          </padding>

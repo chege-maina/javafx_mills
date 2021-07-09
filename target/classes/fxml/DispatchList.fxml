@@ -6,9 +6,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="580.0" styleClass="itemBorder" stylesheets="@../styles/Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mohware.mills.dashboard.dispatchList">
+<HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="32.0" prefWidth="560.0" styleClass="itemBorder" stylesheets="@../styles/Style.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mohware.mills.dashboard.dispatchList">
    <children>
-      <Label fx:id="displistRecno" prefHeight="17.0" prefWidth="171.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Receipt No">
+      <Label fx:id="displistRecno" prefHeight="17.0" prefWidth="151.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Receipt No">
          <font>
             <Font name="Cambria Bold" size="13.0" />
          </font>
@@ -16,7 +16,7 @@
             <Insets left="10.0" />
          </HBox.margin>
       </Label>
-      <Label fx:id="displistCustomer" prefHeight="17.0" prefWidth="172.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Customer">
+      <Label fx:id="displistCustomer" prefHeight="17.0" prefWidth="157.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Customer">
          <font>
             <Font name="Cambria Bold" size="13.0" />
          </font>
@@ -36,6 +36,9 @@
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
+         <HBox.margin>
+            <Insets left="10.0" />
+         </HBox.margin>
       </Button>
    </children>
 </HBox>

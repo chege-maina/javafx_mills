@@ -488,7 +488,8 @@ public class dash1 implements DashboardView, Initializable {
         store_menu.setOnMouseClicked(mouseEvent -> {
             hideItems();
             sub_store.setVisible(true);
-            receiveproducts_acpane.setVisible(true);
+            dispatchItems.setVisible(true);
+            presenter.listDispatch();
 
         });
         Menu.setOnMouseClicked(mouseEvent -> {
