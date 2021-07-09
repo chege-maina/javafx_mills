@@ -5,6 +5,7 @@ import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
 import com.mohware.mills.model.CustHelp;
+import com.mohware.mills.model.RecModel;
 import java.io.File;
 import java.net.URL;
 import java.util.List;
@@ -156,6 +157,11 @@ public class categoryController implements Initializable, DashboardView {
     @Override
     public void onUpdateSuccess(String message) {
        
+    }
+
+    @Override
+    public void loadDispatchList(List<RecModel> body) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

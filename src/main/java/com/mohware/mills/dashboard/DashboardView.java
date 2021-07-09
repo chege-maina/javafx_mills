@@ -1,6 +1,7 @@
 package com.mohware.mills.dashboard;
 
 import com.mohware.mills.model.CustHelp;
+import com.mohware.mills.model.RecModel;
 import java.util.List;
 
 public interface DashboardView {
@@ -26,5 +27,7 @@ public interface DashboardView {
     void showProgress();
 
     void onUnitAddSuccess(String message);
+
+    void loadDispatchList(List<RecModel> body);
 
 }

@@ -101,6 +101,7 @@ public class PosController implements PosView, Initializable {
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
         showimages();
+        transcodeTxt.setEditable(false);
         userLabel.setText(login.USER);
         addDate();
         addTime();
@@ -117,34 +118,47 @@ public class PosController implements PosView, Initializable {
 
         });
         chkoutPay.setOnMouseClicked(mouseEvent -> {
-            makesale();
-            /*String source = System.getProperty("user.dir") + "/receipt.jrxml";
-            if (new File(source).exists() == false) {
-                infodialog("Okay", "SPECIFY THE REPORT ROOT!!");
-                return;
-            }
-            try {
-                JRDataSource dataSource = new JRBeanCollectionDataSource(receiptlist1);
-                JasperReport jasperReport = JasperCompileManager.compileReport(source);
-                Map<String, Object> param = new HashMap<String, Object>();
-                param.put("recno", "KELMO-1");
-                param.put("date", dateLabel.getText());
-                param.put("time", timeLabel.getText());
 
-                JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, param, dataSource);
-                JasperPrintManager.printReport(jasperPrint, false);
-            } catch (JRException ex) {
-                Logger.getLogger(PosController.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
+            if (changeLbl.getText().equals("")) {
+                infodialog("Okay", "No Payments Entered");
+            } else if (Double.parseDouble(changeLbl.getText()) < 0) {
+                infodialog("Okay", "Payments Entered are not Equal or Greater than Total");
+            } else if (!mpesaTxt.getText().equals("")) {
+                if (transcodeTxt.getText().equals("")) {
+                    infodialog("Okay", "Enter MPESA Transaction Code");
+                } else {
+                    if (cashTxt.getText().equals("")) {
+                        cashTxt.setText("0");
+                        makesale();
+                    } else if (mpesaTxt.getText().equals("")) {
+                        mpesaTxt.setText("0");
+                        transcodeTxt.setText("-");
+                        makesale();
+                    } else {
+                        makesale();
+                    }
+                }
+            } else {
+                if (cashTxt.getText().equals("")) {
+                    cashTxt.setText("0");
+                    makesale();
+                } else if (mpesaTxt.getText().equals("")) {
+                    mpesaTxt.setText("0");
+                    transcodeTxt.setText("-");
+                    makesale();
+                } else {
+                    makesale();
+                }
+            }
 
         });
         chkoutCancelBtn.setOnMouseClicked(mouseEvent -> {
             hideItems();
             acPos.setVisible(true);
+            transcodeTxt.setText("");
             mpesaTxt.setText("");
             cashTxt.setText("");
             changeLbl.setText("");
-            transcodeTxt.setText("");
             LblTotal.setText("");
 
         });
@@ -185,32 +199,40 @@ public class PosController implements PosView, Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
+                String mpesa = cashTxt.getText();
                 if (!newValue.matches("\\d{0,7}([\\.]\\d{0,4})?")) {
                     mpesaTxt.setText(oldValue);
+                    newValue = oldValue;
                 } else if (newValue.equals("")) {
                     newValue = "0.0";
+                    transcodeTxt.setEditable(false);
                     Double entered = Double.parseDouble(newValue);
                     Double total = Double.parseDouble(TotalAmount);
-                    if (entered > total) {
-                        mpesaTxt.setText(oldValue);
-                        infodialog("Okay", "MPESA Payments Must Equal Total or Less");
-
+                    Double mpesa1 = 0.0;
+                    if (mpesa.equals("")) {
+                        mpesa = "0.0";
                     }
-                } else if (!cashTxt.getText().isEmpty()) {
-                    Double entered = Double.parseDouble(newValue);
-                    Double cash = Double.parseDouble(cashTxt.getText());
-                    Double total = Double.parseDouble(TotalAmount);
-                    Double check = cash + entered;
-                    if (cash > total || cash == total) {
-                        mpesaTxt.setText(oldValue);
-                    } else if (entered > check) {
-                        mpesaTxt.setText(oldValue);
-                        infodialog("Okay", "MPESA Payments Must Equal Total or Less");
+                    mpesa1 = Double.parseDouble(mpesa);
+                    Double change = (entered + mpesa1) - total;
+                    changeLbl.setText("" + change);
+                }
 
-                    }
-                } else if (Double.parseDouble(newValue) > Double.parseDouble(TotalAmount)) {
+                Double entered = Double.parseDouble(newValue);
+                Double total = Double.parseDouble(TotalAmount);
+                Double mpesa1 = 0.0;
+                transcodeTxt.setEditable(true);
+                if (mpesa.equals("")) {
+                    mpesa = "0.0";
+                }
+                mpesa1 = Double.parseDouble(mpesa);
+                Double change = (entered + mpesa1) - total;
+                Double checkex = total - (entered + mpesa1);
+                if (checkex < 0) {
                     mpesaTxt.setText(oldValue);
-                    infodialog("Okay", "MPESA Payments Must Equal Total or Less");
+                    infodialog("Okay", "MPESA Payments should be equal to Balance");
+                    mpesaTxt.requestFocus();
+                } else {
+                    changeLbl.setText("" + change);
                 }
             }
         }
@@ -219,20 +241,45 @@ public class PosController implements PosView, Initializable {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
 
+                String mpesa = mpesaTxt.getText();
                 if (!newValue.matches("\\d{0,7}([\\.]\\d{0,4})?")) {
                     cashTxt.setText(oldValue);
+                    newValue = oldValue;
                 } else if (newValue.equals("")) {
                     newValue = "0.0";
                     Double entered = Double.parseDouble(newValue);
                     Double total = Double.parseDouble(TotalAmount);
-                    Double change = entered - total;
+                    Double mpesa1 = 0.0;
+                    if (mpesa.equals("")) {
+                        mpesa = "0.0";
+                    }
+                    mpesa1 = Double.parseDouble(mpesa);
+                    Double change = (entered + mpesa1) - total;
                     changeLbl.setText("" + change);
                 }
 
                 Double entered = Double.parseDouble(newValue);
                 Double total = Double.parseDouble(TotalAmount);
-                Double change = entered - total;
+                Double mpesa1 = 0.0;
+                if (mpesa.equals("")) {
+                    mpesa = "0.0";
+                }
+                mpesa1 = Double.parseDouble(mpesa);
+                Double change = (entered + mpesa1) - total;
                 changeLbl.setText("" + change);
+            }
+        }
+        );
+        transcodeTxt.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+
+                String mpesa = mpesaTxt.getText();
+                if (mpesa.equals("")) {
+                    transcodeTxt.setText("");
+                    infodialog("Okay", "No MPESA Payments Entered");
+                    transcodeTxt.requestFocus();
+                }
             }
         }
         );
@@ -448,6 +495,7 @@ public class PosController implements PosView, Initializable {
         JSONArray jsonArray = new JSONArray();
         JSONObject jsonObject = new JSONObject();
         JSONArray jsonArray1 = new JSONArray();
+        DecimalFormat formatter = new DecimalFormat("#,###.00");
 
         String user = userLabel.getText();
         String customer = "walk in";
@@ -455,14 +503,23 @@ public class PosController implements PosView, Initializable {
         String total = replacer(TotalPrice.getText());
         String mpesa = replacer(mpesaTxt.getText());
         String cash = replacer(cashTxt.getText());
+        String change = replacer(changeLbl.getText());
+        Double cash1 = Double.parseDouble(cash);
+        Double mpesa1 = Double.parseDouble(mpesa);
+        Double change1 = Double.parseDouble(change);
+        cash = formatter.format(cash1);
+        mpesa = formatter.format(mpesa1);
+        change = formatter.format(change1);
         String sub_total = replacer(SubTotal.getText());
         String transcode = replacer(transcodeTxt.getText());
+        transcode = transcode.toUpperCase();
 
         jsonObject.put("user", user);
         jsonObject.put("customer", customer);
         jsonObject.put("tax_amt", tax_amt);
         jsonObject.put("total", total);
         jsonObject.put("mpesa", mpesa);
+        jsonObject.put("change", change);
         jsonObject.put("cash", cash);
         jsonObject.put("sub_total", sub_total);
         jsonObject.put("trans_code", transcode);
@@ -471,14 +528,20 @@ public class PosController implements PosView, Initializable {
         int totsize = receiptlist1.size();
         for (int i = 0; i < totsize; i++) {
             JSONObject jsonObject1 = new JSONObject();
-            jsonObject1.put("tax_amt", receiptlist1.get(i).get(8));
-            jsonObject1.put("total", receiptlist1.get(i).get(3));
+            Double tax_amt1 = Double.parseDouble(receiptlist1.get(i).get(8));
+            String TaxAmt = formatter.format(tax_amt1);
+            jsonObject1.put("tax_amt", TaxAmt);
+            Double Total = Double.parseDouble(receiptlist1.get(i).get(3));
+            String TotaL = formatter.format(Total);
+            jsonObject1.put("total", TotaL);
             jsonObject1.put("tax_pc", receiptlist1.get(i).get(5));
             jsonObject1.put("qty", receiptlist1.get(i).get(1));
             jsonObject1.put("prod_code", receiptlist1.get(i).get(4));
             jsonObject1.put("prod_name", receiptlist1.get(i).get(0));
             jsonObject1.put("unit", receiptlist1.get(i).get(6));
-            jsonObject1.put("price", receiptlist1.get(i).get(2));
+            Double Price = Double.parseDouble(receiptlist1.get(i).get(2));
+            String PricE = formatter.format(Price);
+            jsonObject1.put("price", PricE);
             jsonObject1.put("conversion", receiptlist1.get(i).get(7));
             jsonArray1.put(jsonObject1);
 
@@ -496,6 +559,21 @@ public class PosController implements PosView, Initializable {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
         String saa = sdf.format(new Date());
         timeLabel.setText(saa);
+    }
+
+    public void AllClear() {
+        hideItems();
+        acPos.setVisible(true);
+        transcodeTxt.setText("");
+        mpesaTxt.setText("");
+        cashTxt.setText("");
+        changeLbl.setText("");
+        LblTotal.setText("");
+        clearme();
+        addTime();
+        addDate();
+        grid.getChildren().clear();
+        presenter.getItems();
     }
 
     private void clearme() {
@@ -633,45 +711,66 @@ public class PosController implements PosView, Initializable {
     @Override
     public void onGetRec(List<RecModel> rec) {
         int x = rec.size();
+        Platform.runLater(() -> {
+            for (int i = 0; i < x; i++) {
+                String rec_no = rec.get(i).getRec_no();
+                String date = rec.get(i).getRec_date();
+                String time = rec.get(i).getRec_time();
+                String Atotal = rec.get(i).getRec_Atotal();
+                String cash = rec.get(i).getRec_cash();
+                String mpesa = rec.get(i).getRec_mpesa();
+                String change = rec.get(i).getRec_change();
+                String transcode = rec.get(i).getRec_transcode();
+                String sub_total = rec.get(i).getRec_subtotal();
+                String tax_amt = rec.get(i).getRec_taxamt();
+                String cashier = rec.get(i).getRec_user();
+                String status = rec.get(i).getRec_status();
+                String customer = rec.get(i).getRec_customer();
+                ArrayList<Items> recitems = rec.get(i).getRec_items();
 
-        for (int i = 0; i < x; i++) {
-            String rec_no = rec.get(i).getRec_no();
-            String date = rec.get(i).getRec_date();
-            String time = rec.get(i).getRec_time();
-            String Atotal = rec.get(i).getRec_Atotal();
-            String cash = rec.get(i).getRec_cash();
-            String mpesa = rec.get(i).getRec_mpesa();
-            String change = rec.get(i).getRec_change();
-            String transcode = rec.get(i).getRec_transcode();
-            String sub_total = rec.get(i).getRec_subtotal();
-            String tax_amt = rec.get(i).getRec_taxamt();
-            String cashier = rec.get(i).getRec_user();
-            String status = rec.get(i).getRec_status();
-            String customer = rec.get(i).getRec_customer();
-            ArrayList<Items> recitems = rec.get(i).getRec_items();
+                int z = recitems.size();
+                for (int j = 0; j < z; j++) {
+                    String item = recitems.get(j).getRec_item();
+                    String qty = recitems.get(j).getRec_qty();
+                    String price = recitems.get(j).getRec_price();
+                    String total = recitems.get(j).getRec_total();
+                    String unit = recitems.get(j).getRec_unit();
 
-            System.out.println(rec_no);
-            System.out.println(date);
-            System.out.println(time);
-            System.out.println(Atotal);
-            System.out.println(recitems);
+                }
+                String source = System.getProperty("user.dir") + "/receipt.jrxml";
+                if (new File(source).exists() == false) {
+                    infodialog("Okay", "SPECIFY THE REPORT ROOT!!");
+                    return;
+                }
+                try {
+                    JRDataSource dataSource = new JRBeanCollectionDataSource(recitems);
+                    JasperReport jasperReport = JasperCompileManager.compileReport(source);
+                    Map<String, Object> param = new HashMap<String, Object>();
+                    param.put("recno", "KELMO-" + rec_no);
+                    param.put("date", date);
+                    param.put("time", time);
+                    param.put("customer", customer);
+                    param.put("Atotal", Atotal);
+                    param.put("cash", cash);
+                    param.put("mpesa", mpesa);
+                    param.put("change", change);
+                    param.put("mpesa_code", transcode);
+                    param.put("p_vat", sub_total);
+                    param.put("tax", tax_amt);
+                    param.put("cashier", cashier);
+                    param.put("status", status);
 
-            int z = recitems.size();
-            for (int j = 0; j < z; j++) {
-                String item = recitems.get(j).getRec_item();
-                String qty = recitems.get(j).getRec_qty();
-                String price = recitems.get(j).getRec_price();
-                String total = recitems.get(j).getRec_total();
-                String unit = recitems.get(j).getRec_unit();
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, param, dataSource);
+                    JasperPrintManager.printReport(jasperPrint, false);
 
-                System.out.println(item);
-                System.out.println(qty);
-                System.out.println(price);
-                System.out.println(total);
-                System.out.println(unit);
+                    AllClear();
+
+                } catch (JRException ex) {
+                    Logger.getLogger(PosController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             }
-
-        }
+        });
 
     }
 

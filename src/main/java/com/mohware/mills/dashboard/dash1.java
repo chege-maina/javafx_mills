@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
 import com.mohware.mills.login.login;
 import com.mohware.mills.model.CustHelp;
+import com.mohware.mills.model.RecModel;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -59,7 +60,7 @@ public class dash1 implements DashboardView, Initializable {
     private Label Menu, CloseMenu, userLabel;
 
     @FXML
-    private VBox lstItem;
+    private VBox lstItem, dspLst;
 
     @FXML
     private StackPane rootpanes;
@@ -83,9 +84,9 @@ public class dash1 implements DashboardView, Initializable {
     private Button btnAddCategory, btnCancel, btnAddUnit2, btnAddUnit1, btnImgSelect, btnImageView, btnSave, edtSave, edtActivate, edtDeactivate;
 
     @FXML
-    private AnchorPane slider, addproducts_acpane, receiveproducts_acpane, productList, editProduct;
+    private AnchorPane slider, addproducts_acpane, receiveproducts_acpane, productList, editProduct, dispatchItems;
     @FXML
-    private JFXButton products_menu, store_menu, list_prod_menu, new_product;
+    private JFXButton products_menu, store_menu, list_prod_menu, new_product, dispatch_menu;
 
     @FXML
     private JFXComboBox<String> categoryCombo, supplierCombo, sellingCombo, edtCatCombo, edtSupCombo, edtSelCombo;
@@ -166,6 +167,10 @@ public class dash1 implements DashboardView, Initializable {
 
                     selectedProduct(prod);
 
+                }
+
+                @Override
+                public void onClickListener4(ArrayList prod) {
                 }
 
             };
@@ -279,6 +284,7 @@ public class dash1 implements DashboardView, Initializable {
         productList.setVisible(false);
         editProduct.setVisible(false);
         receiveproducts_acpane.setVisible(false);
+        dispatchItems.setVisible(false);
 
     }
 
@@ -470,6 +476,13 @@ public class dash1 implements DashboardView, Initializable {
             sub_products.setVisible(true);
             productList.setVisible(true);
             presenter.listProducts();
+
+        });
+        dispatch_menu.setOnMouseClicked(mouseEvent -> {
+            hideItems();
+            sub_store.setVisible(true);
+            dispatchItems.setVisible(true);
+            presenter.listDispatch();
 
         });
         store_menu.setOnMouseClicked(mouseEvent -> {
@@ -723,6 +736,23 @@ public class dash1 implements DashboardView, Initializable {
             }
         }
     }
+    
+    private void listDispatch() {
+        int totsize = receiptlist1.size();
+        for (int i = 0; i < totsize; i++) {
+            try {
+                FXMLLoader fxmlloader = new FXMLLoader();
+                fxmlloader.setLocation(getClass().getResource("/fxml/DispatchList.fxml"));
+
+                HBox hBox = fxmlloader.load();
+                dispatchList itemscontroller = fxmlloader.getController();
+                itemscontroller.DispatchList(receiptlist1.get(i), listenerz);
+                dspLst.getChildren().add(hBox);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     private void infodialog(String btnText, String msg) {
         JFXDialogLayout dialoglayout = new JFXDialogLayout();
@@ -874,4 +904,20 @@ public class dash1 implements DashboardView, Initializable {
             presenter.listProducts();
         });
     }
+
+    @Override
+    public void loadDispatchList(List<RecModel> body) {
+        Platform.runLater(() -> {
+            int totsize = body.size();
+            receiptlist1.clear();
+            dspLst.getChildren().clear();
+            for (int i = 0; i < totsize; i++) {
+                ArrayList<String> listelm = new ArrayList<>();
+                listelm.add(body.get(i).getRec_no());
+                listelm.add(body.get(i).getRec_customer());
+                listelm.add(body.get(i).getRec_date());
+                receiptlist1.add(listelm);
+            }
+            listDispatch();
+        });}
 }

@@ -3,6 +3,7 @@ package com.mohware.mills.dashboard;
 import com.mohware.mills.api.ApiClient;
 import com.mohware.mills.api.ApiInterface;
 import com.mohware.mills.model.CustHelp;
+import com.mohware.mills.model.RecModel;
 import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -215,6 +216,29 @@ public class DashboardPresenter {
                 String error = "Internet Connection Errorrrrr...";
                 String what = t.toString();
                 view.onErrorLoading(what);
+
+            }
+        });
+    }
+    
+    public void listDispatch() {
+        //view.showLoading();
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<List<RecModel>> call = apiInterface.dispatchList();
+        call.enqueue(new Callback<List<RecModel>>() {
+            @Override
+            public void onResponse(Call<List<RecModel>> call, Response<List<RecModel>> response) {
+
+                //view.hideLoading();
+                if (response.isSuccessful() && response.body() != null) {
+                    view.loadDispatchList(response.body());
+                }
+            }
+
+            public void onFailure(Call<List<RecModel>> call, Throwable t) {
+                //view.hideLoading();
+                String error = "Internet Connection Error...";
+                view.onErrorLoading(error);
 
             }
         });
