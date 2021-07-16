@@ -71,7 +71,7 @@ public class PosController implements PosView, Initializable {
     private VBox receipt;
 
     @FXML
-    private Button cancel, save, chkoutCancelBtn, chkoutPay, posSrchBtn;
+    private Button cancel, save, chkoutCancelBtn, chkoutPay, posSrchBtn, saleLstBtn;
 
     @FXML
     private AnchorPane acPos, acCheckout, acLstsale;
@@ -170,6 +170,10 @@ public class PosController implements PosView, Initializable {
                 acCheckout.setVisible(true);
                 LblTotal.setText(TotalAmount);
             }
+
+        });
+        saleLstBtn.setOnMouseClicked(mouseEvent -> {
+            acLstsale.setVisible(true);
 
         });
         posSrchBtn.setOnMouseClicked(mouseEvent -> {

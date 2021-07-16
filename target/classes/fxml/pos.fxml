@@ -21,143 +21,6 @@
 
 <StackPane fx:id="rootpanes" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mohware.mills.pos.PosController">
    <children>
-      <AnchorPane fx:id="acCheckout" prefHeight="200.0" prefWidth="200.0" styleClass="blankstuff" stylesheets="@../styles/Style.css">
-         <StackPane.margin>
-            <Insets />
-         </StackPane.margin>
-         <children>
-            <VBox prefHeight="200.0" prefWidth="100.0" stylesheets="@../styles/Style.css" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="200.0">
-               <children>
-                  <HBox>
-                     <children>
-                        <ImageView fitHeight="150.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/check-out.png" />
-                           </image>
-                           <HBox.margin>
-                              <Insets left="30.0" right="10.0" />
-                           </HBox.margin>
-                        </ImageView>
-                        <Label prefHeight="35.0" prefWidth="159.0" text="Check Out" textFill="#146886">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <padding>
-                        <Insets top="10.0" />
-                     </padding>
-                  </HBox>
-                  <HBox alignment="CENTER" prefWidth="200.0">
-                     <children>
-                        <Label prefHeight="35.0" prefWidth="205.0" text="Total Amount" textFill="#146886">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="LblTotal" alignment="CENTER_RIGHT" prefWidth="317.0" textFill="#146886">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="50.0" />
-                     </VBox.margin>
-                     <padding>
-                        <Insets bottom="10.0" />
-                     </padding>
-                  </HBox>
-                  <HBox alignment="CENTER" layoutX="11.0" layoutY="116.0" prefWidth="200.0">
-                     <children>
-                        <Label prefHeight="35.0" prefWidth="205.0" text="Cash Paid" textFill="#146886">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="cashTxt" alignment="CENTER_RIGHT" prefHeight="24.0" prefWidth="317.0" styleClass="label-text1" stylesheets="@../styles/Style.css">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" />
-                     </padding>
-                  </HBox>
-                  <HBox alignment="CENTER" layoutX="11.0" layoutY="151.0" prefWidth="200.0">
-                     <children>
-                        <Label prefHeight="35.0" prefWidth="205.0" text="MPESA Paid" textFill="#146886">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="mpesaTxt" alignment="CENTER_RIGHT" prefHeight="24.0" prefWidth="317.0" styleClass="label-text1" stylesheets="@../styles/Style.css">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" />
-                     </padding>
-                  </HBox>
-                  <HBox alignment="CENTER" layoutX="11.0" layoutY="166.0" prefWidth="200.0">
-                     <children>
-                        <Label prefHeight="35.0" prefWidth="205.0" text="MPESA Transaction Code" textFill="#146886">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="transcodeTxt" alignment="CENTER_RIGHT" prefHeight="24.0" prefWidth="317.0" styleClass="label-text1" stylesheets="@../styles/Style.css">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </TextField>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" />
-                     </padding>
-                  </HBox>
-                  <HBox alignment="CENTER" layoutX="11.0" layoutY="211.0" prefWidth="200.0">
-                     <children>
-                        <Label prefHeight="35.0" prefWidth="205.0" text="Change" textFill="#146886">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="changeLbl" alignment="CENTER_RIGHT" prefWidth="317.0" textAlignment="RIGHT" textFill="#146886">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Label>
-                     </children>
-                     <padding>
-                        <Insets bottom="30.0" />
-                     </padding>
-                  </HBox>
-                  <HBox alignment="CENTER" layoutX="11.0" layoutY="286.0" prefWidth="200.0">
-                     <padding>
-                        <Insets bottom="10.0" />
-                     </padding>
-                     <children>
-                        <Button fx:id="chkoutPay" minHeight="30.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@../styles/Style.css" text="Confirm Payment">
-                           <HBox.margin>
-                              <Insets right="100.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button fx:id="chkoutCancelBtn" layoutX="390.0" layoutY="10.0" minHeight="30.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@../styles/Style.css" text="Cancel" />
-                     </children>
-                  </HBox>
-               </children>
-               <styleClass>
-                  <String fx:value="modal-design" />
-                  <String fx:value="card" />
-               </styleClass></VBox>
-         </children>
-      </AnchorPane>
-      <ProgressIndicator fx:id="p_Indicator" progress="0.0" />
-      <AnchorPane fx:id="acLstsale" prefHeight="200.0" prefWidth="200.0" styleClass="blankstuff" stylesheets="@../styles/Style.css" />
       <AnchorPane id="AnchorPane" fx:id="acPos" prefHeight="800.0" prefWidth="1024.0">
          <children>
             <BorderPane layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -361,12 +224,47 @@
                               <Insets top="5.0" />
                            </VBox.margin>
                         </HBox>
-                        <HBox alignment="TOP_RIGHT" layoutX="10.0" layoutY="460.0">
+                        <VBox alignment="CENTER">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
                            <children>
-                              <Button fx:id="save" layoutX="340.0" layoutY="10.0" mnemonicParsing="false" stylesheets="@../styles/Style.css" text="Check Out">
+                              <HBox alignment="TOP_RIGHT">
+                                 <children>
+                                    <Button fx:id="save" layoutX="340.0" layoutY="10.0" mnemonicParsing="false" stylesheets="@../styles/Style.css" text="Check Out">
+                                       <font>
+                                          <Font name="Cambria" size="14.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="buttons" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <HBox.margin>
+                                          <Insets right="190.0" />
+                                       </HBox.margin>
+                                       <graphic>
+                                          <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/check-out.png" />
+                                             </image>
+                                          </ImageView>
+                                       </graphic>
+                                    </Button>
+                                    <Button fx:id="cancel" mnemonicParsing="false" stylesheets="@../styles/Style.css" text="Cancel Sale">
+                                       <HBox.margin>
+                                          <Insets right="25.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="Cambria" size="14.0" />
+                                       </font>
+                                       <styleClass>
+                                          <String fx:value="buttons" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </Button>
+                                 </children>
+                              </HBox>
+                              <Button fx:id="saleLstBtn" alignment="CENTER" mnemonicParsing="false" stylesheets="@../styles/Style.css" text="View Your Sales List">
                                  <font>
                                     <Font name="Cambria" size="14.0" />
                                  </font>
@@ -374,31 +272,12 @@
                                     <String fx:value="buttons" />
                                     <String fx:value="shadow" />
                                  </styleClass>
-                                 <HBox.margin>
-                                    <Insets right="190.0" />
-                                 </HBox.margin>
-                                 <graphic>
-                                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/check-out.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Button fx:id="cancel" mnemonicParsing="false" stylesheets="@../styles/Style.css" text="Cancel Sale">
-                                 <HBox.margin>
-                                    <Insets right="25.0" />
-                                 </HBox.margin>
-                                 <font>
-                                    <Font name="Cambria" size="14.0" />
-                                 </font>
-                                 <styleClass>
-                                    <String fx:value="buttons" />
-                                    <String fx:value="shadow" />
-                                 </styleClass>
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
                               </Button>
                            </children>
-                        </HBox>
+                        </VBox>
                      </children>
                   </VBox>
                </right>
@@ -460,5 +339,154 @@
             </BorderPane>
          </children>
       </AnchorPane>
+      <ProgressIndicator fx:id="p_Indicator" progress="0.0" />
+      <AnchorPane fx:id="acCheckout" prefHeight="200.0" prefWidth="200.0" styleClass="blankstuff" stylesheets="@../styles/Style.css">
+         <StackPane.margin>
+            <Insets />
+         </StackPane.margin>
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" stylesheets="@../styles/Style.css" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="200.0">
+               <children>
+                  <HBox>
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/check-out.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="30.0" right="10.0" />
+                           </HBox.margin>
+                        </ImageView>
+                        <Label prefHeight="35.0" prefWidth="159.0" text="Check Out" textFill="#146886">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="205.0" text="Total Amount" textFill="#146886">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="LblTotal" alignment="CENTER_RIGHT" prefWidth="317.0" textFill="#146886">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="50.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="11.0" layoutY="116.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="205.0" text="Cash Paid" textFill="#146886">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="cashTxt" alignment="CENTER_RIGHT" prefHeight="24.0" prefWidth="317.0" styleClass="label-text1" stylesheets="@../styles/Style.css">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="11.0" layoutY="151.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="205.0" text="MPESA Paid" textFill="#146886">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="mpesaTxt" alignment="CENTER_RIGHT" prefHeight="24.0" prefWidth="317.0" styleClass="label-text1" stylesheets="@../styles/Style.css">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="11.0" layoutY="166.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="205.0" text="MPESA Transaction Code" textFill="#146886">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="transcodeTxt" alignment="CENTER_RIGHT" prefHeight="24.0" prefWidth="317.0" styleClass="label-text1" stylesheets="@../styles/Style.css">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="11.0" layoutY="211.0" prefWidth="200.0">
+                     <children>
+                        <Label prefHeight="35.0" prefWidth="205.0" text="Change" textFill="#146886">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="changeLbl" alignment="CENTER_RIGHT" prefWidth="317.0" textAlignment="RIGHT" textFill="#146886">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="30.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="11.0" layoutY="286.0" prefWidth="200.0">
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                     <children>
+                        <Button fx:id="chkoutPay" minHeight="30.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@../styles/Style.css" text="Confirm Payment">
+                           <HBox.margin>
+                              <Insets right="100.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="chkoutCancelBtn" layoutX="390.0" layoutY="10.0" minHeight="30.0" mnemonicParsing="false" styleClass="buttons" stylesheets="@../styles/Style.css" text="Cancel" />
+                     </children>
+                  </HBox>
+               </children>
+               <styleClass>
+                  <String fx:value="modal-design" />
+                  <String fx:value="card" />
+               </styleClass></VBox>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="acLstsale" prefHeight="200.0" prefWidth="200.0" styleClass="blankstuff" stylesheets="@../styles/Style.css">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0" stylesheets="@../styles/Style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <styleClass>
+                        <String fx:value="modal-design" />
+                        <String fx:value="card" />
+                     </styleClass>
+                  </VBox>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
    </children>
 </StackPane>
