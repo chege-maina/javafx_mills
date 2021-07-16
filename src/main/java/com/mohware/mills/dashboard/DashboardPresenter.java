@@ -243,4 +243,29 @@ public class DashboardPresenter {
             }
         });
     }
+    
+    public void listProductsSrc(final String key) {
+        //view.showLoading();
+        System.out.println(key);
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<List<CustHelp>> call = apiInterface.getProdsrc(key);
+        call.enqueue(new Callback<List<CustHelp>>() {
+            @Override
+            public void onResponse(Call<List<CustHelp>> call, Response<List<CustHelp>> response) {
+
+                //view.hideLoading();
+                if (response.isSuccessful() && response.body() != null) {
+                    
+                    view.loadProductsList(response.body());
+                }
+            }
+
+            public void onFailure(Call<List<CustHelp>> call, Throwable t) {
+                //view.hideLoading();
+                String error = "Internet Connection Error...";
+                view.onErrorLoading(error);
+
+            }
+        });
+    }
 }

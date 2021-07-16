@@ -63,4 +63,10 @@ public interface ApiInterface {
     
     @GET("editproducts.php")
     Call<List<CustHelp>> getProd(@Query("code")String prodCode);
+    
+    @GET("listproducts_src.php")
+    Call<List<CustHelp>> getProdsrc(@Query("key")String prodCode);
+    
+    @GET("search_pos_items.php")
+    Call<List<CustHelp>> posSrc(@Query("key")String prodCode);
 }

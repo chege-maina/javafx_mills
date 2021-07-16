@@ -71,10 +71,10 @@ public class PosController implements PosView, Initializable {
     private VBox receipt;
 
     @FXML
-    private Button cancel, save, chkoutCancelBtn, chkoutPay;
+    private Button cancel, save, chkoutCancelBtn, chkoutPay, posSrchBtn;
 
     @FXML
-    private AnchorPane acPos, acCheckout;
+    private AnchorPane acPos, acCheckout, acLstsale;
 
     @FXML
     private ImageView action1, action2, cat1, logo, search;
@@ -86,7 +86,7 @@ public class PosController implements PosView, Initializable {
     private Label TotalPrice, dateLabel, timeLabel, userLabel, TaxAmount, SubTotal, LblTotal, changeLbl;
 
     @FXML
-    private TextField mpesaTxt, transcodeTxt, cashTxt;
+    private TextField mpesaTxt, transcodeTxt, cashTxt, searchTxt;
 
     @FXML
     private StackPane rootpanes;
@@ -169,6 +169,19 @@ public class PosController implements PosView, Initializable {
             } else {
                 acCheckout.setVisible(true);
                 LblTotal.setText(TotalAmount);
+            }
+
+        });
+        posSrchBtn.setOnMouseClicked(mouseEvent -> {
+            String key = searchTxt.getText();
+            if (key.equals("")) {
+                Platform.runLater(() -> {
+                    infodialog("Okay", "Type text for Search..");
+                    grid.getChildren().clear();
+                    presenter.getItems();
+                });
+            } else {
+                presenter.srcItems(key);
             }
 
         });
@@ -289,6 +302,7 @@ public class PosController implements PosView, Initializable {
     public void hideItems() {
         acPos.setVisible(false);
         acCheckout.setVisible(false);
+        acLstsale.setVisible(false);
 
     }
 
@@ -772,6 +786,57 @@ public class PosController implements PosView, Initializable {
             }
         });
 
+    }
+
+    @Override
+    public void onGetsrcResult(List<CustHelp> body) {
+        item = body;
+        
+
+        int x = body.size();
+        Platform.runLater(() -> {
+            searchTxt.setText("");
+            grid.getChildren().clear();
+            int column = 0;
+            int row = 1;
+
+            try {
+
+                for (int i = 0; i < x; i++) {
+                    String ditem = body.get(i).getItem();
+                    String dpath = body.get(i).getPath();
+                    String dprice = body.get(i).getPrice();
+                    String dqty = body.get(i).getCheckqty();
+
+                    File f = new File("images/" + dpath);
+                    if (!f.exists()) {
+                        String logox = "images/" + dpath;
+                        //String getuurl = "http://192.168.0.251:80/kelmo/" + dpath;
+                        String getuurl = "http://www.severinombae.net/kelmo/" + dpath;
+                        saveUrl(logox, getuurl);
+                    }
+
+                    FXMLLoader fxmlloader = new FXMLLoader();
+                    fxmlloader.setLocation(getClass().getResource("/fxml/Items.fxml"));
+                    AnchorPane ac = fxmlloader.load();
+                    ItemsController itemscontroller = fxmlloader.getController();
+                    itemscontroller.setItems(ditem, dpath, dprice, dqty, body.get(i), listenerz);
+//get the array from the other array.... it is marked man...
+                    if (column == 4) {
+                        column = 0;
+                        row++;
+                    }
+
+                    grid.add(ac, column++, row);
+                    GridPane.setMargin(ac, new Insets(10));
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println(e);
+            }
+            p_Indicator.setVisible(false);
+        });
     }
 
 }

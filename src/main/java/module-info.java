@@ -15,7 +15,6 @@ module com.mohware.mills {
     requires retrofit2.converter.gson;
     requires com.google.gson;
     requires java.base;
-    //requires picasso;
     requires org.json;
     requires jasperreports;
     

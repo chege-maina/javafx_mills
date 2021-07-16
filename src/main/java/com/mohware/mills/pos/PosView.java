@@ -1,8 +1,8 @@
 
 package com.mohware.mills.pos;
 
-import java.util.List;
 import com.mohware.mills.model.CustHelp;
+import java.util.List;
 import com.mohware.mills.model.RecModel;
 
 public interface PosView {
@@ -15,4 +15,6 @@ public interface PosView {
     void onErrorLoading(String message);
     void onAddError(String message);
     void onAddSuccess(String message);
+
+    void onGetsrcResult(List<CustHelp> body);
 }

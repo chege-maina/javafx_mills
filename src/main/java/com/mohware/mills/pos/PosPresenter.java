@@ -104,4 +104,28 @@ public class PosPresenter {
         });
     }
     
+    public void srcItems(final String key) {
+        view.showLoading();
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<List<CustHelp>> call = apiInterface.posSrc(key);
+        call.enqueue(new Callback<List<CustHelp>>() {
+            @Override
+            public void onResponse(Call<List<CustHelp>> call, Response<List<CustHelp>> response) {
+
+                view.hideLoading();
+                if (response.isSuccessful() && response.body() != null) {
+                    view.onGetsrcResult(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<CustHelp>> call, Throwable t) {
+                view.hideLoading();
+                String error = "Internet Connection Error...";
+                view.onErrorLoading(error);
+
+            }
+        });
+    }
+    
 }

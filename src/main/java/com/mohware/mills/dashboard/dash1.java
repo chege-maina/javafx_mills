@@ -16,10 +16,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.TranslateTransition;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -38,6 +42,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -51,6 +56,14 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperPrintManager;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -79,9 +92,12 @@ public class dash1 implements DashboardView, Initializable {
 
     @FXML
     private Label dateLabel, timeLabel;
-    
+
     @FXML
     private Button btnAddCategory, btnCancel, btnAddUnit2, btnAddUnit1, btnImgSelect, btnImageView, btnSave, edtSave, edtActivate, edtDeactivate;
+
+    @FXML
+    private Button lstSrchBtn, lstPrint;
 
     @FXML
     private AnchorPane slider, addproducts_acpane, receiveproducts_acpane, productList, editProduct, dispatchItems;
@@ -104,6 +120,9 @@ public class dash1 implements DashboardView, Initializable {
     private JFXTextField prod_name, opening_bal, conversion_txt, buying_txt, selling_txt, tax_txt, max_txt, min_txt, reorder_txt;
 
     @FXML
+    private TextField searchTxt;
+
+    @FXML
     private JFXTextField edtOpenbal, edtBs, edtSp, edtTax, edtMax, edtMin, edtReorder, edtConversion;
 
     DashboardPresenter presenter;
@@ -111,6 +130,7 @@ public class dash1 implements DashboardView, Initializable {
     ArrayList<ArrayList<String>> receiptlist1;
     ArrayList<String> listelm;
     ArrayList<String> unitlist;
+    List<CustHelp> listItem;
     public static String comboAdder = "";
     private String checked = "";
     private String encoded_image;
@@ -164,13 +184,14 @@ public class dash1 implements DashboardView, Initializable {
 
                 @Override
                 public void onClickListener3(ArrayList prod) {
-
                     selectedProduct(prod);
 
                 }
 
                 @Override
                 public void onClickListener4(ArrayList prod) {
+                    String recno = (String) prod.get(0);
+                    System.out.println(recno);
                 }
 
             };
@@ -188,7 +209,7 @@ public class dash1 implements DashboardView, Initializable {
         presenter.editProd(code);
 
     }
-    
+
     public void addDate() {
         String txtdate = new SimpleDateFormat("dd/MM/yyyy", Locale.FRANCE).format(new Date());
         dateLabel.setText(txtdate);
@@ -425,9 +446,41 @@ public class dash1 implements DashboardView, Initializable {
                 e.printStackTrace();
             }
         });
+        lstSrchBtn.setOnMouseClicked(mouseEvent -> {
+            String key = searchTxt.getText();
+            if (key.equals("")) {
+                Platform.runLater(() -> {
+                    infodialog("Okay", "Type text for Search..");
+                });
+            } else {
+                presenter.listProductsSrc(key);
+            }
+
+        });
         btnCancel.setOnMouseClicked(mouseEvent -> {
             clearMe();
             combobox_events();
+
+        });
+        lstPrint.setOnMouseClicked(mouseEvent -> {
+            String source = System.getProperty("user.dir") + "/items_list.jrxml";
+                if (new File(source).exists() == false) {
+                    infodialog("Okay", "SPECIFY THE REPORT ROOT!!");
+                    return;
+                }
+                try {
+                    JRDataSource dataSource = new JRBeanCollectionDataSource(listItem);
+                    JasperReport jasperReport = JasperCompileManager.compileReport(source);
+                    Map<String, Object> param = new HashMap<String, Object>();
+                    
+
+                    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, param, dataSource);
+                    JasperPrintManager.printReport(jasperPrint, false);
+
+
+                } catch (JRException ex) {
+                    Logger.getLogger(dash1.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
         });
         edtActivate.setOnMouseClicked(mouseEvent -> {
@@ -475,6 +528,7 @@ public class dash1 implements DashboardView, Initializable {
             hideItems();
             sub_products.setVisible(true);
             productList.setVisible(true);
+            searchTxt.setText("");
             presenter.listProducts();
 
         });
@@ -737,7 +791,7 @@ public class dash1 implements DashboardView, Initializable {
             }
         }
     }
-    
+
     private void listDispatch() {
         int totsize = receiptlist1.size();
         for (int i = 0; i < totsize; i++) {
@@ -856,6 +910,7 @@ public class dash1 implements DashboardView, Initializable {
 
     @Override
     public void loadProductsList(List<CustHelp> lstProd) {
+        listItem = lstProd;
         Platform.runLater(() -> {
             int totsize = lstProd.size();
             receiptlist1.clear();
@@ -920,5 +975,6 @@ public class dash1 implements DashboardView, Initializable {
                 receiptlist1.add(listelm);
             }
             listDispatch();
-        });}
+        });
+    }
 }
