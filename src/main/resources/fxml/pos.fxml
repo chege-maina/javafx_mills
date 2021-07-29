@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.ScrollPane?>
@@ -479,11 +480,173 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" stylesheets="@../styles/Style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <styleClass>
-                        <String fx:value="modal-design" />
-                        <String fx:value="card" />
-                     </styleClass>
+                  <VBox prefHeight="100.0" prefWidth="1024.0" styleClass="card" stylesheets="@../styles/Style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Label prefHeight="21.0" prefWidth="325.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Sale Receipts List">
+                           <font>
+                              <Font name="Cambria Bold" size="18.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="10.0" top="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <DatePicker fx:id="startDate" editable="false" promptText="Select Start Date">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </DatePicker>
+                              <DatePicker fx:id="endDate" editable="false" layoutX="30.0" layoutY="23.0" promptText="Select End Date">
+                                 <HBox.margin>
+                                    <Insets left="20.0" />
+                                 </HBox.margin>
+                              </DatePicker>
+                              <Button fx:id="lstSalePos" mnemonicParsing="false" prefHeight="24.0" prefWidth="72.0" styleClass="buttons" stylesheets="@../styles/Style.css" text="Search">
+                                 <HBox.margin>
+                                    <Insets left="50.0" />
+                                 </HBox.margin>
+                              </Button>
+                              <Button fx:id="backPos" layoutX="500.0" layoutY="23.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="72.0" styleClass="buttons" stylesheets="@../styles/Style.css" text="Back">
+                                 <HBox.margin>
+                                    <Insets left="200.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="32.0" prefWidth="450.0">
+                           <children>
+                              <Label prefHeight="16.0" prefWidth="120.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Receipt No">
+                                 <HBox.margin>
+                                    <Insets left="15.0" top="10.0" />
+                                 </HBox.margin>
+                                 <font>
+                                    <Font name="Cambria Bold" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="20.0" layoutY="20.0" prefHeight="16.0" prefWidth="120.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Date">
+                                 <font>
+                                    <Font name="Cambria Bold" size="13.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label layoutX="105.0" layoutY="10.0" prefHeight="16.0" prefWidth="120.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Time">
+                                 <font>
+                                    <Font name="Cambria Bold" size="13.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="190.0" layoutY="10.0" prefHeight="16.0" prefWidth="140.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="MPESA">
+                                 <font>
+                                    <Font name="Cambria Bold" size="13.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="285.0" layoutY="20.0" prefHeight="16.0" prefWidth="140.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Cash" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Cambria Bold" size="13.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label alignment="CENTER" prefHeight="16.0" prefWidth="150.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Total">
+                                 <font>
+                                    <Font name="Cambria Bold" size="13.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                              <Label alignment="CENTER" layoutX="721.0" layoutY="20.0" prefHeight="16.0" prefWidth="120.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="MPESA Code">
+                                 <font>
+                                    <Font name="Cambria Bold" size="13.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets left="10.0" top="10.0" />
+                                 </HBox.margin>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <ScrollPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                           <VBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </VBox.margin>
+                           <content>
+                              <VBox fx:id="saleLstVbox" />
+                           </content>
+                        </ScrollPane>
+                        <VBox alignment="CENTER_RIGHT">
+                           <children>
+                              <HBox alignment="TOP_RIGHT">
+                                 <children>
+                                    <Label prefHeight="20.0" prefWidth="115.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Total MPESA">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="mpesaSaleLbl" alignment="CENTER_RIGHT" layoutX="334.0" layoutY="10.0" prefHeight="18.0" prefWidth="300.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Kshs. 0.00/=" textAlignment="RIGHT">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="TOP_RIGHT">
+                                 <children>
+                                    <Label prefHeight="18.0" prefWidth="115.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Total Cash">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="cashSaleLbl" alignment="CENTER_RIGHT" layoutX="334.0" layoutY="10.0" prefHeight="18.0" prefWidth="300.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Kshs. 0.00/=" textAlignment="RIGHT">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <HBox alignment="TOP_RIGHT">
+                                 <children>
+                                    <Label prefHeight="20.0" prefWidth="115.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Grand Total">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="totalsaleLbl" alignment="CENTER_RIGHT" layoutX="334.0" layoutY="10.0" prefHeight="18.0" prefWidth="300.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Kshs. 0.00/=" textAlignment="RIGHT">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets right="10.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets bottom="10.0" top="10.0" />
+                                 </VBox.margin>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
                   </VBox>
                </children>
             </AnchorPane>

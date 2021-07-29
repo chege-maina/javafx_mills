@@ -36,6 +36,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressIndicator;
 import javafx.scene.control.ScrollPane;
@@ -68,10 +69,13 @@ public class PosController implements PosView, Initializable {
     private ScrollPane scroll;
 
     @FXML
-    private VBox receipt;
+    private VBox receipt, saleLstVbox;
 
     @FXML
-    private Button cancel, save, chkoutCancelBtn, chkoutPay, posSrchBtn, saleLstBtn;
+    private Button cancel, save, chkoutCancelBtn, chkoutPay, posSrchBtn, saleLstBtn, backPos, lstSalePos;
+
+    @FXML
+    private DatePicker startDate, endDate;
 
     @FXML
     private AnchorPane acPos, acCheckout, acLstsale;
@@ -84,6 +88,9 @@ public class PosController implements PosView, Initializable {
 
     @FXML
     private Label TotalPrice, dateLabel, timeLabel, userLabel, TaxAmount, SubTotal, LblTotal, changeLbl;
+
+    @FXML
+    private Label mpesaSaleLbl, cashSaleLbl, totalsaleLbl;
 
     @FXML
     private TextField mpesaTxt, transcodeTxt, cashTxt, searchTxt;
@@ -115,6 +122,19 @@ public class PosController implements PosView, Initializable {
 
         cancel.setOnMouseClicked(mouseEvent -> {
             clearme();
+
+        });
+        lstSalePos.setOnMouseClicked(mouseEvent -> {
+            if (startDate.getValue() == null) {
+                infodialog("Okay", "Select Start Date");
+            } else if (endDate.getValue() == null) {
+                infodialog("Okay", "Select End Date");
+            } else {
+                String starts = startDate.getValue().toString();
+                String ends = endDate.getValue().toString();
+                String user = userLabel.getText();
+                presenter.getRecSale(starts, ends, user);
+            }
 
         });
         chkoutPay.setOnMouseClicked(mouseEvent -> {
@@ -174,6 +194,15 @@ public class PosController implements PosView, Initializable {
         });
         saleLstBtn.setOnMouseClicked(mouseEvent -> {
             acLstsale.setVisible(true);
+
+        });
+        backPos.setOnMouseClicked(mouseEvent -> {
+            hideItems();
+            acPos.setVisible(true);
+            saleLstVbox.getChildren().clear();
+            totalsaleLbl.setText("Kshs. 0.00/=");
+            cashSaleLbl.setText("Kshs. 0.00/=");
+            mpesaSaleLbl.setText("Kshs. 0.00/=");
 
         });
         posSrchBtn.setOnMouseClicked(mouseEvent -> {
@@ -795,7 +824,6 @@ public class PosController implements PosView, Initializable {
     @Override
     public void onGetsrcResult(List<CustHelp> body) {
         item = body;
-        
 
         int x = body.size();
         Platform.runLater(() -> {
@@ -841,6 +869,34 @@ public class PosController implements PosView, Initializable {
             }
             p_Indicator.setVisible(false);
         });
+    }
+
+    @Override
+    public void onGetRecSale(List<RecModel> rec) {
+        int x = rec.size();
+        Platform.runLater(() -> {
+
+            saleLstVbox.getChildren().clear();
+
+            try {
+
+                for (int i = 0; i < x; i++) {
+
+                    FXMLLoader fxmlloader = new FXMLLoader();
+                    fxmlloader.setLocation(getClass().getResource("/fxml/saleListPos.fxml"));
+
+                    HBox hBox = fxmlloader.load();
+                    saleListController itemscontroller = fxmlloader.getController();
+                    itemscontroller.saleList(rec.get(i));
+                    saleLstVbox.getChildren().add(hBox);
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println(e);
+            }
+        });
+
     }
 
 }

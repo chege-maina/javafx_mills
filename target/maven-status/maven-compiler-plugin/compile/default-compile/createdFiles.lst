@@ -24,6 +24,7 @@ com/mohware/mills/dashboard/dash1$8.class
 com/mohware/mills/pos/PosPresenter$3.class
 com/mohware/mills/dashboard/AddCategoryPresenter$1.class
 com/mohware/mills/pos/PosPresenter$4.class
+com/mohware/mills/pos/PosPresenter$5.class
 com/mohware/mills/dashboard/dash1.class
 com/mohware/mills/api/ApiClient.class
 com/mohware/mills/pos/ReceiptItemsController$1.class
@@ -43,6 +44,7 @@ com/mohware/mills/pos/ItemsController.class
 com/mohware/mills/dashboard/categoryController.class
 com/mohware/mills/dashboard/DashboardPresenter$7.class
 com/mohware/mills/pos/PosController$1.class
+com/mohware/mills/pos/saleListController.class
 com/mohware/mills/dashboard/DashboardPresenter$5.class
 com/mohware/mills/pos/ReceiptItemsController.class
 com/mohware/mills/main/runner.class

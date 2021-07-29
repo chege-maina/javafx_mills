@@ -13,6 +13,7 @@ public interface PosView {
     void onGetResult(List<CustHelp> items);
     void onGetRec(List<RecModel> rec);
     void onErrorLoading(String message);
+    void onGetRecSale(List<RecModel> rec);
     void onAddError(String message);
     void onAddSuccess(String message);
 

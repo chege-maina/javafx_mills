@@ -128,4 +128,28 @@ public class PosPresenter {
         });
     }
     
+    public void getRecSale(final String date1, final String date2, final String user) {
+        view.showLoading();
+        ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
+        Call<List<RecModel>> call = apiInterface.loadRecSales(date1, date2, user);
+        call.enqueue(new Callback<List<RecModel>>() {
+            @Override
+            public void onResponse(Call<List<RecModel>> call, Response<List<RecModel>> response) {
+
+                view.hideLoading();
+                if (response.isSuccessful() && response.body() != null) {
+                    view.onGetRecSale(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<RecModel>> call, Throwable t) {
+                view.hideLoading();
+                String error = "Internet Connection Error...";
+                view.onErrorLoading(t.toString());
+
+            }
+        });
+    }
+    
 }

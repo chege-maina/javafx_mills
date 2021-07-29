@@ -18,7 +18,7 @@ public class main extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/pos.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/login.fxml"));
         stage.setMaximized(true);
 
         //stage.initStyle(StageStyle.UNDECORATED);

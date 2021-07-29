@@ -69,4 +69,7 @@ public interface ApiInterface {
     
     @GET("search_pos_items.php")
     Call<List<CustHelp>> posSrc(@Query("key")String prodCode);
+    
+    @GET("get_rec_sale.php")
+    Call<List<RecModel>> loadRecSales(@Query("date1")String date1, @Query("date2")String date2, @Query("user")String user);
 }
