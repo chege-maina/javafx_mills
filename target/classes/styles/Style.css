@@ -1,152 +1,181 @@
-.menuItem:hover{
+.menuItem:hover {
     -fx-border-color: #660099;
     -fx-border-width: 0px 0px 3px 0px;
 }
 
-.sidebarItem:hover{
+.sidebarItem:hover {
     -fx-border-color: WHITE;
     -fx-background-color: #146886;
     -fx-border-width: 0px 0px 0px 3px;
 }
-.modal-design{
+
+.modal-design {
     -fx-border-color: #146886;
-    -fx-border-radius:  5;
+    -fx-border-radius: 5;
     -fx-border-width: 3px 3px 3px 3px;
-    
+
 }
-.blankstuff{
+
+.blankstuff {
     -fx-background-color: transparent;
 }
-.itemBorder{
+
+.itemBorder {
     -fx-border-color: #146886;
     -fx-background-color: WHITE;
     -fx-border-width: 0px 0px 1px 0px;
 }
-.roundBorder{
+
+.roundBorder {
     -fx-border-color: #146886;
     -fx-background-color: WHITE;
     -fx-border-width: 1px 1px 1px 1px;
 }
-.label-border{
+
+.label-border {
     -fx-border-color: #146886;
     -fx-border-width: 1px 0px 1px 0px;
 }
 
-.textInputError{
-    -jfx-unfocus-color : #b75b37;
-    -jfx-focus-color : #b75b37;
+.textInputError {
+    -jfx-unfocus-color: #b75b37;
+    -jfx-focus-color: #b75b37;
     -fx-text-fill: #b75b37;
     -fx-prompt-text-fill: #b75b37;
 
 }
-.textInput{
-    -jfx-unfocus-color :  #146886;
-    -jfx-focus-color :  #146886;
+
+.textInput {
+    -jfx-unfocus-color: #146886;
+    -jfx-focus-color: #146886;
     -fx-text-fill: #146886;
     -fx-prompt-text-fill: #146886;
 
 }
-.textColor{
+
+.textColor {
     -fx-text-fill: #146886;
     -fx-prompt-text-fill: #146886;
 }
+
 .combo-box,
 .choice-box {
-    -jfx-unfocus-color :  #146886;
-    -jfx-focus-color :  #146886;
+    -jfx-unfocus-color: #146886;
+    -jfx-focus-color: #146886;
     -fx-font-size: 13px;
     -fx-prompt-text-fill: #146886;
     -fx-text-fill: #146886;
     -fx-background-color: none;
     -fx-font-family: "Cambria";
 }
-.combo-box .cell{
+
+.combo-box .cell {
     -fx-text-fill: #146886;
 }
+
 .combo-box .arrow,
 .choice-box .arrow {
-    -fx-background-color: #146886;   
+    -fx-background-color: #146886;
 }
-.right-bar{
-    -fx-background-color:  #C0D6DF;
+
+.right-bar {
+    -fx-background-color: #C0D6DF;
 
 }
-.card{
-    -fx-background-color:  #F6F6F6;
-    -fx-background-radius:  5;
+
+.card {
+    -fx-background-color: #F6F6F6;
+    -fx-background-radius: 5;
 
 }
-.top-bar{
-    -fx-background-color:  #146886;
+
+.top-bar {
+    -fx-background-color: #146886;
 }
-.main-page{
-    -fx-background-color:  #EAEAEA;
+
+.main-page {
+    -fx-background-color: #EAEAEA;
 }
-.scroll{
-    -fx-background-color:  #ffffff;
+
+.scroll {
+    -fx-background-color: #ffffff;
 }
-.label-text1{
+
+.label-text1 {
     -fx-text-fill: #146886;
 }
-.warning_label{
+
+.warning_label {
     -fx-text-fill: #b75b37;
 }
-.categoryItem:hover{
+
+.categoryItem:hover {
     -fx-border-color: #146886;
     -fx-background-color: #C0D6DF;
     -fx-text-fill: #146886;
     -fx-border-width: 0px 0px 0px 3px;
 }
-.categoryItem{
-    -fx-background-color:  #146886;
+
+.categoryItem {
+    -fx-background-color: #146886;
     -fx-text-fill: #C0D6DF;
 }
-.transparent{
-    -fx-background-color:  rgba(0,0,0,0);
+
+.transparent {
+    -fx-background-color: rgba(0, 0, 0, 0);
 }
-.search-box{
-    -fx-background-color:  #C0D6DF;
-    -fx-background-radius:  100;
-    
+
+.search-box {
+    -fx-background-color: #C0D6DF;
+    -fx-background-radius: 100;
+
 }
-.buttons{
-    -fx-background-color:  #146886;
-    -fx-background-radius:  30;
+
+.buttons {
+    -fx-background-color: #146886;
+    -fx-background-radius: 30;
     -fx-text-fill: #C0D6DF;
-    
+
 }
-.buttons-right{
-    -fx-background-color:  #146886;
-    -fx-background-radius:  0 30 30 0;
+
+.buttons-right {
+    -fx-background-color: #146886;
+    -fx-background-radius: 0 30 30 0;
     -fx-text-fill: #C0D6DF;
-    
+
 }
-.buttons-left{
-    -fx-background-color:  #146886;
-    -fx-background-radius:  30 0 0 30;
+
+.buttons-left {
+    -fx-background-color: #146886;
+    -fx-background-radius: 30 0 0 30;
     -fx-text-fill: #C0D6DF;
-    
+
 }
-.search-button{
-    -fx-background-color:  #146886;
-    -fx-background-radius:  40;
-    
+
+.search-button {
+    -fx-background-color: #146886;
+    -fx-background-radius: 40;
+
 }
-.rem-button{
-    -fx-background-color:  #E8DAB2;
-    -fx-background-radius:  40;
-    
+
+.rem-button {
+    -fx-background-color: #E8DAB2;
+    -fx-background-radius: 40;
+
 }
-.shadow{
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 3, 0.0, 0.0, 1);
-    
+
+.shadow {
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 3, 0.0, 0.0, 1);
+
 }
-.sale-item{
-    -fx-background-color:  #146886;
-    -fx-background-radius:  5;
-    
+
+.sale-item {
+    -fx-background-color: #146886;
+    -fx-background-radius: 5;
+
 }
-.text-color-one{
+
+.text-color-one {
     -fx-text-fill: #C0D6DF;
-    
+
 }
