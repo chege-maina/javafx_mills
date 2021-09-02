@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<HBox alignment="CENTER_LEFT" minHeight="20.0" prefHeight="25.0" styleClass="itemBorder" stylesheets="@../styles/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mohware.mills.dashboard.dispRecItems">
+   <children>
+      <Label fx:id="itmName" prefHeight="17.0" prefWidth="290.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Kim Jong IL Sister's Diss America">
+         <font>
+            <Font name="Cambria" size="12.0" />
+         </font>
+         <HBox.margin>
+            <Insets right="10.0" />
+         </HBox.margin>
+      </Label>
+      <Label fx:id="itmQty" alignment="CENTER" minHeight="17.0" prefHeight="17.0" prefWidth="86.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="1,000,006.57">
+         <font>
+            <Font name="Cambria" size="12.0" />
+         </font>
+         <HBox.margin>
+            <Insets right="5.0" />
+         </HBox.margin>
+      </Label>
+   </children>
+</HBox>

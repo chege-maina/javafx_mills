@@ -73,7 +73,7 @@ public class dash1 implements DashboardView, Initializable {
     private Label Menu, CloseMenu, userLabel;
 
     @FXML
-    private VBox lstItem, dspLst;
+    private VBox lstItem, dspLst, dispItmLst;
 
     @FXML
     private StackPane rootpanes;
@@ -91,18 +91,18 @@ public class dash1 implements DashboardView, Initializable {
     private Label edtOpenbalLbl, edtConversionLbl, edtBsLbl, edtSpLbl, edtTaxLbl, edtMaxLbl, edtMinLbl, edtReorderLbl, edtCatLabel, edtSupLabel, edtSelLabel;
 
     @FXML
-    private Label dateLabel, timeLabel;
+    private Label dateLabel, timeLabel, dspRecNo, dspDate, dspCustomer, dspStatus;
 
     @FXML
     private Button btnAddCategory, btnCancel, btnAddUnit2, btnAddUnit1, btnImgSelect, btnImageView, btnSave, edtSave, edtActivate, edtDeactivate;
 
     @FXML
-    private Button lstSrchBtn, lstPrint;
+    private Button lstSrchBtn, lstPrint, btnDspCancel, btnDispatch;
 
     @FXML
-    private AnchorPane slider, addproducts_acpane, receiveproducts_acpane, productList, editProduct, dispatchItems;
+    private AnchorPane slider, addproducts_acpane, receiveproducts_acpane, productList, editProduct, dispatchItems, ac_stocksheet;
     @FXML
-    private JFXButton products_menu, store_menu, list_prod_menu, new_product, dispatch_menu;
+    private JFXButton products_menu, store_menu, list_prod_menu, new_product, dispatch_menu, stocksheet_btn;
 
     @FXML
     private JFXComboBox<String> categoryCombo, supplierCombo, sellingCombo, edtCatCombo, edtSupCombo, edtSelCombo;
@@ -128,12 +128,14 @@ public class dash1 implements DashboardView, Initializable {
     DashboardPresenter presenter;
     private mylistener listenerz;
     ArrayList<ArrayList<String>> receiptlist1;
+    ArrayList<ArrayList<String>> receiptlist2;
     ArrayList<String> listelm;
     ArrayList<String> unitlist;
     List<CustHelp> listItem;
     public static String comboAdder = "";
     private String checked = "";
     private String encoded_image;
+    private String receiptNo;
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
@@ -145,6 +147,7 @@ public class dash1 implements DashboardView, Initializable {
         hideItems();
         initialView();
         receiptlist1 = new ArrayList<>();
+        receiptlist2 = new ArrayList<>();
         unitlist = new ArrayList<>();
         listelm = new ArrayList<>();
 
@@ -190,8 +193,12 @@ public class dash1 implements DashboardView, Initializable {
 
                 @Override
                 public void onClickListener4(ArrayList prod) {
-                    String recno = (String) prod.get(0);
-                    System.out.println(recno);
+                    receiptNo = (String) prod.get(0);
+                    dspCustomer.setText((String) prod.get(1));
+                    dspRecNo.setText("KELMO-" + (String) prod.get(0));
+                    dspDate.setText((String) prod.get(2));
+                    dspStatus.setText((String) prod.get(3));
+                    presenter.getRecItems(receiptNo);
                 }
 
             };
@@ -206,6 +213,7 @@ public class dash1 implements DashboardView, Initializable {
         sub_products.setVisible(true);
         editProduct.setVisible(true);
         String code = prod.get(0).toString();
+        System.out.println(code);
         presenter.editProd(code);
 
     }
@@ -302,6 +310,7 @@ public class dash1 implements DashboardView, Initializable {
         sub_store.setVisible(false);
         sub_products.setVisible(false);
         addproducts_acpane.setVisible(false);
+        ac_stocksheet.setVisible(false);
         productList.setVisible(false);
         editProduct.setVisible(false);
         receiveproducts_acpane.setVisible(false);
@@ -462,25 +471,40 @@ public class dash1 implements DashboardView, Initializable {
             combobox_events();
 
         });
+        btnDspCancel.setOnMouseClicked(mouseEvent -> {
+            dspCustomer.setText("");
+            dspRecNo.setText("");
+            dspDate.setText("");
+            dspStatus.setText("");
+            receiptlist2.clear();
+            dispItmLst.getChildren().clear();
+
+        });
+        btnDispatch.setOnMouseClicked(mouseEvent -> {
+            if (dspRecNo.getText().equals("")) {
+                infodialog("Okay", "PLEASE SELECT RECEIPT TO DISPATCH!!");
+            } else {
+                presenter.itemDispatch(receiptNo);
+            }
+
+        });
         lstPrint.setOnMouseClicked(mouseEvent -> {
             String source = System.getProperty("user.dir") + "/items_list.jrxml";
-                if (new File(source).exists() == false) {
-                    infodialog("Okay", "SPECIFY THE REPORT ROOT!!");
-                    return;
-                }
-                try {
-                    JRDataSource dataSource = new JRBeanCollectionDataSource(listItem);
-                    JasperReport jasperReport = JasperCompileManager.compileReport(source);
-                    Map<String, Object> param = new HashMap<String, Object>();
-                    
+            if (new File(source).exists() == false) {
+                infodialog("Okay", "SPECIFY THE REPORT ROOT!!");
+                return;
+            }
+            try {
+                JRDataSource dataSource = new JRBeanCollectionDataSource(listItem);
+                JasperReport jasperReport = JasperCompileManager.compileReport(source);
+                Map<String, Object> param = new HashMap<String, Object>();
 
-                    JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, param, dataSource);
-                    JasperPrintManager.printReport(jasperPrint, false);
+                JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, param, dataSource);
+                JasperPrintManager.printReport(jasperPrint, false);
 
-
-                } catch (JRException ex) {
-                    Logger.getLogger(dash1.class.getName()).log(Level.SEVERE, null, ex);
-                }
+            } catch (JRException ex) {
+                Logger.getLogger(dash1.class.getName()).log(Level.SEVERE, null, ex);
+            }
 
         });
         edtActivate.setOnMouseClicked(mouseEvent -> {
@@ -538,6 +562,11 @@ public class dash1 implements DashboardView, Initializable {
             dispatchItems.setVisible(true);
             presenter.listDispatch();
 
+        });
+        stocksheet_btn.setOnMouseClicked(mouseEvent -> {
+            hideItems();
+            sub_store.setVisible(true);
+            ac_stocksheet.setVisible(true);
         });
         store_menu.setOnMouseClicked(mouseEvent -> {
             hideItems();
@@ -730,14 +759,6 @@ public class dash1 implements DashboardView, Initializable {
         close_menu = new Image(menu_close.toURI().toString());
         warehouse.setImage(close_menu);
 
-        menu_close = new File("images/speedometer.png");
-        close_menu = new Image(menu_close.toURI().toString());
-        suppliers.setImage(close_menu);
-
-        menu_close = new File("images/house-fill.png");
-        close_menu = new Image(menu_close.toURI().toString());
-        procument.setImage(close_menu);
-
         menu_close = new File("images/house-fill.png");
         close_menu = new Image(menu_close.toURI().toString());
         receiveitems_img.setImage(close_menu);
@@ -803,6 +824,25 @@ public class dash1 implements DashboardView, Initializable {
                 dispatchList itemscontroller = fxmlloader.getController();
                 itemscontroller.DispatchList(receiptlist1.get(i), listenerz);
                 dspLst.getChildren().add(hBox);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void listRecItems() {
+        int totsize = receiptlist2.size();
+        for (int i = 0; i < totsize; i++) {
+
+            //System.out.println(receiptlist2.get(i).get(0));
+            try {
+                FXMLLoader fxmlloader = new FXMLLoader();
+                fxmlloader.setLocation(getClass().getResource("/fxml/DispRecItem.fxml"));
+
+                HBox hBox = fxmlloader.load();
+                dispRecItems itemscontroller = fxmlloader.getController();
+                itemscontroller.ReceiptList(receiptlist2.get(i));
+                dispItmLst.getChildren().add(hBox);
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -965,6 +1005,12 @@ public class dash1 implements DashboardView, Initializable {
     public void loadDispatchList(List<RecModel> body) {
         Platform.runLater(() -> {
             int totsize = body.size();
+            dspCustomer.setText("");
+            dspRecNo.setText("");
+            dspDate.setText("");
+            dspStatus.setText("");
+            receiptlist2.clear();
+            dispItmLst.getChildren().clear();
             receiptlist1.clear();
             dspLst.getChildren().clear();
             for (int i = 0; i < totsize; i++) {
@@ -972,9 +1018,34 @@ public class dash1 implements DashboardView, Initializable {
                 listelm.add(body.get(i).getRec_no());
                 listelm.add(body.get(i).getRec_customer());
                 listelm.add(body.get(i).getRec_date());
+                listelm.add(body.get(i).getRec_status());
                 receiptlist1.add(listelm);
             }
             listDispatch();
+        });
+    }
+
+    @Override
+    public void recItems(List<CustHelp> recitems) {
+        Platform.runLater(() -> {
+            int totsize = recitems.size();
+            receiptlist2.clear();
+            dispItmLst.getChildren().clear();
+            for (int i = 0; i < totsize; i++) {
+                ArrayList<String> listelm = new ArrayList<>();
+                listelm.add(recitems.get(i).getProduct_name());
+                listelm.add(recitems.get(i).getQty() + " " + recitems.get(i).getSelling_unit());
+                receiptlist2.add(listelm);
+            }
+            listRecItems();
+        });
+    }
+
+    @Override
+    public void onDispatch(String message) {
+        Platform.runLater(() -> {
+            infodialog("Okay", message);
+            presenter.listDispatch();
         });
     }
 }

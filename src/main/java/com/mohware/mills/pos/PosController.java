@@ -679,7 +679,8 @@ public class PosController implements PosView, Initializable {
                     if (!f.exists()) {
                         String logox = "images/" + dpath;
                         //String getuurl = "http://192.168.0.251:80/kelmo/" + dpath;
-                        String getuurl = "http://www.severinombae.net/kelmo/" + dpath;
+                        //String getuurl = "http://www.severinombae.net/kelmo/" + dpath;
+                        String getuurl = "http://localhost:80/apps/kelmo/" + dpath;
                         saveUrl(logox, getuurl);
                     }
 

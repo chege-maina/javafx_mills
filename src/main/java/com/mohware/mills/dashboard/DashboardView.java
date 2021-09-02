@@ -13,12 +13,16 @@ public interface DashboardView {
     void loadProductsList(List<CustHelp> lstProd);
     
     void editprod(List<CustHelp> Prod);
+    
+    void recItems(List<CustHelp> recitems);
 
     void onErrorLoading(String message);
 
     void onAddSuccess(String message);
     
     void onUpdateSuccess(String message);
+    
+    void onDispatch(String message);
 
     void onAddError(String message);
 

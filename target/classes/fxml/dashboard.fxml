@@ -6,6 +6,7 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ProgressIndicator?>
@@ -24,7 +25,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="rootpanes" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mohware.mills.dashboard.dash1">
+<StackPane fx:id="rootpanes" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mohware.mills.dashboard.dash1">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="750.0" prefWidth="1000.0" stylesheets="@../styles/Style.css">
           <children>
@@ -51,7 +52,7 @@
                                           <Image url="@../images/php.png" />
                                        </image>
                                     </ImageView>
-                                    <Label text="Kelmo Admin" textFill="#c0d6df" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="20.0">
+                                    <Label text="Kelmo Store" textFill="#c0d6df" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="20.0">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font>
@@ -125,7 +126,7 @@
                                                       </ImageView>
                                                    </graphic>
                                                 </JFXButton>
-                                                <JFXButton prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Manage Store">
+                                                <JFXButton prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Receive Items">
                                                    <graphic>
                                                       <ImageView fx:id="managestore_img" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
@@ -134,7 +135,7 @@
                                                       </ImageView>
                                                    </graphic>
                                                 </JFXButton>
-                                                <JFXButton layoutX="146.0" layoutY="10.0" prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="StockSheet">
+                                                <JFXButton fx:id="stocksheet_btn" layoutX="146.0" layoutY="10.0" prefHeight="38.0" prefWidth="136.0" styleClass="menuItem" text="Store Report">
                                                    <graphic>
                                                       <ImageView fx:id="stocksheet_img" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
                                                          <image>
@@ -213,36 +214,6 @@
                                     <Insets bottom="3.0" left="5.0" right="5.0" />
                                  </VBox.margin>
                               </JFXButton>
-                              <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="176.0" styleClass="categoryItem" stylesheets="@../styles/Style.css" text="Users" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                                 <graphic>
-                                    <ImageView fx:id="procument" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/house-fill.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                                 <VBox.margin>
-                                    <Insets bottom="3.0" left="5.0" right="5.0" />
-                                 </VBox.margin>
-                              </JFXButton>
-                              <JFXButton alignment="BASELINE_LEFT" prefHeight="38.0" prefWidth="176.0" styleClass="categoryItem" stylesheets="@../styles/Style.css" text="Reports" textFill="WHITE">
-                                 <font>
-                                    <Font name="System Bold" size="15.0" />
-                                 </font>
-                                 <graphic>
-                                    <ImageView fx:id="suppliers" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@../images/speedometer.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                                 <VBox.margin>
-                                    <Insets bottom="3.0" left="5.0" right="5.0" />
-                                 </VBox.margin>
-                              </JFXButton>
                            </children>
                         </VBox>
                      </children>
@@ -281,378 +252,6 @@
                                     </SplitMenuButton>
                                     <ToggleButton layoutX="98.0" layoutY="353.0" mnemonicParsing="false" text="ToggleButton" />
                                     <Spinner layoutX="57.0" layoutY="398.0" />
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane fx:id="addproducts_acpane" prefHeight="519.0" prefWidth="1067.0" styleClass="main-page" stylesheets="@../styles/Style.css">
-                                 <children>
-                                    <Label layoutX="14.0" layoutY="25.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Add New Product" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
-                                       <font>
-                                          <Font name="Cambria Bold" size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <VBox layoutX="30.0" layoutY="70.0" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="70.0">
-                                       <children>
-                                          <HBox alignment="CENTER_LEFT">
-                                             <children>
-                                                <VBox HBox.hgrow="ALWAYS">
-                                                   <HBox.margin>
-                                                      <Insets right="80.0" />
-                                                   </HBox.margin>
-                                                   <children>
-                                                      <JFXTextField fx:id="prod_name" prefHeight="25.0" prefWidth="250.0" promptText="New Product Name" styleClass="textInput" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria" size="13.0" />
-                                                         </font>
-                                                         <VBox.margin>
-                                                            <Insets />
-                                                         </VBox.margin>
-                                                      </JFXTextField>
-                                                      <Label fx:id="prod_name_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria Bold" size="12.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                </VBox>
-                                                <VBox HBox.hgrow="ALWAYS">
-                                                   <HBox.margin>
-                                                      <Insets right="50.0" />
-                                                   </HBox.margin>
-                                                   <children>
-                                                      <HBox>
-                                                         <VBox.margin>
-                                                            <Insets />
-                                                         </VBox.margin>
-                                                         <children>
-                                                            <JFXComboBox fx:id="categoryCombo" prefHeight="25.0" prefWidth="250.0" promptText="--Select Category--" />
-                                                            <Button fx:id="btnAddCategory" alignment="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="30.0" styleClass="buttons-right" stylesheets="@../styles/Style.css">
-                                                               <graphic>
-                                                                  <ImageView fx:id="category_img" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
-                                                                     <image>
-                                                                        <Image url="@../../../../images/plus.png" />
-                                                                     </image>
-                                                                  </ImageView>
-                                                               </graphic>
-                                                            </Button>
-                                                         </children>
-                                                      </HBox>
-                                                      <Label fx:id="categoryCombolabel" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria Bold" size="12.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                </VBox>
-                                                <VBox HBox.hgrow="ALWAYS">
-                                                   <children>
-                                                      <JFXTextField fx:id="opening_bal" prefHeight="25.0" prefWidth="250.0" promptText="Opening Balance" styleClass="textInput" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria" size="13.0" />
-                                                         </font>
-                                                      </JFXTextField>
-                                                      <Label fx:id="opening_bal_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria Bold" size="12.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                   <HBox.margin>
-                                                      <Insets right="10.0" />
-                                                   </HBox.margin>
-                                                </VBox>
-                                             </children>
-                                          </HBox>
-                                          <HBox alignment="CENTER_LEFT">
-                                             <children>
-                                                <VBox HBox.hgrow="ALWAYS">
-                                                   <HBox.margin>
-                                                      <Insets right="60.0" />
-                                                   </HBox.margin>
-                                                   <children>
-                                                      <HBox>
-                                                         <children>
-                                                            <JFXComboBox fx:id="supplierCombo" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="250.0" promptText="--Supplier Unit--" />
-                                                            <Button fx:id="btnAddUnit1" alignment="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="30.0" styleClass="buttons-right" stylesheets="@../styles/Style.css">
-                                                               <graphic>
-                                                                  <ImageView fx:id="supplier_img" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
-                                                                     <image>
-                                                                        <Image url="@../images/plus.png" />
-                                                                     </image>
-                                                                  </ImageView>
-                                                               </graphic>
-                                                            </Button>
-                                                         </children>
-                                                      </HBox>
-                                                      <Label fx:id="supplierCombolabel" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria Bold" size="12.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                </VBox>
-                                                <VBox HBox.hgrow="ALWAYS">
-                                                   <HBox.margin>
-                                                      <Insets right="80.0" />
-                                                   </HBox.margin>
-                                                   <children>
-                                                      <JFXTextField fx:id="conversion_txt" prefHeight="25.0" prefWidth="250.0" promptText="Conversion Unit" styleClass="textInput" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria" size="13.0" />
-                                                         </font>
-                                                      </JFXTextField>
-                                                      <Label fx:id="conversion_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria Bold" size="12.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                </VBox>
-                                                <VBox HBox.hgrow="ALWAYS">
-                                                   <children>
-                                                      <HBox>
-                                                         <children>
-                                                            <JFXComboBox fx:id="sellingCombo" prefHeight="25.0" prefWidth="250.0" promptText="--Selling Unit--" />
-                                                            <Button fx:id="btnAddUnit2" alignment="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="30.0" styleClass="buttons-right" stylesheets="@../styles/Style.css">
-                                                               <graphic>
-                                                                  <ImageView fx:id="sell_img" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
-                                                                     <image>
-                                                                        <Image url="@../images/plus.png" />
-                                                                     </image>
-                                                                  </ImageView>
-                                                               </graphic>
-                                                            </Button>
-                                                         </children>
-                                                      </HBox>
-                                                      <Label fx:id="sellingCombolabel" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria Bold" size="12.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                   <HBox.margin>
-                                                      <Insets />
-                                                   </HBox.margin>
-                                                </VBox>
-                                             </children>
-                                          </HBox>
-                                          <HBox alignment="CENTER_LEFT">
-                                             <children>
-                                                <VBox HBox.hgrow="ALWAYS">
-                                                   <HBox.margin>
-                                                      <Insets right="80.0" />
-                                                   </HBox.margin>
-                                                   <children>
-                                                      <JFXTextField fx:id="buying_txt" prefHeight="25.0" prefWidth="250.0" promptText="Buying price" styleClass="textInput" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria" size="13.0" />
-                                                         </font>
-                                                         <VBox.margin>
-                                                            <Insets />
-                                                         </VBox.margin>
-                                                      </JFXTextField>
-                                                      <Label fx:id="buying_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria Bold" size="12.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                </VBox>
-                                                <VBox HBox.hgrow="ALWAYS">
-                                                   <HBox.margin>
-                                                      <Insets right="80.0" />
-                                                   </HBox.margin>
-                                                   <children>
-                                                      <JFXTextField fx:id="selling_txt" prefHeight="25.0" prefWidth="250.0" promptText="Selling Price" styleClass="textInput" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria" size="13.0" />
-                                                         </font>
-                                                      </JFXTextField>
-                                                      <Label fx:id="selling_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria Bold" size="12.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                </VBox>
-                                                <VBox HBox.hgrow="ALWAYS">
-                                                   <children>
-                                                      <JFXTextField fx:id="tax_txt" prefHeight="25.0" prefWidth="250.0" promptText="Tax%" styleClass="textInput" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria" size="13.0" />
-                                                         </font>
-                                                      </JFXTextField>
-                                                      <Label fx:id="tax_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria Bold" size="12.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                   <HBox.margin>
-                                                      <Insets right="10.0" />
-                                                   </HBox.margin>
-                                                </VBox>
-                                             </children>
-                                          </HBox>
-                                          <HBox alignment="CENTER_LEFT">
-                                             <children>
-                                                <VBox HBox.hgrow="ALWAYS">
-                                                   <HBox.margin>
-                                                      <Insets right="80.0" />
-                                                   </HBox.margin>
-                                                   <children>
-                                                      <JFXTextField fx:id="max_txt" prefHeight="25.0" prefWidth="250.0" promptText="Maximum Level" styleClass="textInput" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria" size="13.0" />
-                                                         </font>
-                                                         <VBox.margin>
-                                                            <Insets />
-                                                         </VBox.margin>
-                                                      </JFXTextField>
-                                                      <Label fx:id="max_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria Bold" size="12.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                </VBox>
-                                                <VBox HBox.hgrow="ALWAYS">
-                                                   <HBox.margin>
-                                                      <Insets right="80.0" />
-                                                   </HBox.margin>
-                                                   <children>
-                                                      <JFXTextField fx:id="min_txt" prefHeight="25.0" prefWidth="250.0" promptText="Minimum Level" styleClass="textInput" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria" size="13.0" />
-                                                         </font>
-                                                      </JFXTextField>
-                                                      <Label fx:id="min_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria Bold" size="12.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                </VBox>
-                                                <VBox HBox.hgrow="ALWAYS">
-                                                   <children>
-                                                      <JFXTextField fx:id="reorder_txt" prefHeight="25.0" prefWidth="250.0" promptText="Reorder Level" styleClass="textInput" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria" size="13.0" />
-                                                         </font>
-                                                      </JFXTextField>
-                                                      <Label fx:id="reorder_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria Bold" size="12.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                   <HBox.margin>
-                                                      <Insets right="10.0" />
-                                                   </HBox.margin>
-                                                </VBox>
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="10.0" left="15.0" right="15.0" top="20.0" />
-                                       </padding>
-                                       <styleClass>
-                                          <String fx:value="card" />
-                                          <String fx:value="shadow" />
-                                       </styleClass>
-                                    </VBox>
-                                    <VBox layoutX="28.0" layoutY="349.0" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="300.0">
-                                       <children>
-                                          <HBox alignment="CENTER_LEFT">
-                                             <children>
-                                                <VBox HBox.hgrow="ALWAYS">
-                                                   <HBox.margin>
-                                                      <Insets right="50.0" />
-                                                   </HBox.margin>
-                                                   <children>
-                                                      <HBox>
-                                                         <VBox.margin>
-                                                            <Insets />
-                                                         </VBox.margin>
-                                                         <children>
-                                                            <Button fx:id="btnImgSelect" mnemonicParsing="false" prefHeight="25.0" stylesheets="@../styles/Style.css" text="Select Image">
-                                                               <font>
-                                                                  <Font name="Cambria" size="13.0" />
-                                                               </font>
-                                                               <styleClass>
-                                                                  <String fx:value="buttons-left" />
-                                                                  <String fx:value="shadow" />
-                                                               </styleClass>
-                                                            </Button>
-                                                            <Label fx:id="image_label" prefHeight="28.0" prefWidth="250.0" stylesheets="@../styles/Style.css">
-                                                               <font>
-                                                                  <Font name="Cambria Bold" size="12.0" />
-                                                               </font>
-                                                               <styleClass>
-                                                                  <String fx:value="textInput" />
-                                                                  <String fx:value="label-border" />
-                                                               </styleClass>
-                                                            </Label>
-                                                            <Button fx:id="btnImageView" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" stylesheets="@../styles/Style.css" text="View Image">
-                                                               <font>
-                                                                  <Font name="Cambria" size="13.0" />
-                                                               </font>
-                                                               <styleClass>
-                                                                  <String fx:value="buttons-right" />
-                                                                  <String fx:value="shadow" />
-                                                               </styleClass>
-                                                            </Button>
-                                                         </children>
-                                                      </HBox>
-                                                      <Label fx:id="image_error_label" alignment="CENTER" prefHeight="22.0" prefWidth="420.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
-                                                         <font>
-                                                            <Font name="Cambria Bold" size="12.0" />
-                                                         </font>
-                                                      </Label>
-                                                   </children>
-                                                </VBox>
-                                             </children>
-                                          </HBox>
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="10.0" left="15.0" right="15.0" top="30.0" />
-                                       </padding>
-                                       <styleClass>
-                                          <String fx:value="card" />
-                                          <String fx:value="shadow" />
-                                       </styleClass>
-                                    </VBox>
-                                    <HBox alignment="CENTER_LEFT" layoutX="40.0" layoutY="360.0" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="393.0">
-                                       <children>
-                                          <Button fx:id="btnSave" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" stylesheets="@../styles/Style.css" text="Save">
-                                             <font>
-                                                <Font name="Cambria" size="13.0" />
-                                             </font>
-                                             <HBox.margin>
-                                                <Insets right="60.0" />
-                                             </HBox.margin>
-                                             <styleClass>
-                                                <String fx:value="buttons" />
-                                                <String fx:value="shadow" />
-                                             </styleClass>
-                                          </Button>
-                                          <Button fx:id="btnCancel" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" stylesheets="@../styles/Style.css" text="Cancel">
-                                             <font>
-                                                <Font name="Cambria" size="13.0" />
-                                             </font>
-                                             <styleClass>
-                                                <String fx:value="buttons" />
-                                                <String fx:value="shadow" />
-                                             </styleClass>
-                                          </Button>
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
-                                       </padding>
-                                       <styleClass>
-                                          <String fx:value="card" />
-                                          <String fx:value="shadow" />
-                                       </styleClass>
-                                    </HBox>
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="editProduct" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="1067.0" styleClass="main-page" stylesheets="@../styles/Style.css">
@@ -998,7 +597,7 @@
                                                                   <Font name="Cambria Bold" size="13.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label fx:id="dspRecNo" prefHeight="17.0" prefWidth="157.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="KELMO-10000000000">
+                                                            <Label fx:id="dspRecNo" prefHeight="17.0" prefWidth="157.0" styleClass="label-text1" stylesheets="@../styles/Style.css">
                                                                <font>
                                                                   <Font name="Cambria Bold" size="13.0" />
                                                                </font>
@@ -1008,7 +607,7 @@
                                                                   <Font name="Cambria Bold" size="13.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label fx:id="dspDate" prefHeight="17.0" prefWidth="95.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="2021-12-31">
+                                                            <Label fx:id="dspDate" prefHeight="17.0" prefWidth="95.0" styleClass="label-text1" stylesheets="@../styles/Style.css">
                                                                <font>
                                                                   <Font name="Cambria Bold" size="13.0" />
                                                                </font>
@@ -1022,7 +621,7 @@
                                                                   <Font name="Cambria Bold" size="13.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label fx:id="dspCustomer" prefHeight="17.0" prefWidth="157.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Walk In">
+                                                            <Label fx:id="dspCustomer" prefHeight="17.0" prefWidth="157.0" styleClass="label-text1" stylesheets="@../styles/Style.css">
                                                                <font>
                                                                   <Font name="Cambria Bold" size="13.0" />
                                                                </font>
@@ -1032,7 +631,7 @@
                                                                   <Font name="Cambria Bold" size="13.0" />
                                                                </font>
                                                             </Label>
-                                                            <Label fx:id="dspStatus" prefHeight="17.0" prefWidth="95.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="pending">
+                                                            <Label fx:id="dspStatus" prefHeight="17.0" prefWidth="95.0" styleClass="label-text1" stylesheets="@../styles/Style.css">
                                                                <font>
                                                                   <Font name="Cambria Bold" size="13.0" />
                                                                </font>
@@ -1128,7 +727,10 @@
                                                    <children>
                                                       <ScrollPane fitToHeight="true" prefHeight="383.0" prefWidth="421.0" stylesheets="@../styles/Style.css">
                                                          <content>
-                                                            <VBox fx:id="dispItmLst" prefWidth="991.0" />
+                                                            <VBox fx:id="dispItmLst">
+                                                               <padding>
+                                                                  <Insets left="3.0" />
+                                                               </padding></VBox>
                                                          </content>
                                                          <styleClass>
                                                             <String fx:value="card" />
@@ -1169,6 +771,378 @@
                                           </HBox>
                                        </children>
                                     </VBox>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="addproducts_acpane" prefHeight="519.0" prefWidth="1067.0" styleClass="main-page" stylesheets="@../styles/Style.css">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="25.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Add New Product" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                                       <font>
+                                          <Font name="Cambria Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <VBox layoutX="30.0" layoutY="70.0" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="70.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT">
+                                             <children>
+                                                <VBox HBox.hgrow="ALWAYS">
+                                                   <HBox.margin>
+                                                      <Insets right="80.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <JFXTextField fx:id="prod_name" prefHeight="25.0" prefWidth="250.0" promptText="New Product Name" styleClass="textInput" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria" size="13.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                      </JFXTextField>
+                                                      <Label fx:id="prod_name_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox HBox.hgrow="ALWAYS">
+                                                   <HBox.margin>
+                                                      <Insets right="50.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <HBox>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                         <children>
+                                                            <JFXComboBox fx:id="categoryCombo" prefHeight="25.0" prefWidth="250.0" promptText="--Select Category--" />
+                                                            <Button fx:id="btnAddCategory" alignment="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="30.0" styleClass="buttons-right" stylesheets="@../styles/Style.css">
+                                                               <graphic>
+                                                                  <ImageView fx:id="category_img" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@../images/plus.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                               </graphic>
+                                                            </Button>
+                                                         </children>
+                                                      </HBox>
+                                                      <Label fx:id="categoryCombolabel" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <JFXTextField fx:id="opening_bal" prefHeight="25.0" prefWidth="250.0" promptText="Opening Balance" styleClass="textInput" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria" size="13.0" />
+                                                         </font>
+                                                      </JFXTextField>
+                                                      <Label fx:id="opening_bal_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT">
+                                             <children>
+                                                <VBox HBox.hgrow="ALWAYS">
+                                                   <HBox.margin>
+                                                      <Insets right="60.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <HBox>
+                                                         <children>
+                                                            <JFXComboBox fx:id="supplierCombo" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="250.0" promptText="--Supplier Unit--" />
+                                                            <Button fx:id="btnAddUnit1" alignment="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="30.0" styleClass="buttons-right" stylesheets="@../styles/Style.css">
+                                                               <graphic>
+                                                                  <ImageView fx:id="supplier_img" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@../images/plus.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                               </graphic>
+                                                            </Button>
+                                                         </children>
+                                                      </HBox>
+                                                      <Label fx:id="supplierCombolabel" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox HBox.hgrow="ALWAYS">
+                                                   <HBox.margin>
+                                                      <Insets right="80.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <JFXTextField fx:id="conversion_txt" prefHeight="25.0" prefWidth="250.0" promptText="Conversion Unit" styleClass="textInput" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria" size="13.0" />
+                                                         </font>
+                                                      </JFXTextField>
+                                                      <Label fx:id="conversion_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <HBox>
+                                                         <children>
+                                                            <JFXComboBox fx:id="sellingCombo" prefHeight="25.0" prefWidth="250.0" promptText="--Selling Unit--" />
+                                                            <Button fx:id="btnAddUnit2" alignment="CENTER" mnemonicParsing="false" prefHeight="28.0" prefWidth="30.0" styleClass="buttons-right" stylesheets="@../styles/Style.css">
+                                                               <graphic>
+                                                                  <ImageView fx:id="sell_img" fitHeight="11.0" fitWidth="11.0" pickOnBounds="true" preserveRatio="true">
+                                                                     <image>
+                                                                        <Image url="@../images/plus.png" />
+                                                                     </image>
+                                                                  </ImageView>
+                                                               </graphic>
+                                                            </Button>
+                                                         </children>
+                                                      </HBox>
+                                                      <Label fx:id="sellingCombolabel" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets />
+                                                   </HBox.margin>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT">
+                                             <children>
+                                                <VBox HBox.hgrow="ALWAYS">
+                                                   <HBox.margin>
+                                                      <Insets right="80.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <JFXTextField fx:id="buying_txt" prefHeight="25.0" prefWidth="250.0" promptText="Buying price" styleClass="textInput" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria" size="13.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                      </JFXTextField>
+                                                      <Label fx:id="buying_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox HBox.hgrow="ALWAYS">
+                                                   <HBox.margin>
+                                                      <Insets right="80.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <JFXTextField fx:id="selling_txt" prefHeight="25.0" prefWidth="250.0" promptText="Selling Price" styleClass="textInput" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria" size="13.0" />
+                                                         </font>
+                                                      </JFXTextField>
+                                                      <Label fx:id="selling_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <JFXTextField fx:id="tax_txt" prefHeight="25.0" prefWidth="250.0" promptText="Tax%" styleClass="textInput" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria" size="13.0" />
+                                                         </font>
+                                                      </JFXTextField>
+                                                      <Label fx:id="tax_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="CENTER_LEFT">
+                                             <children>
+                                                <VBox HBox.hgrow="ALWAYS">
+                                                   <HBox.margin>
+                                                      <Insets right="80.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <JFXTextField fx:id="max_txt" prefHeight="25.0" prefWidth="250.0" promptText="Maximum Level" styleClass="textInput" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria" size="13.0" />
+                                                         </font>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                      </JFXTextField>
+                                                      <Label fx:id="max_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox HBox.hgrow="ALWAYS">
+                                                   <HBox.margin>
+                                                      <Insets right="80.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <JFXTextField fx:id="min_txt" prefHeight="25.0" prefWidth="250.0" promptText="Minimum Level" styleClass="textInput" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria" size="13.0" />
+                                                         </font>
+                                                      </JFXTextField>
+                                                      <Label fx:id="min_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                                <VBox HBox.hgrow="ALWAYS">
+                                                   <children>
+                                                      <JFXTextField fx:id="reorder_txt" prefHeight="25.0" prefWidth="250.0" promptText="Reorder Level" styleClass="textInput" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria" size="13.0" />
+                                                         </font>
+                                                      </JFXTextField>
+                                                      <Label fx:id="reorder_txt_label" prefHeight="22.0" prefWidth="250.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="15.0" right="15.0" top="20.0" />
+                                       </padding>
+                                       <styleClass>
+                                          <String fx:value="card" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </VBox>
+                                    <VBox layoutX="28.0" layoutY="349.0" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="300.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT">
+                                             <children>
+                                                <VBox HBox.hgrow="ALWAYS">
+                                                   <HBox.margin>
+                                                      <Insets right="50.0" />
+                                                   </HBox.margin>
+                                                   <children>
+                                                      <HBox>
+                                                         <VBox.margin>
+                                                            <Insets />
+                                                         </VBox.margin>
+                                                         <children>
+                                                            <Button fx:id="btnImgSelect" mnemonicParsing="false" prefHeight="25.0" stylesheets="@../styles/Style.css" text="Select Image">
+                                                               <font>
+                                                                  <Font name="Cambria" size="13.0" />
+                                                               </font>
+                                                               <styleClass>
+                                                                  <String fx:value="buttons-left" />
+                                                                  <String fx:value="shadow" />
+                                                               </styleClass>
+                                                            </Button>
+                                                            <Label fx:id="image_label" prefHeight="28.0" prefWidth="250.0" stylesheets="@../styles/Style.css">
+                                                               <font>
+                                                                  <Font name="Cambria Bold" size="12.0" />
+                                                               </font>
+                                                               <styleClass>
+                                                                  <String fx:value="textInput" />
+                                                                  <String fx:value="label-border" />
+                                                               </styleClass>
+                                                            </Label>
+                                                            <Button fx:id="btnImageView" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" stylesheets="@../styles/Style.css" text="View Image">
+                                                               <font>
+                                                                  <Font name="Cambria" size="13.0" />
+                                                               </font>
+                                                               <styleClass>
+                                                                  <String fx:value="buttons-right" />
+                                                                  <String fx:value="shadow" />
+                                                               </styleClass>
+                                                            </Button>
+                                                         </children>
+                                                      </HBox>
+                                                      <Label fx:id="image_error_label" alignment="CENTER" prefHeight="22.0" prefWidth="420.0" styleClass="warning_label" stylesheets="@../styles/Style.css">
+                                                         <font>
+                                                            <Font name="Cambria Bold" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="15.0" right="15.0" top="30.0" />
+                                       </padding>
+                                       <styleClass>
+                                          <String fx:value="card" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </VBox>
+                                    <HBox alignment="CENTER_LEFT" layoutX="40.0" layoutY="360.0" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="393.0">
+                                       <children>
+                                          <Button fx:id="btnSave" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" stylesheets="@../styles/Style.css" text="Save">
+                                             <font>
+                                                <Font name="Cambria" size="13.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets right="60.0" />
+                                             </HBox.margin>
+                                             <styleClass>
+                                                <String fx:value="buttons" />
+                                                <String fx:value="shadow" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button fx:id="btnCancel" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" stylesheets="@../styles/Style.css" text="Cancel">
+                                             <font>
+                                                <Font name="Cambria" size="13.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="buttons" />
+                                                <String fx:value="shadow" />
+                                             </styleClass>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+                                       </padding>
+                                       <styleClass>
+                                          <String fx:value="card" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </HBox>
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="productList" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="1067.0" styleClass="main-page" stylesheets="@../styles/Style.css">
@@ -1300,6 +1274,113 @@
                                                 <String fx:value="card" />
                                                 <String fx:value="shadow" />
                                              </styleClass>
+                                          </ScrollPane>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane fx:id="ac_stocksheet" layoutX="10.0" layoutY="10.0" prefHeight="519.0" prefWidth="1067.0" styleClass="main-page" stylesheets="@../styles/Style.css">
+                                 <children>
+                                    <Label layoutX="14.0" layoutY="25.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Store Stocksheet" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0">
+                                       <font>
+                                          <Font name="Cambria Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER_LEFT" layoutX="40.0" layoutY="360.0" stylesheets="@../styles/Style.css" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="70.0">
+                                       <children>
+                                          <DatePicker>
+                                             <HBox.margin>
+                                                <Insets right="10.0" />
+                                             </HBox.margin>
+                                          </DatePicker>
+                                          <DatePicker layoutX="25.0" layoutY="21.0" />
+                                          <Button fx:id="stock_src" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" stylesheets="@../styles/Style.css" text="Search">
+                                             <font>
+                                                <Font name="Cambria" size="13.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="50.0" />
+                                             </HBox.margin>
+                                             <styleClass>
+                                                <String fx:value="buttons" />
+                                                <String fx:value="shadow" />
+                                             </styleClass>
+                                          </Button>
+                                          <Button fx:id="stock_print" layoutX="437.0" layoutY="20.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" stylesheets="@../styles/Style.css" text="Print">
+                                             <font>
+                                                <Font name="Cambria" size="13.0" />
+                                             </font>
+                                             <styleClass>
+                                                <String fx:value="buttons" />
+                                                <String fx:value="shadow" />
+                                             </styleClass>
+                                             <HBox.margin>
+                                                <Insets left="20.0" />
+                                             </HBox.margin>
+                                          </Button>
+                                       </children>
+                                       <padding>
+                                          <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+                                       </padding>
+                                       <styleClass>
+                                          <String fx:value="card" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                    </HBox>
+                                    <VBox layoutX="125.0" layoutY="232.0" prefHeight="200.0" prefWidth="100.0" stylesheets="@../styles/Style.css" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="42.0" AnchorPane.topAnchor="122.0">
+                                       <styleClass>
+                                          <String fx:value="card" />
+                                          <String fx:value="shadow" />
+                                       </styleClass>
+                                       <children>
+                                          <HBox prefHeight="32.0" prefWidth="450.0">
+                                             <children>
+                                                <Label prefHeight="17.0" prefWidth="293.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Product Name">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" top="10.0" />
+                                                   </HBox.margin>
+                                                   <font>
+                                                      <Font name="Cambria Bold" size="13.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label alignment="CENTER" layoutX="20.0" layoutY="20.0" prefHeight="17.0" prefWidth="119.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Opening Balance">
+                                                   <font>
+                                                      <Font name="Cambria Bold" size="13.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" top="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" layoutX="105.0" layoutY="10.0" prefHeight="17.0" prefWidth="98.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Total Added">
+                                                   <font>
+                                                      <Font name="Cambria Bold" size="13.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" top="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" layoutX="190.0" layoutY="10.0" prefHeight="17.0" prefWidth="110.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Total Dispatched">
+                                                   <font>
+                                                      <Font name="Cambria Bold" size="13.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" top="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                                <Label alignment="CENTER" layoutX="285.0" layoutY="20.0" prefHeight="17.0" prefWidth="106.0" styleClass="label-text1" stylesheets="@../styles/Style.css" text="Closing Balance">
+                                                   <font>
+                                                      <Font name="Cambria Bold" size="13.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" top="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                          </HBox>
+                                          <ScrollPane prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
+                                             <content>
+                                                <VBox />
+                                             </content>
                                           </ScrollPane>
                                        </children>
                                     </VBox>

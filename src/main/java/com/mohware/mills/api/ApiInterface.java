@@ -37,6 +37,10 @@ public interface ApiInterface {
     Call<CustHelp> editItems(@Field("itemdetails") String itemdetails);
     
     @FormUrlEncoded
+    @POST("dispatch.php")
+    Call<CustHelp> dispatchItems(@Field("itemdetails") String itemdetails);
+    
+    @FormUrlEncoded
     @POST("product_status.php")
     Call<CustHelp> Itemstatus(@Field("itemdetails") String itemdetails, @Field("code") String code);
             
@@ -63,6 +67,9 @@ public interface ApiInterface {
     
     @GET("editproducts.php")
     Call<List<CustHelp>> getProd(@Query("code")String prodCode);
+    
+    @GET("receiptItems.php")
+    Call<List<CustHelp>> getRecItems(@Query("code")String prodCode);
     
     @GET("listproducts_src.php")
     Call<List<CustHelp>> getProdsrc(@Query("key")String prodCode);
